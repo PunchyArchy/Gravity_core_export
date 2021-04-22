@@ -274,6 +274,8 @@ class WEngine:
             # Если иницируется взвешивание брутто для машины протокола Tails
             self.tails_group_init_record(info['carnum'], info['timenow'], info['trash_cat'], info['trash_type'],
                                          info['carrier'], info['comm'], info['operator'], info['course'])
+        elif info['car_protocol'] == 'across':
+            self.across_group(info['carnum'], info['timenow'], info['course'])
 
     def operate_orup_exit_commands(self, info):
         # Работает с коммандами, пришедшими из выездного ОРУП
@@ -290,6 +292,8 @@ class WEngine:
             self.neg_close_record(carnum, info['timenow'], info['comm'], info['course'])
         elif info['car_protocol'] == 'tails':
             self.tails_group_close_record(carnum, info['timenow'], info['comm'], info['course'])
+        elif info['car_protocol'] == 'across':
+            self.across_group(carnum, info['timenow'], info['course'])
 
     def orup_num_upd(self, info):
         print('\n[func]orup_num_upd. Locals:', locals())
@@ -837,6 +841,13 @@ class WEngine:
         sleep(2)
         self.open_gate(name=s.spec_orup_protocols[course]['first_gate'])
         self.protocol_ending(carnum, timenow, course=course, recId=rec_id, mode='tails')
+
+    def across_group(self, carnum, timenow, course, *args, **kwargs):
+        # Начать заезд с открытием обоих шлагбаумов и без взвешивания
+        self.open_gate(name=s.spec_orup_protocols[course]['first_gate'])
+        self.check_ph_release(course, only_breach=False)
+        self.open_gate(name=s.spec_orup_protocols[course]['second_gate'])
+        self.protocol_ending(carnum, timenow, course)
 
     def tails_group_close_record(self, carnum, timenow, comm, course):
         # Закрыть открытый заезд
