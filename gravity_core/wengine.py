@@ -437,9 +437,10 @@ class WEngine:
                     # Если же больше ничего не происходит (фотоэлементы пересеклись и все), ждать пока дальше
                     timer -= 1
                     count = 0
-                    if only_breach:
+                    if only_breach and self.check_car_on_scale(weight_on_scale, s.min_weight_ph_checking):
                         # Но если ничего и не нужно (режим только пересечение), значит все путем, вернуть функцию
-                        return True
+                        count += 1
+                        start_timer = timer
             else:
                 # Если вообще ничего не происходит (ни одного события с фотоэлементами), крутить таймер
                 count = 0
@@ -720,8 +721,10 @@ class WEngine:
 
     def dlinnomer_protocol(self, course, id_type):
         """ Сценарий для спец.протокола длинномер"""
-        second_gate = s.spec_orup_protocols[course]['second_gate']
+        # Поймать вес 1
         weight = self.catching_weight(course, id_type, only_breach=True)
+        # Октыть вторые ворота
+        second_gate = s.spec_orup_protocols[course]['second_gate']
         self.open_gate(name=second_gate)
         weight_add = self.photo_scaling(course, id_type)
         weight = str(int(weight) + int(weight_add))
