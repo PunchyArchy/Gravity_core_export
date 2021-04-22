@@ -368,6 +368,7 @@ class WEngine:
         except PhNotBreach:
             # Если фотоэлемент не был пересечен, все равно вернуть вес, который сейчас показывают весы
             weight = self.take_weight()
+            weight = self.wlistener.smlist[-1]
             # self.alerts += 'Б3 '
             self.phNotBreach = True
             health_monitor.change_status('Фотоэлементы', False, 'Есть подозрение что не работают')
