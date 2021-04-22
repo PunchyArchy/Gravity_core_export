@@ -125,8 +125,8 @@ def get_records_columns(sqlshell, command):
 def get_reports(sqlshell):
     """Получить записи заездов с таблицы records с даты (start_date) по сегодняшний день"""
     request = 'records.id, car_number, brutto, tara, cargo, to_char("time_in",\'DD/MM/YY HH24:MI:SS\') as time_in'
-    request += ',to_char("time_out",\'DD/MM/YY HH24:MI:SS\') as time_out,inside,carrier, trash_types.wserver_id'
-    request += ',trash_cats.wserver_id, notes, operator, checked'
+    request += ',to_char("time_out",\'DD/MM/YY HH24:MI:SS\') as time_out,inside,carrier, trash_types.wserver_id as trash_type'
+    request += ',trash_cats.wserver_id as trash_cat, notes, operator, checked'
     request += ',(SELECT name FROM auto_models INNER JOIN auto ON (auto_models.id = auto.auto_model) WHERE records.car_number=auto.car_number LIMIT 1)'
     request += ', disputs.alerts'
     comm = "SELECT {} FROM {} " \
