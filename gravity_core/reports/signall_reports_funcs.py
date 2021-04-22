@@ -124,12 +124,15 @@ def get_records_columns(sqlshell, command):
 
 def get_reports(sqlshell):
     """Получить записи заездов с таблицы records с даты (start_date) по сегодняшний день"""
-    request = 'records.id,car_number,brutto,tara,cargo, to_char("time_in",\'DD/MM/YY HH24:MI:SS\') as time_in'
-    request += ',to_char("time_out",\'DD/MM/YY HH24:MI:SS\') as time_out,inside,carrier,trash_type'
-    request += ',trash_cat,notes,operator,checked'
+    request = 'records.id, car_number, brutto, tara, cargo, to_char("time_in",\'DD/MM/YY HH24:MI:SS\') as time_in'
+    request += ',to_char("time_out",\'DD/MM/YY HH24:MI:SS\') as time_out,inside,carrier, trash_types.wserver_id'
+    request += ',trash_cats.wserver_id, notes, operator, checked'
     request += ',(SELECT name FROM auto_models INNER JOIN auto ON (auto_models.id = auto.auto_model) WHERE records.car_number=auto.car_number LIMIT 1)'
     request += ', disputs.alerts'
-    comm = "SELECT {} FROM {} LEFT JOIN disputs ON (disputs.records_id = records.id) " \
+    comm = "SELECT {} FROM {} " \
+           "LEFT JOIN disputs ON (disputs.records_id = records.id) " \
+           "LEFT JOIN trash_cats ON (records.trash_cat = trash_cats.id) " \
+           "LEFT JOIN trash_types ON (records.trash_type = trash_types.id) " \
            "WHERE NOT (wserver_get is not null) and time_in > '14.11.2020' and not tara is null LIMIT 15".format(
         request, s.records_table)
     records, column_names = get_records_columns(sqlshell, comm)
