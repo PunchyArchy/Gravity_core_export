@@ -1,0 +1,14 @@
+Metadata-Version: 2.1
+Name: wsqluse
+Version: 1.2
+Summary: UNKNOWN
+Home-page: UNKNOWN
+Author: PunchyArchy
+Author-email: ksmdrmvscthny@gmail.com
+License: UNKNOWN
+Platform: UNKNOWN
+Requires-Dist: psycopg2
+
+WSQluse - фреймворк на основе psycopg2, используемые в микросервисах проекта Watchman
+
+

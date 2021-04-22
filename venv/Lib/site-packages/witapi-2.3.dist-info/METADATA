@@ -1,0 +1,19 @@
+Metadata-Version: 2.1
+Name: witapi
+Version: 2.3
+Summary: UNKNOWN
+Home-page: UNKNOWN
+Author: PunchyArchy
+Author-email: ksmdrmvscthny@gmail.com
+License: UNKNOWN
+Platform: UNKNOWN
+Requires-Dist: wsqluse
+
+WITApi (Watchman Internal TCP Api) - универсальная пара сервер-клиент для реализации взаимодействия
+между микросервисами проекта Watchman.
+Делится на WITServer (API endpoint, разворачивается на стороне сервера, на котором предполагается выполнение
+команд от клиента) и WITClient, клиента, который отправляет команды на выполнение серверу.
+Предусмотрен механизм аутентификации клиента на стороне сервера, функционал в папке auth, однако, сервер может
+работать и без аутентификации, сразу исполняя команды клиента (если серверу передан параметр without_auth=True)
+
+

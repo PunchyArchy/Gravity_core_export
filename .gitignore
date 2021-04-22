@@ -1,0 +1,12 @@
+*.xml
+.pyc
+gravity_core/logs/sys_logs
+gravity_core/logs/opl_logs/*
+gravity_core/reports/json_reports/*
+*.jpg
+*.cfg
+*.pyc
+.idea
+gravity_core/reports/1c_reports/new_rfid_ext.xml
+gravity_core/tmp/tbo_oN.txt
+*.save

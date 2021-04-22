@@ -1,0 +1,7 @@
+psycopg2-binary
+whikoperator
+witapi
+gravity-core-api
+weightsplitter
+wsqluse
+schedule

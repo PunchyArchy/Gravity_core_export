@@ -1,0 +1,6 @@
+schedule
+pyserial
+simplejson
+wsqluse
+witapi
+hermessplitter

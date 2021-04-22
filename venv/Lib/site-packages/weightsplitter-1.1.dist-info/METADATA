@@ -1,0 +1,18 @@
+Metadata-Version: 2.1
+Name: weightsplitter
+Version: 1.1
+Summary: UNKNOWN
+Home-page: UNKNOWN
+Author: PunchyArchy
+Author-email: ksmdrmvscthny@gmail.com
+License: UNKNOWN
+Platform: UNKNOWN
+Requires-Dist: portdatasplitter
+
+WS(weight Splitter) - это сервер по рассылке и парсингу показаний с электронных весовых терминалов,
+реализованный в на основе PortDataSplitter. Поддерживает интерфейсы USB и COM-port.
+Имеется библиотека с парсерами для уже известных весовых терминалов а так-же функциями, специфичными для них.
+
+Пример использования (Рассыльщик данных с весов с USB на порту 2290 на Linux):
+pds = PortDataSplitter('0.0.0.0', 2290, port_name='/dev/ttyUSB0', debug=False, device_name='USB listener')
+
