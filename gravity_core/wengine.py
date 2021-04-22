@@ -368,13 +368,18 @@ class WEngine:
         except PhNotBreach:
             # Если фотоэлемент не был пересечен, все равно вернуть вес, который сейчас показывают весы
             weight = self.take_weight()
+            print('taking weight', weight)
             weight = self.wlistener.smlist[-1]
+            print('just smlist', weight)
+            weight = self.add_weight()
+            print('add weight', weight)
             # self.alerts += 'Б3 '
             self.phNotBreach = True
             health_monitor.change_status('Фотоэлементы', False, 'Есть подозрение что не работают')
         # Проверить не заблокированы ли фотоэлементы
         self.show_notification('Положение фотоэлементов -', self.ph_els)
         self.alerts = self.sqlshell.check_ph_state(self.ph_els, self.alerts, self.polomka, self.dlinnomer)
+        print('Photo scaling backing:', weight)
         return weight
 
     def str_check(self, course, id_type):
