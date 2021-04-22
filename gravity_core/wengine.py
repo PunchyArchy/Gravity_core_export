@@ -367,13 +367,7 @@ class WEngine:
             health_monitor.change_status('Фотоэлементы', True, 'Подключение стабильно')
         except PhNotBreach:
             # Если фотоэлемент не был пересечен, все равно вернуть вес, который сейчас показывают весы
-            weight = self.take_weight()
-            print('taking weight', weight)
             weight = self.wlistener.smlist[-1]
-            print('just smlist', weight)
-            weight = self.add_weight()
-            print('add weight', weight)
-            # self.alerts += 'Б3 '
             self.phNotBreach = True
             health_monitor.change_status('Фотоэлементы', False, 'Есть подозрение что не работают')
         # Проверить не заблокированы ли фотоэлементы
@@ -769,6 +763,7 @@ class WEngine:
 
     def if_car_not_passed(self, weight, min_weight=s.min_weight_car_on_scale):
         """ Возвращает True, если машина на проехала на весы (фотоэлменты не пересеклись + весы показывают малый вес)"""
+        if weight == None: weight = 0
         if self.phNotBreach == True and not self.check_car_on_scale(weight, min_weight):
             self.show_notification('CAR DID NOT PASS')
             self.updAddInfo(status='Время истекло!')
