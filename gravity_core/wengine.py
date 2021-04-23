@@ -458,6 +458,7 @@ class WEngine:
                 # И возбудить алерт
                 raise PhNotBreach
         # Если дошло до сюда, значит условие выполнено, закрыть шлагбаум
+        #if not only_breach:
         self.gate_scale_control_mechanism(mode, gate)
 
     def check_car_on_scale(self, weight, min_weight=100):
@@ -730,8 +731,10 @@ class WEngine:
         # Октыть вторые ворота
         second_gate = s.spec_orup_protocols[course]['second_gate']
         self.open_gate(name=second_gate)
-        weight_add = self.photo_scaling(course, id_type)
+        reverse_course = s.spec_orup_protocols[course]['reverse']
+        weight_add = self.photo_scaling(reverse_course, id_type, only_breach=True)
         weight = str(int(weight) + int(weight_add))
+        self.show_notification('\n\n\nСуммируем веса {} + {}'.format(str(weight), str(weight_add)))
         return weight
 
     def polomka_protocol(self, course, id_type):
