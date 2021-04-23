@@ -458,7 +458,8 @@ class WEngine:
                 # И возбудить алерт
                 raise PhNotBreach
         # Если дошло до сюда, значит условие выполнено, закрыть шлагбаум
-        #if not only_breach:
+        if only_breach:
+            mode = 'esc'
         self.gate_scale_control_mechanism(mode, gate)
 
     def check_car_on_scale(self, weight, min_weight=100):
