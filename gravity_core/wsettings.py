@@ -7,8 +7,14 @@ SQLSHELL_DEBUG = False          # Режим дебага Sqlshell
 WS_DEBUG = False                # Режим дебага WeightSplitter
 WAPI_DEBUG = False              # Режим дебага WAPI
 PROTOCOLS_DEBUG = False         # Режим дебага протоколов (взвешивание без машины)
+
+# SETTINGS
 IMPORT_FTP = False              # Импорт клиентов с FTP
-MIRRORED = True 		# False = Въезд - справа, выезд - слева 
+MIRRORED = True 	        	# False = Въезд - справа, выезд - слева
+
+# MODS
+TEST_MODE = True
+AR_DUO_MOD = True
 
 # NEW_SETTINGS
 PROJECT_NAME = 'gravity_core'
