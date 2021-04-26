@@ -7,11 +7,14 @@ import base64
 import json
 
 
-def save_json_report(sqlshell, poligon_id, tablename, filename):
+def save_json_report(sqlshell, poligon_id, tablename, filename, duo=False):
     """ Функция для сохранения отчетов (filename) в формате JSON состоящей из ключей-значений из таблицы (tablename)"""
     if tablename == 'records':
         # Если это отчеты о заездах - вызвать get_reports
-        records, column_names = get_reports(sqlshell)
+        if duo:
+            records, column_names = get_reports_duo(sqlshell)
+        else:
+            records, column_names = get_reports(sqlshell)
     else:
         # Если же это отчеты о машинах, юзерах или клинетах - вызвать get_records
         records, column_names = get_records(sqlshell, tablename)
@@ -21,6 +24,22 @@ def save_json_report(sqlshell, poligon_id, tablename, filename):
     mark_record(sqlshell, records, tablename, 'wserver_sent', datetime.now())
     # Сохранить данные в файл
     save_json(records_list, filename, poligon_id)
+
+def get_reports_duo(sqlshell):
+    """Получить записи заездов с таблицы records с даты (start_date) по сегодняшний день"""
+    request = 'records.id,car_number,brutto,tara,cargo, to_char("time_in",\'DD/MM/YY HH24:MI:SS\') as time_in'
+    request += ',to_char("time_out",\'DD/MM/YY HH24:MI:SS\') as time_out,inside,carrier,trash_type'
+    request += ',trash_cat,notes,operator,checked'
+    request += ',(SELECT name FROM auto_models INNER JOIN auto ON (auto_models.id = auto.auto_model) WHERE records.car_number=auto.car_number LIMIT 1)'
+    request += ', disputs.alerts'
+    comm = "SELECT {} FROM {} LEFT JOIN disputs ON (disputs.records_id = records.id) " \
+           "LEFT JOIN duo_records_owning ON (duo_recrods_ownind.record = records.id)" \
+           "WHERE NOT (wserver_get is not null) and time_in > '14.11.2020' and not tara is null LIMIT 15".format(
+        request, s.records_table)
+    records, column_names = get_records_columns(sqlshell, comm)
+    records = expand_reports_list(records)
+    column_names = expand_column_names(column_names)
+    return records, column_names
 
 
 def get_records_list(records, column_names, poligon_id):
