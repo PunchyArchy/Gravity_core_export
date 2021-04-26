@@ -109,6 +109,9 @@ disputs_table = 'disputs'
 records_table = 'records'
 auto = 'auto'
 book = 'records'
+pol_owners_table = 'pol_owners_table'
+connection_status_table = 'duo_connection_status'
+records_owning_table = 'duo_records_owning'
 
 
 gdb_companies_table = 'companies'

@@ -145,3 +145,9 @@ def duo_records_owning_save(sqlshell, records_owning_table, pol_owners_table, po
               "ON CONFLICT (record) DO NOTHING".format(records_owning_table, record_id, pol_owners_table, poligon_name)
     sqlshell.try_execute(command)
 
+
+def records_owning_save(sqlshell, records_owning_table, pol_owners_table, poligon_name, record_id):
+    command = "INSERT INTO {} (record, owner) VALUES ({}, (SELECT id FROM {} WHERE name='{}')) " \
+              "ON CONFLICT (record) DO NOTHING".format(records_owning_table, record_id, pol_owners_table, poligon_name)
+    sqlshell.try_execute(command)
+
