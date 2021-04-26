@@ -611,7 +611,7 @@ class WEngine:
 
     def get_carnum_by_rfid(self, rfid_num):
         """ Вернуть гос.номер из таблицы по номеру RFID"""
-        command = "SELECT car_number from {} WHERE rfid='{}'".format(s.auto, rfid_num)
+        command = "SELECT car_number from {} WHERE rfid='{}' and active=True".format(s.auto, rfid_num)
         carnum = self.sqlshell.try_execute_get(command)
         self.show_notification('\tНомер авто получено:', carnum)
         return carnum[0][0]
