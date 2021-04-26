@@ -918,6 +918,9 @@ class WEngine:
         if not s.GENERAL_DEBUG:
             self.alerts = self.sqlshell.check_car_choose_mode(self.alerts, self.choose_mode, carnum,
                                                               s.spec_orup_protocols[course]['reverse'])
+        if s.AR_DUO_MOD:
+            duo_functions.records_owning_save(self.sqlshell, s.records_owning_table, s.pol_owners_table,
+                                                        self.polygon_name, recId)
         self.add_alerts(recId)
         threading.Thread(target=self.send_act, args=()).start()
         self.choose_mode = 'auto'
