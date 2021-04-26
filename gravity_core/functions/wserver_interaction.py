@@ -4,6 +4,7 @@ from traceback import format_exc
 from witapi.main import WITClient, WITServer
 
 
+
 def create_wserver_connection():
     """ Создать подключение к WServer"""
     wclient = WITClient(s.wserver_ip, s.wserver_port, s.gdb_poligon_name, s.gdb_poligon_password, debug=s.WAPI_DEBUG)
@@ -11,6 +12,7 @@ def create_wserver_connection():
     connection_result = connect_wserver(wclient)
     if connection_result:
         return wclient
+
 
 def auth_me(wclient):
     # Попытаться авторизоваться
