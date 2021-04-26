@@ -10,16 +10,11 @@ PROTOCOLS_DEBUG = False         # Режим дебага протоколов (
 
 # SETTINGS
 IMPORT_FTP = False              # Импорт клиентов с FTP
-<<<<<<< HEAD
-MIRRORED = False 		# False = Въезд - справа, выезд - слева 
-AR_DUO = False
-=======
 MIRRORED = True 	        	# False = Въезд - справа, выезд - слева
 
 # MODS
 TEST_MODE = True
 AR_DUO_MOD = True
->>>>>>> c63137303095fbd13177131502dd4be2c6b715ef
 
 # NEW_SETTINGS
 PROJECT_NAME = 'gravity_core'
@@ -115,6 +110,7 @@ records_table = 'records'
 auto = 'auto'
 book = 'records'
 
+
 gdb_companies_table = 'companies'
 gdb_records_table = 'records'
 gdb_poligon_name = 'Толбазы'
@@ -179,7 +175,7 @@ carDetectTimeOut = 60					# Игнорирует машину и не созда
 #Настройки камеры
 cam_login = 'admin'
 cam_pw = 'Assa+123'
-cam_ip = '172.16.2.46'
+cam_ip = '172.16.1.46'
 pics_folder = os.path.join(camera_folder, 'pics')
 count_file = os.path.join(camera_folder, 'cam_count.cfg')
 fpath_file = os.path.join(camera_folder, 'fpath.cfg')
