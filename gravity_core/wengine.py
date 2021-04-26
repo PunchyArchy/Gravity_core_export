@@ -65,7 +65,7 @@ class WEngine:
         """ Подключиться к серверу раздачи весов"""
         while True:
             try:
-                self.cps = WeightSplitter(s.scale_splitter_ip, s.scale_splitter_port, port_name='/dev/ttyS5', terminal_name='A12E', debug=s.WS_DEBUG)
+                self.cps = WeightSplitter(s.scale_splitter_ip, s.scale_splitter_port, port_name=s.ws_port, terminal_name=s.ws_name, debug=s.WS_DEBUG)
                 self.cps.start()
                 health_monitor.change_status('Весовой терминал', True, 'Весовой терминал функционирует нормально')
                 break
