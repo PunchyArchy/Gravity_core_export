@@ -6,7 +6,7 @@ import threading
 from traceback import format_exc
 from time import sleep
 from gravity_core.reports import signall_reports_funcs as sig_funcs
-
+from gravity_core import wsettings as s
 
 def get_all_polion_names(sqlshell, pol_owners_table):
     """ Извлечь все названия полигонов из pol_owners_table"""
