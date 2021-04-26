@@ -4,6 +4,8 @@ from gravity_core import health_monitor
 from datetime import datetime
 import threading
 from traceback import format_exc
+from time import sleep
+from gravity_core.reports import signall_reports_funcs as sig_funcs
 
 
 def get_all_polion_names(sqlshell, pol_owners_table):
@@ -99,6 +101,25 @@ def wserver_reconnecter(sqlshell, poligon_name, wserver_client, connection_statu
         sleep(15)
 
 
+def send_act_by_polygon(connection_dict, sqlshell, connection_status_table, pol_owners_table):
+    for pol_name, pol_info in connection_dict.items():
+        send_act(connection_dict[pol_name]['wclient'], connection_dict[pol_name]['wserver_id'], sqlshell,
+                 connection_status_table, pol_owners_table, pol_name)
+
+def send_act(wserver_client, wserver_polygon_id, sqlshell, connection_status_table, pol_owners_table, poligon_name):
+    """ Оотправить акты на SignAll"""
+    print('\nОтправка актов на WServer')
+    try:
+        sig_funcs.send_json_reports(sqlshell, wserver_client, wserver_polygon_id,
+                                    table_to_file_dict=s.json_table_to_file.items())
+        set_wserver_connected_status(sqlshell, connection_status_table, pol_owners_table, poligon_name,
+                                     wserver_polygon_id)
+        print('\tАкты успешно отправлены')
+    except:
+        health_monitor.change_status('Связь с WServer', False, format_exc())
+        set_wserver_disconnect_status(sqlshell, connection_status_table, pol_owners_table, poligon_name)
+
+
 def auth_me(wclient):
     # Попытаться авторизоваться
     response = auth_poligon(wclient)
@@ -150,4 +171,3 @@ def records_owning_save(sqlshell, records_owning_table, pol_owners_table, poligo
     command = "INSERT INTO {} (record, owner) VALUES ({}, (SELECT id FROM {} WHERE name='{}')) " \
               "ON CONFLICT (record) DO NOTHING".format(records_owning_table, record_id, pol_owners_table, poligon_name)
     sqlshell.try_execute(command)
-
