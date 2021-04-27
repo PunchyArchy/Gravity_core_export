@@ -101,6 +101,7 @@ class WEngine:
         self.show_notification(tag)
         self.show_notification(format_exc())
         self.logger.error(format_exc())
+        self.opl_make_record(format_exc())
         self.send_error(tag)
 
     def serving_start(self):
@@ -1219,6 +1220,7 @@ class WEngine:
 
     def show_notification(self, *args, debug=False):
         args = self.join_tuple_string(args)
+        self.opl_make_record(args)
         if debug and self.debug:
             print(datetime.now(), args)
         elif not debug:
