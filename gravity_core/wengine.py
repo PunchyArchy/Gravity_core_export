@@ -138,11 +138,12 @@ class WEngine:
         # Вернуть словарь типа {'conn_name': {'wclient': socket_obj, ... }}
         self.all_wclients = duo_functions.get_all_poligon_connections(self.sqlshell, s.pol_owners_table, s.wserver_ip,
                                                                             s.wserver_port)
-        # Отправить акты
-
         # Отдать словарь на обслуживание демону
         duo_functions.launch_wconnection_serv_daemon(self.sqlshell, self.all_wclients, s.connection_status_table,
                                                            s.pol_owners_table)
+        # Отправить акты
+        duo_functions.send_act_by_polygon(self.all_wclients, self.sqlshell, s.connection_status_table,
+                                          s.pol_owners_table)
 
     def set_wlistener_core(self):
         self.wlistener.set_wcore(self)
