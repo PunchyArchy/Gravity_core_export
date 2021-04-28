@@ -84,6 +84,10 @@ def set_wserver_disconnect_status(sqlshell, connection_status_table, pol_owners_
     sqlshell.try_execute(command)
 
 def wserver_reconnecter(sqlshell, poligon_name, wserver_client, connection_status_table, pol_owners_table):
+    connect_wserver(wserver_client)
+    wserver_polygon_id = auth_me(wserver_client)
+    send_act(wserver_client, wserver_polygon_id, sqlshell, connection_status_table, pol_owners_table,
+             poligon_name)
     while True:
         connection_status = fetch_wserver_connection_status(sqlshell, connection_status_table, pol_owners_table,
                                                             poligon_name)
@@ -104,6 +108,12 @@ def wserver_reconnecter(sqlshell, poligon_name, wserver_client, connection_statu
 
 
 def send_act_by_polygon(connection_dict, sqlshell, connection_status_table, pol_owners_table):
+    for pol_name, pol_info in connection_dict.items():
+        wserver_id = fetch_wserver_id(sqlshell, pol_name, connection_status_table, pol_owners_table)
+        send_act(connection_dict[pol_name]['wclient'], wserver_id, sqlshell,
+                 connection_status_table, pol_owners_table, pol_name)
+
+def launch_operation(connection_dict, sqlshell, connection_status_table, pol_owners_table):
     for pol_name, pol_info in connection_dict.items():
         wserver_id = fetch_wserver_id(sqlshell, pol_name, connection_status_table, pol_owners_table)
         send_act(connection_dict[pol_name]['wclient'], wserver_id, sqlshell,
@@ -174,12 +184,6 @@ def launch_wconnection_serv_daemon(sqlshell, all_poligons, connection_status_tab
         threading.Thread(target=wserver_reconnecter, args=(sqlshell, poligon_name, poligon_info['wclient'],
                                                            connection_status_table, pol_owners_table)).start()
     print('All daemons has been launched')
-
-
-def duo_records_owning_save(sqlshell, records_owning_table, pol_owners_table, poligon_name, record_id):
-    command = "INSERT INTO {} (record, owner) VALUES ({}, (SELECT id FROM {} WHERE name='{}')) " \
-              "ON CONFLICT (record) DO NOTHING".format(records_owning_table, record_id, pol_owners_table, poligon_name)
-    sqlshell.try_execute(command)
 
 
 def records_owning_save(sqlshell, records_owning_table, pol_owners_table, poligon_name, record_id):
