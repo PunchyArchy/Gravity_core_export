@@ -33,7 +33,9 @@ def get_reports_duo(sqlshell):
     request += ',(SELECT name FROM auto_models INNER JOIN auto ON (auto_models.id = auto.auto_model) WHERE records.car_number=auto.car_number LIMIT 1)'
     request += ', disputs.alerts'
     comm = "SELECT {} FROM {} LEFT JOIN disputs ON (disputs.records_id = records.id) " \
-           "LEFT JOIN duo_records_owning ON (duo_recrods_ownind.record = records.id)" \
+           "LEFT JOIN trash_cats ON (records.trash_cat = trash_cats.id) " \
+           "LEFT JOIN trash_types ON (records.trash_type = trash_types.id) " \
+           "LEFT JOIN duo_records_owning ON (duo_records_owning.record = records.id) " \
            "WHERE NOT (wserver_get is not null) and time_in > '14.11.2020' and not tara is null LIMIT 15".format(
         request, s.records_table)
     records, column_names = get_records_columns(sqlshell, comm)
@@ -75,12 +77,12 @@ def save_json(object, filepath, mode='usual'):
         else:
             json.dump(object, fobj, default=str)
 
-def send_json_reports(sqlshell,  wclient, poligon_id, table_to_file_dict=s.json_table_to_file.items()):
+def send_json_reports(sqlshell,  wclient, poligon_id, table_to_file_dict=s.json_table_to_file.items(), duo=False):
     # WClient - ранее созданый WClient для связи с WServer
     # poligon_id - id полигона, полученный после аутентификации полигона на WServer
     # Получает словарь вида {'tablename'(таблица): 'tablename.json'(файл)} и сохраняет данные из таблицы в файл
     for table, filename in table_to_file_dict:
-        save_json_report(sqlshell, poligon_id, table, filename)
+        save_json_report(sqlshell, poligon_id, table, filename, duo)
         wclient.send_file(filename)
         # Получить ответ от WServer. Обычно это - {'get':{'was': <wdb.records.id>, 'new': <gdb.records.id>}}
         succes_save_list = wclient.get_data()
@@ -90,6 +92,7 @@ def send_json_reports(sqlshell,  wclient, poligon_id, table_to_file_dict=s.json_
         #else:
             # а в остальных id
         id_column = 'id'
+        print("SUCCES LIST", succes_save_list)
         mark_succes_save(sqlshell, succes_save_list, table, id_column)
 
 
@@ -98,6 +101,7 @@ def mark_succes_save(sqlshell, listname, tablename, id_column):
     # listname template {'get': {'was': < wdb.records.id >, 'nekw': < gdb.records.id >}}
     timenow = datetime.now()
     for record in listname:
+        #print("RECORD", record)
         rec_id = record['get']['was']
         wsever_id = record['get']['now']
         command = "UPDATE {} set wserver_get='{}', wserver_id={} WHERE {}={}".format(tablename, timenow, wsever_id,

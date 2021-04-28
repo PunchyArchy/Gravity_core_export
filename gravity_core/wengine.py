@@ -72,7 +72,7 @@ class WEngine:
         """ Подключиться к серверу раздачи весов"""
         while True:
             try:
-                self.cps = WeightSplitter(s.scale_splitter_ip, s.scale_splitter_port, port_name='/dev/ttyS5', terminal_name='A12E', debug=s.WS_DEBUG)
+                self.cps = WeightSplitter(s.scale_splitter_ip, s.scale_splitter_port, port_name=s.ws_port, terminal_name=s.ws_name, debug=s.WS_DEBUG)
                 self.cps.start()
                 health_monitor.change_status('Весовой терминал', True, 'Весовой терминал функционирует нормально')
                 break
@@ -116,7 +116,7 @@ class WEngine:
         if not s.TEST_MODE:
             # Демон по получению весов с WeightSplitter
             threading.Thread(target=self.wlistener.scale_reciever, args=()).start()
-        if not s.IMPORT_FTP:
+        if s.IMPORT_FTP:
             threading.Thread(target=rep_funcs.schedule_reports_sending, args=()).start()  # Демон отправки отчетов на 1С
             rep_funcs.form_send_reports()              # Сформировать и отправить акты разово на ФТП
         # Демон запуска сокета для отправки статусов о работе Watchman-Core для CM
@@ -136,8 +136,10 @@ class WEngine:
         """ Подключиться к WSERVER """
         # А теперь создаем сокеты для отправки данных на WServer
         # Вернуть словарь типа {'conn_name': {'wclient': socket_obj, ... }}
+        print('getting')
         self.all_wclients = duo_functions.get_all_poligon_connections(self.sqlshell, s.pol_owners_table, s.wserver_ip,
                                                                             s.wserver_port)
+        print('get', self.all_wclients)
         # Отдать словарь на обслуживание демону
         duo_functions.launch_wconnection_serv_daemon(self.sqlshell, self.all_wclients, s.connection_status_table,
                                                            s.pol_owners_table)
@@ -478,6 +480,8 @@ class WEngine:
                 # И возбудить алерт
                 raise PhNotBreach
         # Если дошло до сюда, значит условие выполнено, закрыть шлагбаум
+        if only_breach:
+            mode = 'esc'
         self.gate_scale_control_mechanism(mode, gate)
 
     def check_car_on_scale(self, weight, min_weight=100):
@@ -629,7 +633,7 @@ class WEngine:
 
     def get_carnum_by_rfid(self, rfid_num):
         """ Вернуть гос.номер из таблицы по номеру RFID"""
-        command = "SELECT car_number from {} WHERE rfid='{}'".format(s.auto, rfid_num)
+        command = "SELECT car_number from {} WHERE rfid='{}' and active=True".format(s.auto, rfid_num)
         carnum = self.sqlshell.try_execute_get(command)
         self.show_notification('\tНомер авто получено:', carnum)
         return carnum[0][0]
@@ -751,8 +755,10 @@ class WEngine:
         # Октыть вторые ворота
         second_gate = s.spec_orup_protocols[course]['second_gate']
         self.open_gate(name=second_gate)
-        weight_add = self.photo_scaling(course, id_type)
+        reverse_course = s.spec_orup_protocols[course]['reverse']
+        weight_add = self.photo_scaling(reverse_course, id_type, only_breach=True)
         weight = str(int(weight) + int(weight_add))
+        self.show_notification('\n\n\nСуммируем веса {} + {}'.format(str(weight), str(weight_add)))
         return weight
 
     def polomka_protocol(self, course, id_type):

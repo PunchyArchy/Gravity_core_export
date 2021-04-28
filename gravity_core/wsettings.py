@@ -3,17 +3,17 @@ import os
 
 # Debug mods
 GENERAL_DEBUG = True            # Общий дебаг (вывод сообщений в общий поток вывода)
-SQLSHELL_DEBUG = False          # Режим дебага Sqlshell
-WS_DEBUG = False                # Режим дебага WeightSplitter
+SQLSHELL_DEBUG = True          # Режим дебага Sqlshell
+WS_DEBUG = False                 # Режим дебага WeightSplitter
 WAPI_DEBUG = False              # Режим дебага WAPI
 PROTOCOLS_DEBUG = False         # Режим дебага протоколов (взвешивание без машины)
 
 # SETTINGS
 IMPORT_FTP = False              # Импорт клиентов с FTP
-MIRRORED = True 	        	# False = Въезд - справа, выезд - слева
+MIRRORED = False 	       	# False = Въезд - справа, выезд - слева
 
 # MODS
-TEST_MODE = True
+TEST_MODE = False
 AR_DUO_MOD = True
 
 # NEW_SETTINGS
@@ -29,8 +29,6 @@ reports_dir = os.path.join(INTERNAL_DIR, 'reports')
 logs_dir = os.path.join(INTERNAL_DIR, 'logs')
 sys_logs = os.path.join(logs_dir, 'sys_logs')
 camera_folder = os.path.join(INTERNAL_DIR, 'camera_folder')
-
-#project_dir = os.abspath('.')
 
 # Отправка логов 18000-7200-3605
 logs_send_rate = 600
@@ -87,6 +85,10 @@ json_table_to_file = {
 scale_splitter_ip = '0.0.0.0'
 my_ip = '0.0.0.0'
 scale_splitter_port = 2297
+ws_name = 'CAS_CL-200A'
+ws_port = '/dev/ttyS4'
+
+
 
 scale_lis_time = 5
 scale_est_time = 3
@@ -107,19 +109,15 @@ disputs_table = 'disputs'
 records_table = 'records'
 auto = 'auto'
 book = 'records'
-pol_owners_table = 'pol_owners_table'
+pol_owners_table = 'duo_pol_owners'
 connection_status_table = 'duo_connection_status'
 records_owning_table = 'duo_records_owning'
 
-#ДБ signAll
-#gdb_name = 'gdb'
-#gdb_user = 'watchman'
-#gdb_pass = 'hect0r1337'
-#gdb_location = '192.168.100.118'
+
 gdb_companies_table = 'companies'
 gdb_records_table = 'records'
-gdb_poligon_name = 'Мелеуз'
-gdb_poligon_password = 'sun21'
+gdb_poligon_name = 'Толбазы'
+gdb_poligon_password = 'jupiter19'
 gdb_poligons_table = 'poligons'
 
 #Параметры для wcheker`a
@@ -180,7 +178,7 @@ carDetectTimeOut = 60					# Игнорирует машину и не созда
 #Настройки камеры
 cam_login = 'admin'
 cam_pw = 'Assa+123'
-cam_ip = '172.16.2.46'
+cam_ip = '172.16.1.46'
 pics_folder = os.path.join(camera_folder, 'pics')
 count_file = os.path.join(camera_folder, 'cam_count.cfg')
 fpath_file = os.path.join(camera_folder, 'fpath.cfg')
