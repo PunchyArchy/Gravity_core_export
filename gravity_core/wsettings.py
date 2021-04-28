@@ -3,17 +3,17 @@ import os
 
 # Debug mods
 GENERAL_DEBUG = True            # Общий дебаг (вывод сообщений в общий поток вывода)
-SQLSHELL_DEBUG = False          # Режим дебага Sqlshell
-WS_DEBUG = False                # Режим дебага WeightSplitter
+SQLSHELL_DEBUG = True          # Режим дебага Sqlshell
+WS_DEBUG = False                 # Режим дебага WeightSplitter
 WAPI_DEBUG = False              # Режим дебага WAPI
 PROTOCOLS_DEBUG = False         # Режим дебага протоколов (взвешивание без машины)
 
 # SETTINGS
 IMPORT_FTP = False              # Импорт клиентов с FTP
-MIRRORED = True 	        	# False = Въезд - справа, выезд - слева
+MIRRORED = False 	       	# False = Въезд - справа, выезд - слева
 
 # MODS
-TEST_MODE = True
+TEST_MODE = False
 AR_DUO_MOD = True
 
 # NEW_SETTINGS
@@ -109,7 +109,7 @@ disputs_table = 'disputs'
 records_table = 'records'
 auto = 'auto'
 book = 'records'
-pol_owners_table = 'pol_owners_table'
+pol_owners_table = 'duo_pol_owners'
 connection_status_table = 'duo_connection_status'
 records_owning_table = 'duo_records_owning'
 

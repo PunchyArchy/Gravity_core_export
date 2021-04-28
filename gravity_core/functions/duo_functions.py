@@ -8,6 +8,7 @@ from time import sleep
 from gravity_core.reports import signall_reports_funcs as sig_funcs
 from gravity_core import wsettings as s
 
+
 def get_all_polion_names(sqlshell, pol_owners_table):
     """ Извлечь все названия полигонов из pol_owners_table"""
     command = "SELECT name FROM {}".format(pol_owners_table)
@@ -91,13 +92,14 @@ def wserver_reconnecter(sqlshell, poligon_name, wserver_client, connection_statu
             connect_wserver(wserver_client)
             try:
                 wserver_polygon_id = auth_me(wserver_client)
-
+                print("here {}. Poligon id".format(wserver_polygon_id))
                 send_act(wserver_client, wserver_polygon_id, sqlshell, connection_status_table, pol_owners_table,
                          poligon_name)
             except:
                 print(format_exc())
+                set_wserver_disconnect_status(sqlshell, connection_status_table, pol_owners_table, poligon_name)
         else:
-            set_wserver_disconnect_status(sqlshell, connection_status_table, pol_owners_table, poligon_name)
+            pass
         sleep(15)
 
 
@@ -111,18 +113,20 @@ def send_act(wserver_client, wserver_polygon_id, sqlshell, connection_status_tab
     print('\nОтправка актов на WServer')
     try:
         sig_funcs.send_json_reports(sqlshell, wserver_client, wserver_polygon_id,
-                                    table_to_file_dict=s.json_table_to_file.items())
+                                    table_to_file_dict=s.json_table_to_file.items(), duo=True)
         set_wserver_connected_status(sqlshell, connection_status_table, pol_owners_table, poligon_name,
                                      wserver_polygon_id)
         print('\tАкты успешно отправлены')
     except:
         health_monitor.change_status('Связь с WServer', False, format_exc())
+        print(format_exc())
         set_wserver_disconnect_status(sqlshell, connection_status_table, pol_owners_table, poligon_name)
 
 
 def auth_me(wclient):
     # Попытаться авторизоваться
     response = auth_poligon(wclient)
+    print('Результат авторизации', response)
     # Обработать ответ от WServer
     auth_result = operate_auth_info(response)
     health_monitor.change_status('Связь с WServer', True, 'Успешное подключение')

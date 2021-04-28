@@ -115,7 +115,7 @@ class WEngine:
         if not s.TEST_MODE:
             # Демон по получению весов с WeightSplitter
             threading.Thread(target=self.wlistener.scale_reciever, args=()).start()
-        if not s.IMPORT_FTP:
+        if s.IMPORT_FTP:
             threading.Thread(target=rep_funcs.schedule_reports_sending, args=()).start()  # Демон отправки отчетов на 1С
             rep_funcs.form_send_reports()              # Сформировать и отправить акты разово на ФТП
         # Демон запуска сокета для отправки статусов о работе Watchman-Core для CM
@@ -135,8 +135,10 @@ class WEngine:
         """ Подключиться к WSERVER """
         # А теперь создаем сокеты для отправки данных на WServer
         # Вернуть словарь типа {'conn_name': {'wclient': socket_obj, ... }}
+        print('getting')
         self.all_wclients = duo_functions.get_all_poligon_connections(self.sqlshell, s.pol_owners_table, s.wserver_ip,
                                                                             s.wserver_port)
+        print('get', self.all_wclients)
         # Отдать словарь на обслуживание демону
         duo_functions.launch_wconnection_serv_daemon(self.sqlshell, self.all_wclients, s.connection_status_table,
                                                            s.pol_owners_table)
