@@ -136,10 +136,10 @@ class WEngine:
         """ Подключиться к WSERVER """
         # А теперь создаем сокеты для отправки данных на WServer
         # Вернуть словарь типа {'conn_name': {'wclient': socket_obj, ... }}
-        print('getting')
         self.all_wclients = duo_functions.get_all_poligon_connections(self.sqlshell, s.pol_owners_table, s.wserver_ip,
                                                                             s.wserver_port)
-        print('get', self.all_wclients)
+        # Отправить акты
+
         # Отдать словарь на обслуживание демону
         duo_functions.launch_wconnection_serv_daemon(self.sqlshell, self.all_wclients, s.connection_status_table,
                                                            s.pol_owners_table)
@@ -928,6 +928,8 @@ class WEngine:
         if s.AR_DUO_MOD:
             duo_functions.records_owning_save(self.sqlshell, s.records_owning_table, s.pol_owners_table,
                                                         self.polygon_name, recId)
+            duo_functions.send_act_by_polygon(self.all_wclients, self.sqlshell, s.connection_status_table,
+                                              s.pol_owners_table)
         self.add_alerts(recId)
         threading.Thread(target=self.send_act, args=()).start()
         self.choose_mode = 'auto'

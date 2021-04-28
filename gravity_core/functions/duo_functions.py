@@ -105,8 +105,20 @@ def wserver_reconnecter(sqlshell, poligon_name, wserver_client, connection_statu
 
 def send_act_by_polygon(connection_dict, sqlshell, connection_status_table, pol_owners_table):
     for pol_name, pol_info in connection_dict.items():
-        send_act(connection_dict[pol_name]['wclient'], connection_dict[pol_name]['wserver_id'], sqlshell,
+        wserver_id = fetch_wserver_id(sqlshell, pol_name, connection_status_table, pol_owners_table)
+        send_act(connection_dict[pol_name]['wclient'], wserver_id, sqlshell,
                  connection_status_table, pol_owners_table, pol_name)
+
+
+def fetch_wserver_id(sqlshell, pol_name, connection_status_table, pol_owners_table):
+    command = "SELECT wserver_id FROM {} " \
+              "INNER JOIN duo_pol_owners ON ({}.poligon={}.id) " \
+              "WHERE {}.name='{}'".format(connection_status_table,
+                                          connection_status_table, pol_owners_table,
+                                          pol_owners_table, pol_name)
+    wserver_id = sqlshell.try_execute_get(command)
+    return wserver_id
+
 
 def send_act(wserver_client, wserver_polygon_id, sqlshell, connection_status_table, pol_owners_table, poligon_name):
     """ Оотправить акты на SignAll"""
