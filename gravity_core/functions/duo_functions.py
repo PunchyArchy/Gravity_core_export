@@ -113,7 +113,7 @@ def send_act(wserver_client, wserver_polygon_id, sqlshell, connection_status_tab
     print('\nОтправка актов на WServer')
     try:
         sig_funcs.send_json_reports(sqlshell, wserver_client, wserver_polygon_id,
-                                    table_to_file_dict=s.json_table_to_file.items(), duo=True)
+                                    table_to_file_dict=s.json_table_to_file.items(), duo=True, pol_owner=poligon_name)
         set_wserver_connected_status(sqlshell, connection_status_table, pol_owners_table, poligon_name,
                                      wserver_polygon_id)
         print('\tАкты успешно отправлены')
@@ -161,7 +161,6 @@ def launch_wconnection_serv_daemon(sqlshell, all_poligons, connection_status_tab
     for poligon_name, poligon_info in all_poligons.items():
         threading.Thread(target=wserver_reconnecter, args=(sqlshell, poligon_name, poligon_info['wclient'],
                                                            connection_status_table, pol_owners_table)).start()
-        print('one')
     print('All daemons has been launched')
 
 
