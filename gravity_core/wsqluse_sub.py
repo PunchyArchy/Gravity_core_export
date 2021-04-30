@@ -108,3 +108,4 @@ class WChecker(Wsqluse):
                                                                          template, values))
         rec_id = response['info'][0][0]
         return rec_id
+
