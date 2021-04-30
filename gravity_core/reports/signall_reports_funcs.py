@@ -37,7 +37,7 @@ def get_reports_duo(sqlshell, pol_owner):
            "LEFT JOIN trash_types ON (records.trash_type = trash_types.id) " \
            "LEFT JOIN duo_records_owning ON (duo_records_owning.record = records.id) " \
            "WHERE NOT (wserver_get is not null) and time_in > '14.11.2020' and not tara is null " \
-           "AND duo_records_owning.poligon = (SELECT id FROM duo_pol_owners WHERE name='{}') LIMIT 15".format(
+           "AND duo_records_owning.owner = (SELECT id FROM duo_pol_owners WHERE name='{}') LIMIT 15".format(
         request, s.records_table, pol_owner)
     records, column_names = get_records_columns(sqlshell, comm)
     records = expand_reports_list(records)
