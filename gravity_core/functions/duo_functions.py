@@ -85,9 +85,14 @@ def set_wserver_disconnect_status(sqlshell, connection_status_table, pol_owners_
 
 def wserver_reconnecter(sqlshell, poligon_name, wserver_client, connection_status_table, pol_owners_table):
     connect_wserver(wserver_client)
-    wserver_polygon_id = auth_me(wserver_client)
-    send_act(wserver_client, wserver_polygon_id, sqlshell, connection_status_table, pol_owners_table,
-             poligon_name)
+    try:
+        wserver_polygon_id = auth_me(wserver_client)
+        send_act(wserver_client, wserver_polygon_id, sqlshell, connection_status_table, pol_owners_table,
+                poligon_name)
+    except:
+        print(format_exc())
+        set_wserver_disconnect_status(sqlshell, connection_status_table, pol_owners_table, poligon_name)
+
     while True:
         connection_status = fetch_wserver_connection_status(sqlshell, connection_status_table, pol_owners_table,
                                                             poligon_name)

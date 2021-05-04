@@ -6,7 +6,7 @@ GENERAL_DEBUG = True            # Общий дебаг (вывод сообще
 SQLSHELL_DEBUG = True           # Режим дебага Sqlshell
 WS_DEBUG = False                # Режим дебага WeightSplitter
 WAPI_DEBUG = False              # Режим дебага WAPI
-PROTOCOLS_DEBUG = True          # Режим дебага протоколов (взвешивание без машины)
+PROTOCOLS_DEBUG = False         # Режим дебага протоколов (взвешивание без машины)
 
 # SETTINGS
 IMPORT_FTP = False              # Импорт клиентов с FTP
@@ -178,7 +178,7 @@ carDetectTimeOut = 60					# Игнорирует машину и не созда
 #Настройки камеры
 cam_login = 'admin'
 cam_pw = 'Assa+123'
-cam_ip = '172.16.1.46'
+cam_ip = '172.16.1.43'
 pics_folder = os.path.join(camera_folder, 'pics')
 count_file = os.path.join(camera_folder, 'cam_count.cfg')
 fpath_file = os.path.join(camera_folder, 'fpath.cfg')

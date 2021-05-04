@@ -21,3 +21,4 @@ def async_calibration_both_gates(gate_nums=[1,2], count=10, sleeptime=5):
         threading.Thread(target=start_calibration, args=(gate_num, count, sleeptime))
 
 send_open_gate_command(sock, 1)
+send_open_gate_command(sock, 2)
