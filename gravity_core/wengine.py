@@ -279,9 +279,7 @@ class WEngine:
                                            s.alerts_description['other_instead_tko']['description'])
         self.sqlshell.updLastEvents(info['carnum'], info['carrier'], info['trash_type'], info['trash_cat'],
                                     info['timenow'])
-        rec_id = sup_funcs.get_rec_id(self.sqlshell, info['carnum'])
-        duo_functions.records_owning_save(self.sqlshell, s.records_owning_table, s.pol_owners_table,
-                                                        self.polygon_name, rec_id)
+
 
     def pre_close_protocol_operations(self, carnum, carrier, trash_type, trash_cat, timenow):
         # Операции, которые необходимы быть выполнены перед началом любого закрывающего протокола
@@ -937,7 +935,8 @@ class WEngine:
             self.alerts = self.sqlshell.check_car_choose_mode(self.alerts, self.choose_mode, carnum,
                                                               s.spec_orup_protocols[course]['reverse'])
         if s.AR_DUO_MOD:
-
+            duo_functions.records_owning_save(self.sqlshell, s.records_owning_table, s.pol_owners_table,
+                                              self.polygon_name, recId)
             duo_functions.send_act_by_polygon(self.all_wclients, self.sqlshell, s.connection_status_table,
                                               s.pol_owners_table)
         self.add_alerts(recId)
