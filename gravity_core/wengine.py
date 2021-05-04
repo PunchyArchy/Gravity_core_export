@@ -15,6 +15,7 @@ from gravity_core import health_monitor
 from gravity_core.functions.skud_funcs import *
 from gravity_core_api.main import GCSE
 from gravity_core.functions import duo_functions
+from gravity_core.functions.asu_routes import check_if_car_tko, get_tko_id, check_asu_routes
 
 
 # from weightsplitter.main import WeightSplitter
@@ -222,6 +223,8 @@ class WEngine:
             new_info['old_carnum'] = info['carnum_was']
             if s.AR_DUO_MOD:
                 self.polygon_name = info['polygon_object']
+            if s.ASU_ROUTES:
+                self.must_be_tko = info['must_be_tko']
             new_info = self.check_db_value(new_info)
         self.show_notification('\nNew_info_dict after parsing:', new_info, debug=True)
         return new_info
@@ -270,8 +273,15 @@ class WEngine:
         if info['car_choose_mode'] == 'auto':
             self.orup_num_upd(info)
         self.alerts = self.sqlshell.fast_car(info['carnum'], self.alerts)
+        if s.ASU_ROUTES:
+            self.alerts = check_asu_routes(self.sqlshell, s.trash_cats_table, info['trash_cat'], self.must_be_tko, self.alerts,
+                                           s.alerts_description['tko_instead_other']['description'],
+                                           s.alerts_description['other_instead_tko']['description'])
         self.sqlshell.updLastEvents(info['carnum'], info['carrier'], info['trash_type'], info['trash_cat'],
                                     info['timenow'])
+        rec_id = sup_funcs.get_rec_id(self.sqlshell, info['carnum']).replace('OUT', '')
+        duo_functions.records_owning_save(self.sqlshell, s.records_owning_table, s.pol_owners_table,
+                                                        self.polygon_name, rec_id.replace('IN', ''))
 
     def pre_close_protocol_operations(self, carnum, carrier, trash_type, trash_cat, timenow):
         # Операции, которые необходимы быть выполнены перед началом любого закрывающего протокола
@@ -927,8 +937,6 @@ class WEngine:
             self.alerts = self.sqlshell.check_car_choose_mode(self.alerts, self.choose_mode, carnum,
                                                               s.spec_orup_protocols[course]['reverse'])
         if s.AR_DUO_MOD and course=='IN':
-            duo_functions.records_owning_save(self.sqlshell, s.records_owning_table, s.pol_owners_table,
-                                                        self.polygon_name, recId)
             for pol_info in self.all_wclients:
                 duo_functions.send_act_by_polygon(pol_info, self.sqlshell, s.connection_status_table,
                                               s.pol_owners_table)
@@ -1078,6 +1086,8 @@ class WEngine:
             # print(format_exc())
         if canPass:
             have_brutto = self.check_car_have_brutto(carnum)
+            if s.ASU_ROUTES:
+                must_be_tko = check_if_car_tko(self.sqlshell, carnum, s.asu_routes_table, s.auto)
             ident = "auto.car_number='{}'".format(carnum)
             command = "select carrier, trash_type, trash_cat "
             command += "from last_events inner join auto on "
@@ -1088,7 +1098,13 @@ class WEngine:
             try:
                 lastContragent = last_data[0][0]
                 lastTrashType = last_data[0][1]
-                lastTrashCat = last_data[0][2]
+                if s.ASU_ROUTES and must_be_tko:
+                    try:
+                        get_tko_id(self.sqlshell, s.trash_cats_table)
+                    except:
+                        lastTrashCat = last_data[0][2]
+                else:
+                    lastTrashCat = last_data[0][2]
             except:
                 lastContragent = 0
                 lastTrashType = 0
@@ -1096,7 +1112,7 @@ class WEngine:
             msg = {'carDetected': {'carnum': carnum, 'course': course,
                                    'lastContragent': lastContragent, 'weight': 'null',
                                    'lastTrashType': lastTrashType, 'lastTrashCat': lastTrashCat, 'id_type': idtype,
-                                   'have_brutto': have_brutto}}
+                                   'have_brutto': have_brutto, 'must_be_tko': must_be_tko}}
             self.show_notification('Сообщение для СМ сформировано:', msg)
             self.wlistener.broadcastMsgSend(msg)
 

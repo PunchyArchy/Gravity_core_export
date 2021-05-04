@@ -6,7 +6,7 @@ GENERAL_DEBUG = True            # Общий дебаг (вывод сообще
 SQLSHELL_DEBUG = True           # Режим дебага Sqlshell
 WS_DEBUG = False                # Режим дебага WeightSplitter
 WAPI_DEBUG = False              # Режим дебага WAPI
-PROTOCOLS_DEBUG = False         # Режим дебага протоколов (взвешивание без машины)
+PROTOCOLS_DEBUG = True         # Режим дебага протоколов (взвешивание без машины)
 
 # SETTINGS
 IMPORT_FTP = False              # Импорт клиентов с FTP
@@ -15,6 +15,7 @@ MIRRORED = False 	       	# False = Въезд - справа, выезд - сл
 # MODS
 TEST_MODE = False
 AR_DUO_MOD = True
+ASU_ROUTES = False
 
 # NEW_SETTINGS
 PROJECT_NAME = 'gravity_core'
@@ -109,9 +110,11 @@ disputs_table = 'disputs'
 records_table = 'records'
 auto = 'auto'
 book = 'records'
+asu_routes_table = 'asu_routes'
 pol_owners_table = 'duo_pol_owners'
 connection_status_table = 'duo_connection_status'
 records_owning_table = 'duo_records_owning'
+trash_cats_table = 'trash_cats'
 
 
 gdb_companies_table = 'companies'
@@ -231,7 +234,10 @@ alerts_description = {'fast_car': {'code': 'A7|', 'description': 'Машина �
                       'no_exit': {'code': 'A9|', 'description': 'Для данного авто не была взвешена тара|'},
                       'manual_pass': {'code': 'A0|', 'description': 'Ручной пропуск. Направление {}|'},
                       'no_rfid': {'code': 'A1|', 'description': 'Машина без метки|'},
-                      'ph_el_locked': {'code': 'A1|', 'description': 'Фотоэлемент заблокирован|'}
+                      'ph_el_locked': {'code': 'A1|', 'description': 'Фотоэлемент заблокирован|'},
+                      'tko_instead_other': {'code': 'B0', 'description': 'Незапланированный заезд ТКО-4'},
+                      'other_instead_tko': {'code': 'B1', 'description': 'Выбрана категория груза {}, '
+                                                                        'вместо ожидаемого ТКО-4'}
                       }
 
 # Протоколы NEG и Tails
