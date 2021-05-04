@@ -279,9 +279,6 @@ class WEngine:
                                            s.alerts_description['other_instead_tko']['description'])
         self.sqlshell.updLastEvents(info['carnum'], info['carrier'], info['trash_type'], info['trash_cat'],
                                     info['timenow'])
-        rec_id = sup_funcs.get_rec_id(self.sqlshell, info['carnum']).replace('OUT', '')
-        duo_functions.records_owning_save(self.sqlshell, s.records_owning_table, s.pol_owners_table,
-                                                        self.polygon_name, rec_id.replace('IN', ''))
 
     def pre_close_protocol_operations(self, carnum, carrier, trash_type, trash_cat, timenow):
         # Операции, которые необходимы быть выполнены перед началом любого закрывающего протокола
@@ -936,9 +933,12 @@ class WEngine:
         if not s.GENERAL_DEBUG:
             self.alerts = self.sqlshell.check_car_choose_mode(self.alerts, self.choose_mode, carnum,
                                                               s.spec_orup_protocols[course]['reverse'])
-        if s.AR_DUO_MOD and course=='IN':
-            for pol_info in self.all_wclients:
-                duo_functions.send_act_by_polygon(pol_info, self.sqlshell, s.connection_status_table,
+        if s.AR_DUO_MOD:
+            duo_functions.records_owning_save(self.sqlshell, s.records_owning_table, s.pol_owners_table,
+                                              self.polygon_name, recId)
+            print('All wclients', self.all_wclients)
+            for client in self.all_wclients:
+                 duo_functions.send_act_by_polygon(client, self.sqlshell, s.connection_status_table,
                                               s.pol_owners_table)
         self.add_alerts(recId)
         threading.Thread(target=self.send_act, args=()).start()
@@ -1088,6 +1088,8 @@ class WEngine:
             have_brutto = self.check_car_have_brutto(carnum)
             if s.ASU_ROUTES:
                 must_be_tko = check_if_car_tko(self.sqlshell, carnum, s.asu_routes_table, s.auto)
+            else:
+                must_be_tko = False
             ident = "auto.car_number='{}'".format(carnum)
             command = "select carrier, trash_type, trash_cat "
             command += "from last_events inner join auto on "
