@@ -51,9 +51,7 @@ def fetch_wserver_connection_status(sqlshell, connection_status_table, pol_owner
     command = "SELECT connected FROM {} WHERE poligon=(SELECT id FROM {} WHERE name='{}')".format(connection_status_table,
                                                                                              pol_owners_table,
                                                                                              poligon_name)
-    print("Command is", command)
     response = sqlshell.try_execute_get(command)
-    print("Response is", response)
     try:
         status = response[0][0]
     except IndexError:
@@ -64,15 +62,12 @@ def fetch_wserver_connection_status(sqlshell, connection_status_table, pol_owner
 
 def set_wserver_connected_status(sqlshell, connection_status_table, pol_owners_table, poligon_name, wserver_id):
     """ Установить статус подключения полигона к WServer"""
-    print('settings status')
     command = "INSERT INTO {} (poligon, wserver_id, connected) values ((SELECT id FROM {} WHERE name='{}'), {}, True) " \
               "ON CONFLICT (poligon) " \
               "DO UPDATE set wserver_id={}, connected=True, upd_time='{}'"
     command = command.format(connection_status_table, pol_owners_table, poligon_name, wserver_id,
                              wserver_id, datetime.now())
     response = sqlshell.try_execute(command)
-    print(response)
-    print('done')
 
 
 def set_wserver_disconnect_status(sqlshell, connection_status_table, pol_owners_table, poligon_name):
@@ -96,12 +91,10 @@ def wserver_reconnecter(sqlshell, poligon_name, wserver_client, connection_statu
     while True:
         connection_status = fetch_wserver_connection_status(sqlshell, connection_status_table, pol_owners_table,
                                                             poligon_name)
-        print('Connection status:', connection_status)
         if not connection_status:
             connect_wserver(wserver_client)
             try:
                 wserver_polygon_id = auth_me(wserver_client)
-                print("here {}. Poligon id".format(wserver_polygon_id))
                 send_act(wserver_client, wserver_polygon_id, sqlshell, connection_status_table, pol_owners_table,
                          poligon_name)
             except:
@@ -113,9 +106,10 @@ def wserver_reconnecter(sqlshell, poligon_name, wserver_client, connection_statu
 
 
 def send_act_by_polygon(connection_dict, sqlshell, connection_status_table, pol_owners_table):
+    print("\n\nLOCALS:", locals()) 
     for pol_name, pol_info in connection_dict.items():
-        wserver_id = fetch_wserver_id(sqlshell, pol_name, connection_status_table, pol_owners_table)
-        send_act(connection_dict[pol_name]['wclient'], wserver_id, sqlshell,
+        wserver_id = fetch_wserver_id(sqlshell, pol_name, connection_status_table, pol_owners_table)[0][0]
+        send_act(pol_info['wclient'], wserver_id, sqlshell,
                  connection_status_table, pol_owners_table, pol_name)
 
 def launch_operation(connection_dict, sqlshell, connection_status_table, pol_owners_table):

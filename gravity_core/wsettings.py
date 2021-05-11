@@ -3,10 +3,10 @@ import os
 
 # Debug mods
 GENERAL_DEBUG = True            # Общий дебаг (вывод сообщений в общий поток вывода)
-SQLSHELL_DEBUG = True           # Режим дебага Sqlshell
+SQLSHELL_DEBUG = False           # Режим дебага Sqlshell
 WS_DEBUG = False                # Режим дебага WeightSplitter
 WAPI_DEBUG = False              # Режим дебага WAPI
-PROTOCOLS_DEBUG = True         # Режим дебага протоколов (взвешивание без машины)
+PROTOCOLS_DEBUG = False         # Режим дебага протоколов (взвешивание без машины)
 
 # SETTINGS
 IMPORT_FTP = False              # Импорт клиентов с FTP

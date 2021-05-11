@@ -83,6 +83,7 @@ def send_json_reports(sqlshell,  wclient, poligon_id, table_to_file_dict=s.json_
     # WClient - ранее созданый WClient для связи с WServer
     # poligon_id - id полигона, полученный после аутентификации полигона на WServer
     # Получает словарь вида {'tablename'(таблица): 'tablename.json'(файл)} и сохраняет данные из таблицы в файл
+    print("SEND JSON REPORTS LOCALS:", locals())
     for table, filename in table_to_file_dict:
         save_json_report(sqlshell, poligon_id, table, filename, duo, pol_owner)
         wclient.send_file(filename)

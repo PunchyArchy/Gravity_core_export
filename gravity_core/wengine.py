@@ -50,13 +50,14 @@ class WEngine:
         self.currentProtocolId = ''
         self.contr_mes = b'empty contr mes'
         self.addInfo = {'status': 'none', 'notes': 'none', 'protocol': 'none', 'course': 'none'}
+        self.all_wclients = []
         self.serving_start()
         self.phNotBreach = False
         self.contr_stream = []
         self.polomka = 0
         self.dlinnomer = 0
         self.ph_els = {'3': '30', '4': '30'}
-        self.all_wclients = []
+        self.polygon_name = 'unknown'
 
     def try_ftp_connect(self):
         try:
@@ -139,6 +140,7 @@ class WEngine:
         # Вернуть словарь типа {'conn_name': {'wclient': socket_obj, ... }}
         self.all_wclients = duo_functions.get_all_poligon_connections(self.sqlshell, s.pol_owners_table, s.wserver_ip,
                                                                             s.wserver_port)
+        print("INITING SELF.ALL_WCLIENTS", self.all_wclients)
         # Отдать словарь на обслуживание демону
         duo_functions.launch_wconnection_serv_daemon(self.sqlshell, self.all_wclients, s.connection_status_table,
                                                            s.pol_owners_table)
@@ -393,11 +395,11 @@ class WEngine:
         frmt = today.strftime('%Y.%m.%d %H:%M:%S')
         return datetime.now()
 
-    def photo_scaling(self, course, id_type):
+    def photo_scaling(self, course, id_type, only_breach=False):
         """ Взвешивание """
         try:
             # Дождаться пересечения фотоэлементов
-            weight = self.catching_weight(course, id_type, only_breach=False)
+            weight = self.catching_weight(course, id_type, only_breach=only_breach)
             health_monitor.change_status('Фотоэлементы', True, 'Подключение стабильно')
         except PhNotBreach:
             # Если фотоэлемент не был пересечен, все равно вернуть вес, который сейчас показывают весы
@@ -456,29 +458,32 @@ class WEngine:
             self.updAddInfo(notes='Таймер - {} сек'.format(timer))
             # Если появилось новое событие в списке событий контроллера и это событие связано с фотоэлементами
             if (self.check_if_new_contr_mess(self.os) and self.contr_stream[-1][4] == s.entry_ph_num
-                    or len(self.contr_stream) > self.os and self.contr_stream[-1][4] == s.exit_ph_num):
+                    or self.check_if_new_contr_mess(self.os) and self.contr_stream[-1][4] == s.exit_ph_num):
                 # Сохранить вес
                 weight_on_scale = self.add_weight(mode='int')
                 if self.check_course(course) and mode == 'esc':
                     # Машина пересекла линию фотоэлементов и должна съезжать с весов (взвесила тару), игнорировать вес
                     count += 1
                     timer = start_timer
+                    print('c1')
                 elif self.check_course(course) and self.check_car_on_scale(weight_on_scale, s.min_weight_ph_checking):
                     # Машина пересекла линию фотоэлементов и взобралась на весы (взвешивает брутто), следить за весом
                     count += 1
                     timer = start_timer
+                    print('c2')
                 else:
                     # Если же больше ничего не происходит (фотоэлементы пересеклись и все), ждать пока дальше
                     timer -= 1
-                    count = 0
+                    print('c3')
                     if only_breach and self.check_car_on_scale(weight_on_scale, s.min_weight_ph_checking):
                         # Но если ничего и не нужно (режим только пересечение), значит все путем, вернуть функцию
                         count += 1
-                        start_timer = timer
+                        print('c4')
             else:
                 # Если вообще ничего не происходит (ни одного события с фотоэлементами), крутить таймер
                 count = 0
                 timer -= 1
+                print('c5')
             # Таймер говорит тик-так
             sleep(1)
             if timer == 0:
@@ -489,8 +494,10 @@ class WEngine:
                 raise PhNotBreach
         # Если дошло до сюда, значит условие выполнено, закрыть шлагбаум
         if only_breach:
-            mode = 'esc'
+            #mode = 'esc'
+            print('c6')
         self.gate_scale_control_mechanism(mode, gate)
+        print('c7')
 
     def check_car_on_scale(self, weight, min_weight=100):
         """ Проверяет, находится ли машина на весах, а еще смотрит, кратен ли вес 10, ибо если нет, значит
@@ -840,7 +847,8 @@ class WEngine:
         if carnum:
             anim_info['carnum'] = carnum
         command = self.formCommand('anim_info', anim_info)
-        self.wlistener.broadcastMsgSend(command)
+        #self.wlistener.broadcastMsgSend(command)
+        threading.Thread(target=self.wlistener.broadcastMsgSend, args=(command,)).start()
 
     def neg_close_record(self, carnum, timenow, comm, course):
         # Закрыть заезд по протоколу NEG (no exit group)
@@ -936,12 +944,14 @@ class WEngine:
         if s.AR_DUO_MOD:
             duo_functions.records_owning_save(self.sqlshell, s.records_owning_table, s.pol_owners_table,
                                               self.polygon_name, recId)
-            print('All wclients', self.all_wclients)
-            for client in self.all_wclients:
-                 duo_functions.send_act_by_polygon(client, self.sqlshell, s.connection_status_table,
-                                              s.pol_owners_table)
+            #print('All wclients', self.all_wclients)
+            try:
+                #for connection_dict, poligons_info in self.all_wclients.items():
+                duo_functions.send_act_by_polygon(self.all_wclients, self.sqlshell, s.connection_status_table,
+                                                 s.pol_owners_table)
+            except: print(format_exc())
         self.add_alerts(recId)
-        threading.Thread(target=self.send_act, args=()).start()
+        #threading.Thread(target=self.send_act, args=()).start()
         self.choose_mode = 'auto'
         self.show_notification('Последний заезд успешно сохранен. Теперь lastvisit-', self.lastVisit)
         sleep(1)
@@ -1116,7 +1126,8 @@ class WEngine:
                                    'lastTrashType': lastTrashType, 'lastTrashCat': lastTrashCat, 'id_type': idtype,
                                    'have_brutto': have_brutto, 'must_be_tko': must_be_tko}}
             self.show_notification('Сообщение для СМ сформировано:', msg)
-            self.wlistener.broadcastMsgSend(msg)
+            #self.wlistener.broadcastMsgSend(msg)
+            threading.Thread(target=self.wlistener.broadcastMsgSend, args=(msg,)).start()
 
     def check_car_have_brutto(self, carnum):
         # Возвращает True, если машина уже взвесила брутто
@@ -1212,12 +1223,13 @@ class WEngine:
         self.found_errors.append(error_text)
         self.cut_list(self.found_errors, -15)
         command = self.formCommand('faultDetected', error_text)
-        self.wlistener.broadcastMsgSend(command)
+        #self.wlistener.broadcastMsgSend(command)
+        threading.Thread(target=self.wlistener.broadcastMsgSend, args=(command,)).start()
 
     def send_cm_info(self, title, subtitle, info):
         data = {subtitle: info}
         command = self.formCommand(title, data)
-        self.wlistener.broadcastMsgSend(command)
+        threading.Thread(target=self.wlistener.broadcastMsgSend, args=(command,)).start()
 
     def opl_create_file(self, carnum):
         datetime = self.get_timenow()

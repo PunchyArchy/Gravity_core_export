@@ -96,7 +96,7 @@ class WChecker(Wsqluse):
 
     def check_access(self, rfid):
         '''Проверяет, разрешается ли машине въезд'''
-        command = "SELECT rfid FROM {} WHERE rfid='{}'".format(s.auto, rfid)
+        command = "SELECT rfid FROM {} WHERE rfid='{}' and active=True".format(s.auto, rfid)
         response = self.try_execute_get(command)
         if len(response) > 0:
             return True
