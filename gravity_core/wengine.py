@@ -164,11 +164,21 @@ class WEngine:
                                                                                                         info['record_id'])
         self.sqlshell.try_execute(command)
 
+    # После внедрения нового API - удалить
     def add_comm(self, info):
         """ Добавить комментарий к завершенному заезду командой из СМ """
         command = "UPDATE {} set notes = notes || 'Добавочно: {}' where id={}".format(s.book, info['notes'],
                                                                                       info['record_id'])
         self.sqlshell.try_execute(command)
+
+    def add_record_comm(self, record_id, comment):
+        """ Добавить комментарий к завершенному заезду командой из СМ """
+        command = "UPDATE {} set notes = notes || 'Добавочно: {}' where id={}".format(s.book, comment,
+                                                                                      record_id)
+        self.sqlshell.try_execute(command)
+
+    def get_status(self):
+        return self.status
 
     def operate_gate_manual_control(self, info):
         """ Опрерирует коммандами на закрытие/открытие шлагбаумами от СМ """
