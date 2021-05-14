@@ -14,6 +14,7 @@ from time import sleep
 from gravity_core import health_monitor
 from gravity_core.functions.skud_funcs import *
 from gravity_core_api.main import GCSE
+from gravity_core.functions import duo_functions
 
 
 # from weightsplitter.main import WeightSplitter
@@ -31,14 +32,13 @@ class WEngine:
         self.sqlshell = sqlshell
         self.wlistener = wlistener
         self.sock = skud_sock
-        self.cam = Wpicoperator(s.cam_ip, s.cam_login, s.cam_pw, s.pics_folder, s.fpath_file, auth_method='Digest')
         self.ftp_gate = ftp_gate
-        try:
-            self.ftp_gate.make_connection()
-        except:
-            self.send_error('Нет доступа к FTP-серверу.')
         self.status = 'Готов'
-        threading.Thread(target=self.make_cps_connection, args=()).start()
+        if not s.IMPORT_FTP:
+            self.try_ftp_connect()
+        if not s.TEST_MODE:
+            self.cam = Wpicoperator(s.cam_ip, s.cam_login, s.cam_pw, s.pics_folder, s.fpath_file, auth_method='Digest')
+            threading.Thread(target=self.make_cps_connection, args=()).start()
         # Параметры по умолчанию #
         self.poligon_id = 0
         self.alerts = ''
@@ -55,6 +55,13 @@ class WEngine:
         self.polomka = 0
         self.dlinnomer = 0
         self.ph_els = {'3': '30', '4': '30'}
+        self.all_wclients = []
+
+    def try_ftp_connect(self):
+        try:
+            self.ftp_gate.make_connection()
+        except:
+            self.send_error('Нет доступа к FTP-серверу.')
 
     def create_api(self):
         """ Инициировать единый API endpoint"""
@@ -65,7 +72,7 @@ class WEngine:
         """ Подключиться к серверу раздачи весов"""
         while True:
             try:
-                self.cps = WeightSplitter(s.scale_splitter_ip, s.scale_splitter_port, port_name='/dev/ttyS5', terminal_name='A12E', debug=s.WS_DEBUG)
+                self.cps = WeightSplitter(s.scale_splitter_ip, s.scale_splitter_port, port_name=s.ws_port, terminal_name=s.ws_name, debug=s.WS_DEBUG)
                 self.cps.start()
                 health_monitor.change_status('Весовой терминал', True, 'Весовой терминал функционирует нормально')
                 break
@@ -77,9 +84,10 @@ class WEngine:
     def wserver_reconnecter(self):
         while True:
             if not self.wserver_connected:
-                self.wserver_client = wserver_interaction.create_wserver_connection()
-                if self.wserver_client:
-                    self.poligon_id = wserver_interaction.auth_me(self.wserver_client)
+                wserver_client = wserver_interaction.create_wserver_connection()
+                self.all_wclients.append(wserver_client)
+                if wserver_client:
+                    self.poligon_id = wserver_interaction.auth_me(wserver_client)
                     self.wserver_connected = True
                     self.send_act()
             else:
@@ -93,23 +101,26 @@ class WEngine:
         self.show_notification(tag)
         self.show_notification(format_exc())
         self.logger.error(format_exc())
+        self.opl_make_record(format_exc())
         self.send_error(tag)
 
     def serving_start(self):
         """Запуск обслуживающих демонов"""
         self.show_notification('REPORTING. DEMONS STARTED')
-        # self.sqlshell.get_avg_all()
-        # Демон подключения к WServer
+        # Создать сокет для принятия выполнения SQL команд от WServer
         threading.Thread(target=self.create_api, args=()).start()
-        threading.Thread(target=self.wserver_reconnecter, args=()).start()
-        # Демон по получению весов с WeightSplitter
-        threading.Thread(target=self.wlistener.scale_reciever, args=()).start()
-        # Демон отправки отчетов на 1С
-        #threading.Thread(target=rep_funcs.schedule_reports_sending, args=()).start()
+        if s.AR_DUO_MOD:
+            self.connect_to_wserver_duo()
+        else:
+            threading.Thread(target=self.wserver_reconnecter, args=()).start()
+        if not s.TEST_MODE:
+            # Демон по получению весов с WeightSplitter
+            threading.Thread(target=self.wlistener.scale_reciever, args=()).start()
+        if s.IMPORT_FTP:
+            threading.Thread(target=rep_funcs.schedule_reports_sending, args=()).start()  # Демон отправки отчетов на 1С
+            rep_funcs.form_send_reports()              # Сформировать и отправить акты разово на ФТП
         # Демон запуска сокета для отправки статусов о работе Watchman-Core для CM
         threading.Thread(target=self.wlistener.statusSocket, args=()).start()
-        # Демон, извлекающий команды из API и присвающий и передающий их функции OperateCIC
-        # threading.Thread(target=self.cmSignalsChecker, args=()).start()
         # Запуск API для принятия обычных команд от CM (типа get_status, orup_enter и проч.)
         threading.Thread(target=self.wlistener.dispatcher, args=(
             s.cmUseInterfaceIp, s.cmUseInterfacePort, self.wlistener.executeComm,
@@ -118,11 +129,21 @@ class WEngine:
         threading.Thread(target=self.wlistener.dispatcher, args=(
             s.cmUseInterfaceIp, s.cm_sql_operator_port, self.wlistener.cm_sql_operator_loop,
             'API для принятия SQL команд запущен.')).start()
-        # Демон принимающий команды от WServer
-        # threading.Thread(target=wserver_interaction.create_wserver_reciever, args=()).start()
+        # Задать ядро API для взаимодействия
         self.set_wlistener_core()
-        #rep_funcs.form_send_reports()
 
+    def connect_to_wserver_duo(self):
+        """ Подключиться к WSERVER """
+        # А теперь создаем сокеты для отправки данных на WServer
+        # Вернуть словарь типа {'conn_name': {'wclient': socket_obj, ... }}
+        self.all_wclients = duo_functions.get_all_poligon_connections(self.sqlshell, s.pol_owners_table, s.wserver_ip,
+                                                                            s.wserver_port)
+        # Отдать словарь на обслуживание демону
+        duo_functions.launch_wconnection_serv_daemon(self.sqlshell, self.all_wclients, s.connection_status_table,
+                                                           s.pol_owners_table)
+        # Отправить акты
+        #duo_functions.send_act_by_polygon(self.all_wclients, self.sqlshell, s.connection_status_table,
+        #                                  s.pol_owners_table)
 
     def set_wlistener_core(self):
         self.wlistener.set_wcore(self)
@@ -209,6 +230,8 @@ class WEngine:
             new_info['trash_cat'] = info['trash_cat']
             new_info['trash_type'] = info['trash_type']
             new_info['old_carnum'] = info['carnum_was']
+            if s.AR_DUO_MOD:
+                self.polygon_name = info['polygon_object']
             new_info = self.check_db_value(new_info)
         self.show_notification('\nNew_info_dict after parsing:', new_info, debug=True)
         return new_info
@@ -691,15 +714,16 @@ class WEngine:
     def send_act(self):
         """ Оотправить акты на SignAll"""
         self.show_notification('\nОтправка актов на WServer')
-        try:
-            sig_funcs.send_json_reports(self.sqlshell, self.wserver_client, self.poligon_id,
-                                        table_to_file_dict=s.json_table_to_file.items())
-            self.show_notification('\tАкты успешно отправлены')
-            self.wserver_connected = True
-        except:
-            self.operate_exception('Не удалось отправить акты')
-            health_monitor.change_status('Связь с WServer', False, format_exc())
-            self.wserver_connected = False
+        for wclient in self.all_wclients:
+            try:
+                sig_funcs.send_json_reports(self.sqlshell, wclient, self.poligon_id,
+                                            table_to_file_dict=s.json_table_to_file.items())
+                self.show_notification('\tАкты успешно отправлены')
+                self.wserver_connected = True
+            except:
+                self.operate_exception('Не удалось отправить акты')
+                health_monitor.change_status('Связь с WServer', False, format_exc())
+                self.wserver_connected = False
 
     @try_except_decorator('time.sleep перед открытием въездного шлагбаума')
     def try_sleep_before_exit(self):
@@ -912,6 +936,11 @@ class WEngine:
         if not s.GENERAL_DEBUG:
             self.alerts = self.sqlshell.check_car_choose_mode(self.alerts, self.choose_mode, carnum,
                                                               s.spec_orup_protocols[course]['reverse'])
+        if s.AR_DUO_MOD:
+            duo_functions.records_owning_save(self.sqlshell, s.records_owning_table, s.pol_owners_table,
+                                                        self.polygon_name, recId)
+            duo_functions.send_act_by_polygon(self.all_wclients, self.sqlshell, s.connection_status_table,
+                                              s.pol_owners_table)
         self.add_alerts(recId)
         threading.Thread(target=self.send_act, args=()).start()
         self.choose_mode = 'auto'
@@ -1210,6 +1239,7 @@ class WEngine:
 
     def show_notification(self, *args, debug=False):
         args = self.join_tuple_string(args)
+        self.opl_make_record(args)
         if debug and self.debug:
             print(datetime.now(), args)
         elif not debug:
