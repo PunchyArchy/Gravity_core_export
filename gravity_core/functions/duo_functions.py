@@ -190,3 +190,4 @@ def records_owning_save(sqlshell, records_owning_table, pol_owners_table, poligo
     command = "INSERT INTO {} (record, owner) VALUES ({}, (SELECT id FROM {} WHERE name='{}')) " \
               "ON CONFLICT (record) DO NOTHING".format(records_owning_table, record_id, pol_owners_table, poligon_name)
     sqlshell.try_execute(command)
+

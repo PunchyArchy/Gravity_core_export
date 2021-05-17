@@ -68,6 +68,7 @@ class WEngine:
         self.api_endpoind = GCSE('0.0.0.0', s.wserver_reciever_port, self.sqlshell, self)
         self.api_endpoind.launch_mainloop()
 
+
     def make_cps_connection(self):
         """ Подключиться к серверу раздачи весов"""
         while True:
@@ -250,7 +251,10 @@ class WEngine:
 
     def cic_start_car_protocol(self, info):
         # Работаем с командой создания/продолжения проткола, отправленной из СМ
-        info = self.parse_cm_info(info)
+        try:
+            info = self.parse_cm_info(info)
+        except KeyError:
+            return
         self.pre_any_protocol_operations(info)
         if info['have_brutto']:
             # Если машина уже взвесила брутто
