@@ -15,6 +15,7 @@ from gravity_core import health_monitor
 from gravity_core.functions.skud_funcs import *
 from gravity_core_api.main import GCSE
 from gravity_core.functions import duo_functions
+from gravity_core.functions import general_functions
 
 
 # from weightsplitter.main import WeightSplitter
@@ -60,7 +61,9 @@ class WEngine:
     def get_api_support_methods(self):
         methods = {'get_status': {'method': self.get_status},
                    'start_car_protocol': {'method': self.cic_start_car_protocol},
-                   'operate_gate_manual_control': {'method': self.operate_gate_manual_control}}
+                   'operate_gate_manual_control': {'method': self.operate_gate_manual_control},
+                   'change_opened_record': {'method': general_functions.update_opened_record}
+                   }
         return methods
 
     def get_status(self):
