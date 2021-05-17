@@ -56,6 +56,15 @@ class WEngine:
         self.dlinnomer = 0
         self.ph_els = {'3': '30', '4': '30'}
         self.all_wclients = []
+ 
+    def get_api_support_methods(self):
+        methods = {'get_status': {'method': self.get_status},
+                   'start_car_protocol': {'method': self.cic_start_car_protocol},
+                   'operate_gate_manual_control': {'method': self.operate_gate_manual_control}}
+        return methods
+
+    def get_status(self):
+        return self.status
 
     def try_ftp_connect(self):
         try:

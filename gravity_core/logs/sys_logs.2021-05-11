@@ -1,0 +1,186 @@
+2021-05-11 11:52:12,977 - gravity_core.wlogger - ERROR - Контроллер СКУД недоступен!
+2021-05-11 11:52:15,981 - gravity_core.wlogger - ERROR - Контроллер СКУД недоступен!
+2021-05-11 11:52:16,982 - gravity_core.wlogger - ERROR - Контроллер СКУД недоступен!
+2021-05-11 11:52:17,983 - gravity_core.wlogger - ERROR - Контроллер СКУД недоступен!
+2021-05-11 11:54:27,207 - gravity_core.wlogger - ERROR - Контроллер СКУД недоступен!
+2021-05-11 11:54:30,211 - gravity_core.wlogger - ERROR - Контроллер СКУД недоступен!
+2021-05-11 11:55:48,683 - gravity_core.wlogger - ERROR - Ошибка в работе оператора!
+2021-05-11 11:55:48,685 - gravity_core.wlogger - ERROR - Traceback (most recent call last):
+  File "wlauncher.py", line 59, in _start
+    self.gravity_core.work()
+  File "/home/watchman/Gravity_core_export/gravity_core/wengine.py", line 1187, in work
+    self.operate_skud_stream()
+  File "/home/watchman/Gravity_core_export/gravity_core/wengine.py", line 1130, in operate_skud_stream
+    data = self.get_skud_data(self.sock)
+  File "/home/watchman/Gravity_core_export/gravity_core/wengine.py", line 1151, in get_skud_data
+    data = data.decode()
+AttributeError: 'NoneType' object has no attribute 'decode'
+
+2021-05-11 11:56:37,881 - gravity_core.wlogger - ERROR - Ошибка в работе оператора!
+2021-05-11 11:56:37,882 - gravity_core.wlogger - ERROR - Traceback (most recent call last):
+  File "wlauncher.py", line 59, in _start
+    self.gravity_core.work()
+  File "/home/watchman/Gravity_core_export/gravity_core/wengine.py", line 1187, in work
+    self.operate_skud_stream()
+  File "/home/watchman/Gravity_core_export/gravity_core/wengine.py", line 1130, in operate_skud_stream
+    data = self.get_skud_data(self.sock)
+  File "/home/watchman/Gravity_core_export/gravity_core/wengine.py", line 1151, in get_skud_data
+    data = data.decode()
+AttributeError: 'NoneType' object has no attribute 'decode'
+
+2021-05-11 11:59:48,590 - gravity_core.wlogger - ERROR - Ошибка в работе оператора!
+2021-05-11 11:59:48,591 - gravity_core.wlogger - ERROR - Traceback (most recent call last):
+  File "wlauncher.py", line 59, in _start
+    self.gravity_core.work()
+  File "/home/watchman/Gravity_core_export/gravity_core/wengine.py", line 1187, in work
+    self.operate_skud_stream()
+  File "/home/watchman/Gravity_core_export/gravity_core/wengine.py", line 1130, in operate_skud_stream
+    data = self.get_skud_data(self.sock)
+  File "/home/watchman/Gravity_core_export/gravity_core/wengine.py", line 1151, in get_skud_data
+    data = data.decode()
+AttributeError: 'NoneType' object has no attribute 'decode'
+
+2021-05-11 12:03:45,963 - gravity_core.wlogger - ERROR - Ошибка в работе оператора!
+2021-05-11 12:03:45,965 - gravity_core.wlogger - ERROR - Traceback (most recent call last):
+  File "wlauncher.py", line 59, in _start
+    self.gravity_core.work()
+  File "/home/watchman/Gravity_core_export/gravity_core/wengine.py", line 1187, in work
+    self.operate_skud_stream()
+  File "/home/watchman/Gravity_core_export/gravity_core/wengine.py", line 1130, in operate_skud_stream
+    data = self.get_skud_data(self.sock)
+  File "/home/watchman/Gravity_core_export/gravity_core/wengine.py", line 1151, in get_skud_data
+    data = data.decode()
+AttributeError: 'NoneType' object has no attribute 'decode'
+
+2021-05-11 12:05:52,607 - gravity_core.wlogger - ERROR - Ошибка в работе оператора!
+2021-05-11 12:05:52,608 - gravity_core.wlogger - ERROR - Traceback (most recent call last):
+  File "wlauncher.py", line 59, in _start
+    self.gravity_core.work()
+  File "/home/watchman/Gravity_core_export/gravity_core/wengine.py", line 1187, in work
+    self.operate_skud_stream()
+  File "/home/watchman/Gravity_core_export/gravity_core/wengine.py", line 1130, in operate_skud_stream
+    data = self.get_skud_data(self.sock)
+  File "/home/watchman/Gravity_core_export/gravity_core/wengine.py", line 1151, in get_skud_data
+    data = data.decode()
+AttributeError: 'NoneType' object has no attribute 'decode'
+
+2021-05-11 12:07:31,718 - gravity_core.wlogger - ERROR - Ошибка в работе оператора!
+2021-05-11 12:07:31,721 - gravity_core.wlogger - ERROR - Traceback (most recent call last):
+  File "wlauncher.py", line 59, in _start
+    self.gravity_core.work()
+  File "/home/watchman/Gravity_core_export/gravity_core/wengine.py", line 1187, in work
+    self.operate_skud_stream()
+  File "/home/watchman/Gravity_core_export/gravity_core/wengine.py", line 1130, in operate_skud_stream
+    data = self.get_skud_data(self.sock)
+  File "/home/watchman/Gravity_core_export/gravity_core/wengine.py", line 1151, in get_skud_data
+    data = data.decode()
+AttributeError: 'NoneType' object has no attribute 'decode'
+
+2021-05-11 12:08:31,804 - gravity_core.wlogger - ERROR - Ошибка в работе оператора!
+2021-05-11 12:08:31,806 - gravity_core.wlogger - ERROR - Traceback (most recent call last):
+  File "wlauncher.py", line 59, in _start
+    self.gravity_core.work()
+  File "/home/watchman/Gravity_core_export/gravity_core/wengine.py", line 1187, in work
+    self.operate_skud_stream()
+  File "/home/watchman/Gravity_core_export/gravity_core/wengine.py", line 1130, in operate_skud_stream
+    data = self.get_skud_data(self.sock)
+  File "/home/watchman/Gravity_core_export/gravity_core/wengine.py", line 1151, in get_skud_data
+    data = data.decode()
+AttributeError: 'NoneType' object has no attribute 'decode'
+
+2021-05-11 12:10:41,817 - gravity_core.wlogger - ERROR - Ошибка в работе оператора!
+2021-05-11 12:10:41,818 - gravity_core.wlogger - ERROR - Traceback (most recent call last):
+  File "wlauncher.py", line 59, in _start
+    self.gravity_core.work()
+  File "/home/watchman/Gravity_core_export/gravity_core/wengine.py", line 1187, in work
+    self.operate_skud_stream()
+  File "/home/watchman/Gravity_core_export/gravity_core/wengine.py", line 1130, in operate_skud_stream
+    data = self.get_skud_data(self.sock)
+  File "/home/watchman/Gravity_core_export/gravity_core/wengine.py", line 1151, in get_skud_data
+    data = data.decode()
+AttributeError: 'NoneType' object has no attribute 'decode'
+
+2021-05-11 12:11:50,502 - gravity_core.wlogger - ERROR - Ошибка в работе оператора!
+2021-05-11 12:11:50,503 - gravity_core.wlogger - ERROR - Traceback (most recent call last):
+  File "wlauncher.py", line 59, in _start
+    self.gravity_core.work()
+  File "/home/watchman/Gravity_core_export/gravity_core/wengine.py", line 1187, in work
+    self.operate_skud_stream()
+  File "/home/watchman/Gravity_core_export/gravity_core/wengine.py", line 1130, in operate_skud_stream
+    data = self.get_skud_data(self.sock)
+  File "/home/watchman/Gravity_core_export/gravity_core/wengine.py", line 1151, in get_skud_data
+    data = data.decode()
+AttributeError: 'NoneType' object has no attribute 'decode'
+
+2021-05-11 12:12:10,648 - gravity_core.wlogger - ERROR - Ошибка в работе оператора!
+2021-05-11 12:12:10,651 - gravity_core.wlogger - ERROR - Traceback (most recent call last):
+  File "wlauncher.py", line 59, in _start
+    self.gravity_core.work()
+  File "/home/watchman/Gravity_core_export/gravity_core/wengine.py", line 1187, in work
+    self.operate_skud_stream()
+  File "/home/watchman/Gravity_core_export/gravity_core/wengine.py", line 1130, in operate_skud_stream
+    data = self.get_skud_data(self.sock)
+  File "/home/watchman/Gravity_core_export/gravity_core/wengine.py", line 1151, in get_skud_data
+    data = data.decode()
+AttributeError: 'NoneType' object has no attribute 'decode'
+
+2021-05-11 12:12:34,248 - gravity_core.wlogger - ERROR - Ошибка в работе оператора!
+2021-05-11 12:12:34,250 - gravity_core.wlogger - ERROR - Traceback (most recent call last):
+  File "wlauncher.py", line 59, in _start
+    self.gravity_core.work()
+  File "/home/watchman/Gravity_core_export/gravity_core/wengine.py", line 1187, in work
+    self.operate_skud_stream()
+  File "/home/watchman/Gravity_core_export/gravity_core/wengine.py", line 1130, in operate_skud_stream
+    data = self.get_skud_data(self.sock)
+  File "/home/watchman/Gravity_core_export/gravity_core/wengine.py", line 1151, in get_skud_data
+    data = data.decode()
+AttributeError: 'NoneType' object has no attribute 'decode'
+
+2021-05-11 12:13:37,741 - gravity_core.wlogger - ERROR - Ошибка в работе оператора!
+2021-05-11 12:13:37,744 - gravity_core.wlogger - ERROR - Traceback (most recent call last):
+  File "wlauncher.py", line 59, in _start
+    self.gravity_core.work()
+  File "/home/watchman/Gravity_core_export/gravity_core/wengine.py", line 1187, in work
+    self.operate_skud_stream()
+  File "/home/watchman/Gravity_core_export/gravity_core/wengine.py", line 1130, in operate_skud_stream
+    data = self.get_skud_data(self.sock)
+  File "/home/watchman/Gravity_core_export/gravity_core/wengine.py", line 1151, in get_skud_data
+    data = data.decode()
+AttributeError: 'NoneType' object has no attribute 'decode'
+
+2021-05-11 12:17:14,740 - gravity_core.wlogger - ERROR - Ошибка в работе оператора!
+2021-05-11 12:17:14,741 - gravity_core.wlogger - ERROR - Traceback (most recent call last):
+  File "wlauncher.py", line 59, in _start
+    self.gravity_core.work()
+  File "/home/watchman/Gravity_core_export/gravity_core/wengine.py", line 1187, in work
+    self.operate_skud_stream()
+  File "/home/watchman/Gravity_core_export/gravity_core/wengine.py", line 1130, in operate_skud_stream
+    data = self.get_skud_data(self.sock)
+  File "/home/watchman/Gravity_core_export/gravity_core/wengine.py", line 1151, in get_skud_data
+    data = data.decode()
+AttributeError: 'NoneType' object has no attribute 'decode'
+
+2021-05-11 13:02:09,078 - gravity_core.wlogger - ERROR - Ошибка в работе оператора!
+2021-05-11 13:02:09,079 - gravity_core.wlogger - ERROR - Traceback (most recent call last):
+  File "wlauncher.py", line 59, in _start
+    self.gravity_core.work()
+  File "/home/watchman/Gravity_core_export/gravity_core/wengine.py", line 1187, in work
+    self.operate_skud_stream()
+  File "/home/watchman/Gravity_core_export/gravity_core/wengine.py", line 1130, in operate_skud_stream
+    data = self.get_skud_data(self.sock)
+  File "/home/watchman/Gravity_core_export/gravity_core/wengine.py", line 1151, in get_skud_data
+    data = data.decode()
+AttributeError: 'NoneType' object has no attribute 'decode'
+
+2021-05-11 15:11:39,741 - gravity_core.wlogger - ERROR - Ошибка в работе оператора!
+2021-05-11 15:11:39,742 - gravity_core.wlogger - ERROR - Traceback (most recent call last):
+  File "wlauncher.py", line 59, in _start
+    self.gravity_core.work()
+  File "/home/watchman/Gravity_core_export/gravity_core/wengine.py", line 1187, in work
+    self.operate_skud_stream()
+  File "/home/watchman/Gravity_core_export/gravity_core/wengine.py", line 1130, in operate_skud_stream
+    data = self.get_skud_data(self.sock)
+  File "/home/watchman/Gravity_core_export/gravity_core/wengine.py", line 1151, in get_skud_data
+    data = data.decode()
+AttributeError: 'NoneType' object has no attribute 'decode'
+
