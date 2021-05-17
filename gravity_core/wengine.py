@@ -211,15 +211,31 @@ class WEngine:
                                                                                       record_id)
         self.sqlshell.try_execute(command)
 
-    def get_status(self):
+    def get_status(self, *args, **kwargs):
         return self.status
 
-    def operate_gate_manual_control(self, info):
+    def operate_gate_manual_control(self, operation, gate_name, *args, **kwargs):
         """ Опрерирует коммандами на закрытие/открытие шлагбаумами от СМ """
-        if info['operation'] == 'close':
-            self.close_gate(info['gate_name'])
-        elif info['operation'] == 'open':
-            self.open_gate(info['gate_name'])
+        if operation == 'close':
+            self.close_gate(gate_name)
+        elif operation == 'open':
+            self.open_gate(gate_name)
+
+    def cic_start_car_protocol(self, info, *args, **kwargs):
+        # Работаем с командой создания/продолжения проткола, отправленной из СМ
+        try:
+            info = self.parse_cm_info(info)
+        except KeyError:
+            return
+
+        self.pre_any_protocol_operations(info)
+        if info['have_brutto']:
+            # Если машина уже взвесила брутто
+            self.operate_orup_exit_commands(info)
+        else:
+            # Если же машина первый раз въезжает на территорию
+            self.pre_open_protocol_operations(info)
+            self.operate_orup_enter_commands(info)
 
     def parse_cm_info(self, info):
         # Парсит данные о заезде, переданные от СМ и сохраняет в собственный словарь, дублируя данные.
@@ -260,21 +276,6 @@ class WEngine:
         if not info['carrier'].isdigit():
             info['carrier'] = self.getKeyCommand('clients', 'id', "short_name='{}'".format(info['carrier']))
         return info
-
-    def cic_start_car_protocol(self, info):
-        # Работаем с командой создания/продолжения проткола, отправленной из СМ
-        try:
-            info = self.parse_cm_info(info)
-        except KeyError:
-            return
-        self.pre_any_protocol_operations(info)
-        if info['have_brutto']:
-            # Если машина уже взвесила брутто
-            self.operate_orup_exit_commands(info)
-        else:
-            # Если же машина первый раз въезжает на территорию
-            self.pre_open_protocol_operations(info)
-            self.operate_orup_enter_commands(info)
 
     def pre_any_protocol_operations(self, info):
         # Операции, которые необходимы быть выполнены перед началом любого протокола
