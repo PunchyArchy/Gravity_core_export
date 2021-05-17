@@ -953,38 +953,6 @@ class WEngine:
         self.show_notification('\tStatus -', self.wlistener.status)
         self.show_notification('#############################################\n')
 
-    '''
-    def getRecId(self, carnum, mode, course='none'):
-        self.show_notification('\n[getrecid] - course =', course)
-        self.show_notification('[getrecid] - mode =', mode)
-        ident1 = self.get_ident1(carnum)
-        if course == 'IN' and mode != 'tails':
-            recId = self.sqlshell.get_last_id(s.book)[0][0] + 1
-            recId = str(recId) + course
-            self.show_notification('\t[getrecid] - recid =', recId)
-        elif course == 'IN' and mode == 'tails':
-            recId = self.sqlshell.get_last_visit(s.book, ident1, 'id')[0][0]
-            recId = str(recId) + course
-        elif course == 'OUT' and mode == 'tails':
-            recId = self.sqlshell.get_last_id(s.book)[0][0] + 1
-            recId = str(recId) + course
-        elif course == 'OUT' and mode != 'tails':
-            recId = self.sqlshell.get_last_visit(s.book, ident1, 'id')[0][0]
-            recId = str(recId) + course
-            # self.show_notification()('\t[getrecid] - recid =', recId)
-        elif course == 'OUT' and mode == 'NEG_IN':
-            recId = self.sqlshell.get_last_visit(s.book, ident1, 'id')[0][0]
-            recId = str(recId) + 'IN'
-        elif course == 'OUT' and mode == 'NEG_OUT':
-            recId = self.sqlshell.get_last_visit(s.book, ident1, 'id')[0][0]
-            recId = str(recId) + 'OUT'
-        elif course == 'inning' and mode != 'tails' or course == 'any' and mode != 'tails':
-            recId = self.sqlshell.get_last_visit(s.book, ident1, 'id')[0][0]
-            self.show_notification('\t[getrecid] - recid =', recId)
-        return recId
-    '''
-
-
     def define_gate_point_hname(self, name):
         gate_num = s.gates_info_dict[name]['point']
         hname = s.gates_info_dict[name]['hname']

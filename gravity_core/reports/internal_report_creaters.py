@@ -124,6 +124,7 @@ def saveDbXMLext(wsqlshell, start_date, filename, tablename='records'):
     request = 'select id, name, brand  from auto_models '
     auto_m = wsqlshell.try_execute_get(request)
     for stringname in data:
+        print('Работа с {}'.format(stringname))
         appt = xmlE.SubElement(upload, "appointment")
         type = xmlE.SubElement(appt, 'type')
         type.text = str("events")
