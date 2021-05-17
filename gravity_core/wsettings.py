@@ -13,7 +13,7 @@ IMPORT_FTP = False              # Импорт клиентов с FTP
 MIRRORED = False 	       	# False = Въезд - справа, выезд - слева
 
 # MODS
-TEST_MODE = False
+TEST_MODE = True
 AR_DUO_MOD = True
 
 # NEW_SETTINGS

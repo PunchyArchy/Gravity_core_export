@@ -1,8 +1,8 @@
 *.xml
 .pyc
 gravity_core/logs/sys_logs
-gravity_core/logs/opl_logs/*
-gravity_core/reports/json_reports/*
+gravity_core/logs/opl_logs/
+gravity_core/reports/json_reports/
 *.jpg
 *.cfg
 *.pyc
