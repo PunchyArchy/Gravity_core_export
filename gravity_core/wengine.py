@@ -76,8 +76,13 @@ class WEngine:
             response = {'status': 'failed', 'info': 'AR занят в данный момент'}
         return response
 
+    def update_opened_record(self, info, *args, **kwargs):
+        """ Изменить данные о взвешивании, у которого еще нет тары """
+        response = general_functions.update_opened_record(info, *args, **kwargs)
+        return response
+
     def get_status(self):
-        return self.status
+        return self.status_ready
 
     def try_ftp_connect(self):
         try:
