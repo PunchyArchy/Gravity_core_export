@@ -35,6 +35,7 @@ class WEngine:
         self.sock = skud_sock
         self.ftp_gate = ftp_gate
         self.status = 'Готов'
+        self.status_ready = True
         if not s.IMPORT_FTP:
             self.try_ftp_connect()
         if not s.TEST_MODE:
@@ -65,6 +66,17 @@ class WEngine:
                    #'change_opened_record': {'method': general_functions.update_opened_record}
                    }
         return methods
+
+    def start_car_protocol(self, info, *args, **kwargs):
+        if self.status_ready:
+            try:
+                threading.Thread(target=self.cic_start_car_protocol, args=(info,)).start()
+                response = {'status': 'success', 'info': 'Протокол заезда успешно начат'}
+            except:
+                response = {'status': 'failed', 'info': format_exc()}
+        else:
+            response = {'status': 'failed', 'info': 'AR занят в данный момент'}
+        return response
 
     def get_status(self):
         return self.status
@@ -234,8 +246,8 @@ class WEngine:
             self.operate_orup_exit_commands(info)
         else:
             # Если же машина первый раз въезжает на территорию
-            self.pre_open_protocol_operations(info)
-            self.operate_orup_enter_commands(info)
+            self.pre_open_protocol_
+            r_commands(info)
 
     def parse_cm_info(self, info):
         # Парсит данные о заезде, переданные от СМ и сохраняет в собственный словарь, дублируя данные.
