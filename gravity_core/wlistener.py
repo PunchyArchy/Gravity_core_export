@@ -137,7 +137,7 @@ class WListener():
 	@try_except_decorator('Попытка зафиксировать системное событие')
 	def cm_events_make_record(self, event):
 		# GET CM EVENT ID
-		command = "SELECT id FROM {} WHERE description='{}'".format(s.cm_events_table, event)
+		command = "SELECT id FROM {} WHERE description='{}' LIMIT 1".format(s.cm_events_table, event)
 		response = self.sqlshell.try_execute_get(command)
 		event_id = response[0][0]
 		timenow = datetime.now()
