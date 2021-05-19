@@ -62,7 +62,7 @@ class WEngine:
  
     def get_api_support_methods(self):
         methods = {'get_status': {'method': self.get_status},
-                   'start_car_protocol': {'method': api_methods.start_car_protocol},
+                   'start_car_protocol': {'method': self.start_car_protocol},
                    'operate_gate_manual_control': {'method': self.operate_gate_manual_control},
                    'change_opened_record': {'method': general_functions.update_opened_record}
                    }
@@ -71,7 +71,7 @@ class WEngine:
     def start_car_protocol(self, info, *args, **kwargs):
         """ Начать раунд взвешивания """
         if self.status_ready:
-            response = service_functions.execute_api_method(core_method=self.cic_start_car_protocol, *info, **kwargs)
+            response = service_functions.execute_api_method(self.cic_start_car_protocol, info, **kwargs)
         else:
             response = {'status': 'failed', 'info': 'AR занят в данный момент'}
         return response
