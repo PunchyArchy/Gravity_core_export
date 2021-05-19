@@ -16,7 +16,7 @@ from gravity_core.functions.skud_funcs import *
 from gravity_core_api.main import GCSE
 from gravity_core.functions import duo_functions
 from gravity_core.functions import general_functions
-from gravity_core.api import methods as api_methods
+from gravity_core.api import service_functions
 
 
 # from weightsplitter.main import WeightSplitter
@@ -68,6 +68,13 @@ class WEngine:
                    }
         return methods
 
+    def start_car_protocol(self, info, *args, **kwargs):
+        """ Начать раунд взвешивания """
+        if self.status_ready:
+            response = service_functions.execute_api_method(core_method=self.cic_start_car_protocol, *info, **kwargs)
+        else:
+            response = {'status': 'failed', 'info': 'AR занят в данный момент'}
+        return response
 
     def get_status(self):
         return self.status
