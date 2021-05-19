@@ -17,6 +17,7 @@ from gravity_core_api.main import GCSE
 from gravity_core.functions import duo_functions
 from gravity_core.functions import general_functions
 from gravity_core.api import service_functions
+from gravity_core.functions import sql_functions
 
 
 # from weightsplitter.main import WeightSplitter
@@ -66,6 +67,7 @@ class WEngine:
                    'operate_gate_manual_control': {'method': self.operate_gate_manual_control},
                    'change_opened_record': {'method': self.update_opened_record},
                    'close_opened_record': {'method': self.close_opened_record},
+                   'get_unfinished_records': {'method': self.get_unfinished_records}
                    }
         return methods
 
@@ -90,6 +92,12 @@ class WEngine:
         kwargs['alert'] = 'Запись была закрыта вручную'
         kwargs['time_out'] = datetime.now()
         response = general_functions.close_opened_record(*args, **kwargs)
+        return response
+
+    def get_unfinished_records(self, *args, **kwargs):
+        """ Вернуть все открытые записи (без тары) """
+        kwargs['sqlshell'] = self.sqlshell
+        response = sql_functions.get_unfinished_cycles(*args, **kwargs)
         return response
 
     def get_status(self):
