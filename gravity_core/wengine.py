@@ -62,6 +62,7 @@ class WEngine:
         self.ph_els = {'3': '30', '4': '30'}
         self.all_wclients = []
         self.events_catcher = self.create_events_catcher()
+        self.current_user_id = 1
 
     def create_events_catcher(self):
         events_catcher = EventsCatcher(self.sqlshell, s.cm_events_table, s.cm_events_log_table)
@@ -74,11 +75,13 @@ class WEngine:
                    'change_opened_record': {'method': self.update_opened_record},
                    'get_unfinished_record': {'method': self.get_unfinished_records},
                    'get_health_monitor': {'method': self.get_health_monitor},
-                   'try_auth_user': {'method': self.try_auth_user}
+                   'try_auth_user': {'method': self.try_auth_user},
+                   'capture_cm_launched': {'method': self.capture_cm_launched},
+                   'capture_cm_terminated': {'method': self.capture_cm_terminated}
                    }
         return methods
 
-    def get_status(self):
+    def get_status(self, *args, **kwargs):
         return self.status_ready
 
     def start_car_protocol(self, info, *args, **kwargs):
@@ -121,7 +124,18 @@ class WEngine:
         kwargs['sqlshell'] = self.sqlshell
         response = sql_functions.try_auth_user(*args, **kwargs)
         if response['status'] == 'success':
+            self.current_user_id = response['info']['id']
             self.events_catcher.try_capture_new_event('LOGIN', response['info']['id'])
+        return response
+
+    def capture_cm_launched(self, *args, **kwargs):
+        """ Зафиксировать факт запуска СМ """
+        response = self.events_catcher.try_capture_new_event('START', self.current_user_id, *args, **kwargs)
+        return response
+
+    def capture_cm_terminated(self, *args, **kwargs):
+        """ Зафиксирововать факт выключения СМ """
+        response = self.events_catcher.try_capture_new_event('EXIT', self.current_user_id, *args, **kwargs)
         return response
 
     def try_ftp_connect(self):
