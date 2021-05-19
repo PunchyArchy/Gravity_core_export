@@ -82,6 +82,14 @@ class WEngine:
         response = general_functions.update_opened_record(info, *args, **kwargs)
         return response
 
+    def close_opened_record(self, *args, **kwargs):
+        """ Закрыть запись вручную """
+        kwargs['sqlshell'] = self.sqlshell
+        kwargs['records_table'] = s.records_table
+        kwargs['alert'] = 'Запись была закрыта вручную'
+        response = general_functions.close_opened_record(*args, **kwargs)
+        return response
+
     def get_status(self):
         return self.status_ready
 
