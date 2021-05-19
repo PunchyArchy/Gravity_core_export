@@ -14,3 +14,10 @@ def update_opened_record(sqlshell, record_id, car_number, carrier, trash_cat, tr
         # Если поддерживается DUO - изменить присваивание
         duo_functions.records_owning_save(sqlshell, records_owning_table, pol_owners_table, polygon, record_id)
     return {'status': 'success', 'info': 'Данные успешно изменены'}
+
+
+def close_opened_record(sqlshell, record_id, time_out, alerts, records_table):
+    command = "UPDATE {} SET inside=False, time_out='{}', alerts='{}', tara=0, cargo=brutto WHERE id={}"
+    command = command.format(records_table, time_out, alerts, record_id)
+    response = sqlshell.try_execute(command)
+    return response
