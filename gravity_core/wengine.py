@@ -78,6 +78,7 @@ class WEngine:
 
     def update_opened_record(self, info, *args, **kwargs):
         """ Изменить данные о взвешивании, у которого еще нет тары """
+        kwargs['sqlshell'] = self.sqlshell
         response = general_functions.update_opened_record(info, *args, **kwargs)
         return response
 
