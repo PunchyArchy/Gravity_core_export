@@ -21,3 +21,4 @@ def close_opened_record(sqlshell, record_id, time_out, alert, records_table):
     command = command.format(records_table, time_out, alert, record_id)
     response = sqlshell.try_execute(command)
     return response
+
