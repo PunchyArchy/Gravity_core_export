@@ -67,9 +67,13 @@ class WEngine:
                    'operate_gate_manual_control': {'method': self.operate_gate_manual_control},
                    'change_opened_record': {'method': self.update_opened_record},
                    'get_unfinished_record': {'method': self.get_unfinished_records},
-                   'get_health_monitor': {'method': self.get_health_monitor}
+                   'get_health_monitor': {'method': self.get_health_monitor},
+                   'try_auth_user': {'method': self.try_auth_user}
                    }
         return methods
+
+    def get_status(self):
+        return self.status_ready
 
     def start_car_protocol(self, info, *args, **kwargs):
         """ Начать раунд взвешивания """
@@ -105,8 +109,12 @@ class WEngine:
         response = health_monitor.get_monitor_info(*args, **kwargs)
         return response
 
-    def get_status(self):
-        return self.status_ready
+    def try_auth_user(self, *args, **kwargs):
+        """ Попытка аутентификации юзера СМ """
+        kwargs['users_table'] = s.users_table
+        kwargs['sqlshell'] = self.sqlshell
+        response = sql_functions.try_auth_user(*args, **kwargs)
+        return response
 
     def try_ftp_connect(self):
         try:
@@ -252,9 +260,6 @@ class WEngine:
         command = "UPDATE {} set notes = notes || 'Добавочно: {}' where id={}".format(s.book, comment,
                                                                                       record_id)
         self.sqlshell.try_execute(command)
-
-    def get_status(self, *args, **kwargs):
-        return self.status
 
     def operate_gate_manual_control(self, operation, gate_name, *args, **kwargs):
         """ Опрерирует коммандами на закрытие/открытие шлагбаумами от СМ """
