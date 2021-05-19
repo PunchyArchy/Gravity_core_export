@@ -79,7 +79,7 @@ class WEngine:
                    }
         return methods
 
-    def get_status(self):
+    def get_status(self, *args, **kwargs):
         return self.status_ready
 
     def start_car_protocol(self, info, *args, **kwargs):
@@ -121,8 +121,9 @@ class WEngine:
         kwargs['users_table'] = s.users_table
         kwargs['sqlshell'] = self.sqlshell
         response = sql_functions.try_auth_user(*args, **kwargs)
+        print('\n\nRESPONSE:', response)
         if response['status'] == 'success':
-            self.events_catcher.try_capture_new_event('LOGIN', response['info']['id'])
+            self.events_catcher.try_capture_new_event('LOGIN', response['info'][0]['id'])
         return response
 
     def try_ftp_connect(self):
