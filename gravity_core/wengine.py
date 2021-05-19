@@ -64,7 +64,7 @@ class WEngine:
         methods = {'get_status': {'method': self.get_status},
                    'start_car_protocol': {'method': self.start_car_protocol},
                    'operate_gate_manual_control': {'method': self.operate_gate_manual_control},
-                   'change_opened_record': {'method': general_functions.update_opened_record}
+                   'change_opened_record': {'method': self.update_opened_record}
                    }
         return methods
 
@@ -76,10 +76,10 @@ class WEngine:
             response = {'status': 'failed', 'info': 'AR занят в данный момент'}
         return response
 
-    def update_opened_record(self, info, *args, **kwargs):
+    def update_opened_record(self, *args, **kwargs):
         """ Изменить данные о взвешивании, у которого еще нет тары """
         kwargs['sqlshell'] = self.sqlshell
-        response = general_functions.update_opened_record(info, *args, **kwargs)
+        response = general_functions.update_opened_record(*args, **kwargs)
         return response
 
     def get_status(self):
