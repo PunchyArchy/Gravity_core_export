@@ -15,3 +15,7 @@ def change_status(key, status, info='Нет информации'):
     general_status[key]['status'] = status
     general_status[key]['info'] = info
 
+
+def get_monitor_info(*args, **kwargs):
+    return general_status
+
