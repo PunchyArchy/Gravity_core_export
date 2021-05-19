@@ -67,7 +67,8 @@ class WEngine:
                    'operate_gate_manual_control': {'method': self.operate_gate_manual_control},
                    'change_opened_record': {'method': self.update_opened_record},
                    'close_opened_record': {'method': self.close_opened_record},
-                   'get_unfinished_records': {'method': self.get_unfinished_records}
+                   'get_unfinished_records': {'method': self.get_unfinished_records},
+                   'get_health_monitor': {'method': self.get_health_monitor}
                    }
         return methods
 
@@ -98,6 +99,11 @@ class WEngine:
         """ Вернуть все открытые записи (без тары) """
         kwargs['sqlshell'] = self.sqlshell
         response = sql_functions.get_unfinished_cycles(*args, **kwargs)
+        return response
+
+    def get_health_monitor(self, *args, **kwargs):
+        """ Получить данные о состоянии системы """
+        response = health_monitor.get_monitor_info(*args, **kwargs)
         return response
 
     def get_status(self):
