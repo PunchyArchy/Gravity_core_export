@@ -87,6 +87,7 @@ class WEngine:
         kwargs['sqlshell'] = self.sqlshell
         kwargs['records_table'] = s.records_table
         kwargs['alert'] = 'Запись была закрыта вручную'
+        kwargs['time_out'] = datetime.now()
         response = general_functions.close_opened_record(*args, **kwargs)
         return response
 
