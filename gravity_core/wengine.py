@@ -61,7 +61,7 @@ class WEngine:
  
     def get_api_support_methods(self):
         methods = {'get_status': {'method': self.get_status},
-                   'start_car_protocol': {'method': self.cic_start_car_protocol},
+                   'start_car_protocol': {'method': self.start_car_protocol},
                    'operate_gate_manual_control': {'method': self.operate_gate_manual_control},
                    #'change_opened_record': {'method': general_functions.update_opened_record}
                    }
@@ -177,11 +177,13 @@ class WEngine:
         # Выполнить блокировку AR (начать заезд)
         self.show_notification('\nБлокировка АР')
         self.wlistener.status = status
+        self.status_ready = False
 
     def unblockAR(self, status='Готов'):
         # Выополнить деблокировку AR (перейти в режим ожидания)
         self.show_notification('Разблокировка АР\n')
         self.wlistener.status = status
+        self.status_ready = True
 
     def operate_external_command(self, comm):
         """ Обработка каждой команды, поступающей на API """
@@ -246,8 +248,8 @@ class WEngine:
             self.operate_orup_exit_commands(info)
         else:
             # Если же машина первый раз въезжает на территорию
-            self.pre_open_protocol_
-            r_commands(info)
+            self.pre_open_protocol_operations(info)
+            self.operate_orup_enter_commands(info)
 
     def parse_cm_info(self, info):
         # Парсит данные о заезде, переданные от СМ и сохраняет в собственный словарь, дублируя данные.
