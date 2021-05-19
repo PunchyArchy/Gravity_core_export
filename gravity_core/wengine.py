@@ -62,7 +62,7 @@ class WEngine:
         methods = {'get_status': {'method': self.get_status},
                    'start_car_protocol': {'method': self.cic_start_car_protocol},
                    'operate_gate_manual_control': {'method': self.operate_gate_manual_control},
-                   'change_opened_record': {'method': general_functions.update_opened_record}
+                   #'change_opened_record': {'method': general_functions.update_opened_record}
                    }
         return methods
 
@@ -261,7 +261,7 @@ class WEngine:
             new_info['old_carnum'] = info['carnum_was']
             if s.AR_DUO_MOD:
                 self.polygon_name = info['polygon_object']
-            new_info = self.check_db_value(new_info)
+            #new_info = self.check_db_value(new_info)
         self.show_notification('\nNew_info_dict after parsing:', new_info, debug=True)
         return new_info
 
