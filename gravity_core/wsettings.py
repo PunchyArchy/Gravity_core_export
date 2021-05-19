@@ -64,7 +64,7 @@ rfid_logs_ftp = '/ftp/new_rfid_log'
 cm_events_log_table = 'cm_events_log'
 cm_events_table = 'cm_events_table'
 cm_start_event = 'START'
-cm_stop_event = 'STOP'
+cm_stop_event = 'EXIT'
 cm_login_event = 'LOGIN'
 
 current_errors = {}

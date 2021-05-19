@@ -11,3 +11,4 @@ def try_auth_user(sqlshell, username, password, users_table, *args, **kwargs):
     command = command.format(password, users_table, username)
     response = sqlshell.get_table_dict(command)
     return response
+

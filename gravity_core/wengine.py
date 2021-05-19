@@ -18,6 +18,7 @@ from gravity_core.functions import duo_functions
 from gravity_core.functions import general_functions
 from gravity_core.api import service_functions
 from gravity_core.functions import sql_functions
+from gc_module_cua.main import EventsCatcher
 
 
 # from weightsplitter.main import WeightSplitter
@@ -60,7 +61,12 @@ class WEngine:
         self.dlinnomer = 0
         self.ph_els = {'3': '30', '4': '30'}
         self.all_wclients = []
- 
+        self.events_catcher = self.create_events_catcher()
+
+    def create_events_catcher(self):
+        events_catcher = EventsCatcher(self.sqlshell, s.cm_events_table, s.cm_events_log_table)
+        return events_catcher
+
     def get_api_support_methods(self):
         methods = {'get_status': {'method': self.get_status},
                    'start_car_protocol': {'method': self.start_car_protocol},
@@ -114,6 +120,8 @@ class WEngine:
         kwargs['users_table'] = s.users_table
         kwargs['sqlshell'] = self.sqlshell
         response = sql_functions.try_auth_user(*args, **kwargs)
+        if response['status'] == 'success':
+            self.events_catcher.try_capture_new_event('LOGIN', response['info']['id'])
         return response
 
     def try_ftp_connect(self):
