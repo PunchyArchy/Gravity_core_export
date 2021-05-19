@@ -64,7 +64,8 @@ class WEngine:
         methods = {'get_status': {'method': self.get_status},
                    'start_car_protocol': {'method': self.start_car_protocol},
                    'operate_gate_manual_control': {'method': self.operate_gate_manual_control},
-                   'change_opened_record': {'method': self.update_opened_record}
+                   'change_opened_record': {'method': self.update_opened_record},
+                   'close_opened_record': {'method': self.close_opened_record},
                    }
         return methods
 
