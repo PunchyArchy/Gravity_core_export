@@ -128,6 +128,11 @@ class WEngine:
             self.events_catcher.try_capture_new_event('LOGIN', response['info']['id'])
         return response
 
+    def send_subscribers_data(self, data, *args, **kwargs):
+        """ Отправить данные подписчику """
+        threading.Thread(target=self.wlistener.broadcastMsgSend, data=(data,)).start()
+
+
     def capture_cm_launched(self, *args, **kwargs):
         """ Зафиксировать факт запуска СМ """
         response = self.events_catcher.try_capture_new_event('START', self.current_user_id, *args, **kwargs)
@@ -929,7 +934,7 @@ class WEngine:
         if carnum:
             anim_info['carnum'] = carnum
         command = self.formCommand('anim_info', anim_info)
-        self.wlistener.broadcastMsgSend(command)
+        self.send_subscribers_data(command)
 
     def neg_close_record(self, carnum, timenow, comm, course):
         # Закрыть заезд по протоколу NEG (no exit group)
@@ -1161,7 +1166,7 @@ class WEngine:
                                    'lastTrashType': lastTrashType, 'lastTrashCat': lastTrashCat, 'id_type': idtype,
                                    'have_brutto': have_brutto}}
             self.show_notification('Сообщение для СМ сформировано:', msg)
-            self.wlistener.broadcastMsgSend(msg)
+            self.send_subscribers_data(msg)
 
     def check_car_have_brutto(self, carnum):
         # Возвращает True, если машина уже взвесила брутто
@@ -1178,7 +1183,8 @@ class WEngine:
         for k, v in locals()['kwargs'].items():
             self.addInfo[k] = v
         status = self.formStatusCommand()
-        threading.Thread(target=self.wlistener.broadcastMsgSend, args=(status,)).start()
+        self.send_subscribers_data(status)
+
 
     def formCommand(self, command, info):
         command = {command: info}
@@ -1257,12 +1263,13 @@ class WEngine:
         self.found_errors.append(error_text)
         self.cut_list(self.found_errors, -15)
         command = self.formCommand('faultDetected', error_text)
-        self.wlistener.broadcastMsgSend(command)
+        self.send_subscribers_data(command)
 
     def send_cm_info(self, title, subtitle, info):
         data = {subtitle: info}
         command = self.formCommand(title, data)
-        self.wlistener.broadcastMsgSend(command)
+        self.send_subscribers_data(command)
+
 
     def opl_create_file(self, carnum):
         datetime = self.get_timenow()
