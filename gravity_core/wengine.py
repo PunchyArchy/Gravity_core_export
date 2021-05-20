@@ -735,7 +735,7 @@ class WEngine:
 
     def get_carnum_by_rfid(self, rfid_num):
         """ Вернуть гос.номер из таблицы по номеру RFID"""
-        command = "SELECT car_number from {} WHERE rfid='{}' and active=True".format(s.auto, rfid_num)
+        command = "SELECT car_number from {} WHERE rfid='{}' and active=True LIMIT 1".format(s.auto, rfid_num)
         carnum = self.sqlshell.try_execute_get(command)
         self.show_notification('\tНомер авто получено:', carnum)
         return carnum[0][0]
@@ -746,7 +746,6 @@ class WEngine:
         command = "UPDATE {} set inside='no', cargo=0, tara=0, time_out='{}' " \
                   "where car_number='{}' and inside='yes'".format(s.book, info['timenow'], carnum)
         rec_id = self.sqlshell.try_execute(command)['info'][0][0]
-        # self.protocol_ending(carnum, info['timenow'], course=info['course'], recId=rec_id)
         self.add_alerts(rec_id)
         self.updAddInfo(status='Протокол завершен', notes='Запись обновлена')
 
@@ -771,13 +770,18 @@ class WEngine:
         if recId == 'none':
             recId = sup_funcs.get_rec_id(self.sqlshell, carnum)
         self.currentProtocolId = recId  # Доступ для других функций
-        self.cam.make_pic(self.currentProtocolId)
-        self.show_notification('\tФото сделано.')
+        photo = self.cam.make_pic(self.currentProtocolId)
+        if photo:
+            self.show_notification('\tФото сделано.')
+        else:
+            health_monitor.change_status('Связь с камерой', False, photo)
+
+
 
     def escCorrectProtocol(self, carnum, weight, time, comm, mode='usual'):
         """Обычный (корректный) протокол выезда для авто"""
         # Получить брутто и ID заезда
-        command = "SELECT brutto, id from {} WHERE inside='yes' and car_number='{}'".format(s.book, carnum)
+        command = "SELECT brutto, id from {} WHERE inside='yes' and car_number='{}' LIMIT 1".format(s.book, carnum)
         data = self.sqlshell.try_execute_get(command)
         brutto, recid = data[0]
         cargo = self.get_cargo(weight, brutto)  # Вычислить вес нетто
@@ -829,8 +833,9 @@ class WEngine:
 
     def escIncorrectProtocol(self, carnum, weight, time):
         """ Некорректный протокол выезда (нет взвешивания брутто) """
-        values = "('{}', '{}', '{}', 'no', {}, {}, {}, {})".format(carnum, time, time, int(weight), 0, 0, 1)
-        command = "INSERT INTO {} (car_number, time_in, time_out, inside, tara, brutto, cargo, operator) " \
+        values = "('{}', '{}', '{}', 'no', {}, {}, {}, {}, {}, {})".format(carnum, time, time, int(weight), 0, 0, 1, 1, 12)
+        command = "INSERT INTO {} (car_number, time_in, time_out, inside, tara, brutto, cargo, operator, trash_cat, " \
+                  "trash_type) " \
                   "values {}".format(s.book, values)
         rec_id = self.sqlshell.try_execute(command)
         self.updAddInfo(notes='Запись обновлена')
@@ -908,7 +913,7 @@ class WEngine:
         self.sqlshell.add_alerts(self.alerts, rec_id)
 
     def getKeyCommand(self, tablename, target, ident):
-        command = '(select {} from {} where {})'.format(target, tablename, ident)
+        command = '(select {} from {} where {} LIMIT 1)'.format(target, tablename, ident)
         return command
 
     def close_gate_no_pass(self, gate_name, course):
@@ -1030,8 +1035,9 @@ class WEngine:
         if s.AR_DUO_MOD:
             duo_functions.records_owning_save(self.sqlshell, s.records_owning_table, s.pol_owners_table,
                                                         self.polygon_name, recId)
-            duo_functions.send_act_by_polygon(self.all_wclients, self.sqlshell, s.connection_status_table,
-                                              s.pol_owners_table)
+            threading.Thread(target=duo_functions.send_act_by_polygon, args=(self.all_wclients, self.sqlshell,
+                                                                             s.connection_status_table,
+                                                                             s.pol_owners_table)).start()
         self.add_alerts(recId)
         threading.Thread(target=self.send_act, args=()).start()
         self.choose_mode = 'auto'
@@ -1065,8 +1071,8 @@ class WEngine:
         data = '{} шлагбаум закрывается.'.format(hname)
         self.send_cm_info('sysInfo', 'data', data)
         send_close_gate_command(self.sock, gate_num)
-        threading.Thread(target=self.gate_close_control_thread,
-                         args=(name, s.gates_info_dict[name]['close_time'])).start()
+        #threading.Thread(target=self.gate_close_control_thread,
+        #                 args=(name, s.gates_info_dict[name]['close_time'])).start()
         self.show_notification('Шлагбаум закрыт.')
 
     def gate_close_control_thread(self, name, time_to_close):
@@ -1113,7 +1119,7 @@ class WEngine:
     def define_idtype(self, mode, value):
         ident = "{}='{}'".format(mode, value)
         try:
-            command = "SELECT id_type from {} where {}".format(s.auto, ident)
+            command = "SELECT id_type from {} where {} LIMIT 1".format(s.auto, ident)
             idtype = self.sqlshell.try_execute_get(command)[0][0]
         except IndexError:
             idtype = 'tails'
@@ -1150,7 +1156,7 @@ class WEngine:
             command = "select carrier, trash_type, trash_cat "
             command += "from last_events inner join auto on "
             command += "(last_events.car_id=auto.id) "
-            command += "where {}".format(ident)
+            command += "where {} LIMIT 1".format(ident)
             last_data = self.sqlshell.try_execute_get(command)
             self.show_notification('Получена last_data', last_data)
             try:

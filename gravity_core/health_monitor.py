@@ -7,7 +7,8 @@ general_status = {
                   'Подключение к FTP-серверу': {'status': True, 'info': 'Подключение стабильно'},
                   'Весовой терминал': {'status': True, 'info': 'Подключение стабильно'},
                   'Фотоэлементы': {'status': True, 'info': 'Подключение стабильно'},
-                  'Связь с WServer': {'status': True, 'info': 'Подключение стабильно'}
+                  'Связь с WServer': {'status': True, 'info': 'Подключение стабильно'},
+                  'Связь с камерой': {'status': False, 'info': 'Подключение стабильно'}
                   }
 
 def change_status(key, status, info='Нет информации'):
