@@ -73,7 +73,8 @@ class WEngine:
                    'start_weight_round': {'method': self.start_weight_round},
                    'operate_gate_manual_control': {'method': self.operate_gate_manual_control},
                    'change_opened_record': {'method': self.update_opened_record},
-                   'get_unfinished_record': {'method': self.get_unfinished_records},
+                   'close_opened_record': {'method': self.close_opened_record},
+                   'get_unfinished_records': {'method': self.get_unfinished_records},
                    'get_health_monitor': {'method': self.get_health_monitor},
                    'try_auth_user': {'method': self.try_auth_user},
                    'capture_cm_launched': {'method': self.capture_cm_launched},
@@ -88,15 +89,15 @@ class WEngine:
     def start_weight_round(self, info, *args, **kwargs):
         """ Начать раунд взвешивания """
         if self.status_ready:
-            response = service_functions.execute_api_method(core_method=self.cic_start_car_protocol, *info, **kwargs)
+            response = service_functions.execute_api_method(self.cic_start_car_protocol, info, **kwargs)
         else:
             response = {'status': 'failed', 'info': 'AR занят в данный момент'}
         return response
 
-    def update_opened_record(self, info, *args, **kwargs):
+    def update_opened_record(self, *args, **kwargs):
         """ Изменить данные о взвешивании, у которого еще нет тары """
         kwargs['sqlshell'] = self.sqlshell
-        response = general_functions.update_opened_record(info, *args, **kwargs)
+        response = general_functions.update_opened_record(*args, **kwargs)
         return response
 
 
@@ -131,9 +132,10 @@ class WEngine:
         kwargs['users_table'] = s.users_table
         kwargs['sqlshell'] = self.sqlshell
         response = sql_functions.try_auth_user(*args, **kwargs)
+        print('\n\nRESPONSE:', response)
         if response['status'] == 'success':
             self.current_user_id = response['info']['id']
-            self.events_catcher.try_capture_new_event('LOGIN', response['info']['id'])
+            self.events_catcher.try_capture_new_event('LOGIN', self.current_user_id)
         return response
 
     def send_subscribers_data(self, data, *args, **kwargs):
@@ -143,12 +145,12 @@ class WEngine:
 
     def capture_cm_launched(self, *args, **kwargs):
         """ Зафиксировать факт запуска СМ """
-        response = self.events_catcher.try_capture_new_event('START', self.current_user_id, *args, **kwargs)
+        response = self.events_catcher.try_capture_new_event('START', self.current_user_id)
         return response
 
     def capture_cm_terminated(self, *args, **kwargs):
         """ Зафиксирововать факт выключения СМ """
-        response = self.events_catcher.try_capture_new_event('EXIT', self.current_user_id, *args, **kwargs)
+        response = self.events_catcher.try_capture_new_event('EXIT', self.current_user_id)
         return response
 
     def try_ftp_connect(self):

@@ -16,7 +16,7 @@ def update_opened_record(sqlshell, record_id, car_number, carrier, trash_cat, tr
     return {'status': 'success', 'info': 'Данные успешно изменены'}
 
 
-def close_opened_record(sqlshell, record_id, time_out, alert, records_table):
+def close_opened_record(sqlshell, record_id, time_out, alert, records_table, *args, **kwargs):
     command = "UPDATE {} SET inside=False, time_out='{}', alerts='{}', tara=0, cargo=brutto WHERE id={}"
     command = command.format(records_table, time_out, alert, record_id)
     response = sqlshell.try_execute(command)
