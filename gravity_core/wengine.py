@@ -51,7 +51,7 @@ class WEngine:
         self.lrs = datetime(1997, 8, 24)
         self.lrs2 = datetime(1997, 8, 24)
         self.weightlist = []
-        self.currentProtocolId = ''
+        self.current_round_id = ''
         self.contr_mes = b'empty contr mes'
         self.addInfo = {'status': 'none', 'notes': 'none', 'protocol': 'none', 'course': 'none'}
         self.serving_start()
@@ -70,21 +70,22 @@ class WEngine:
 
     def get_api_support_methods(self):
         methods = {'get_status': {'method': self.get_status},
-                   'start_car_protocol': {'method': self.start_car_protocol},
+                   'start_weight_round': {'method': self.start_weight_round},
                    'operate_gate_manual_control': {'method': self.operate_gate_manual_control},
                    'change_opened_record': {'method': self.update_opened_record},
                    'get_unfinished_record': {'method': self.get_unfinished_records},
                    'get_health_monitor': {'method': self.get_health_monitor},
                    'try_auth_user': {'method': self.try_auth_user},
                    'capture_cm_launched': {'method': self.capture_cm_launched},
-                   'capture_cm_terminated': {'method': self.capture_cm_terminated}
+                   'capture_cm_terminated': {'method': self.capture_cm_terminated},
+                   'add_comment': {'method': self.add_comment}
                    }
         return methods
 
     def get_status(self, *args, **kwargs):
         return self.status_ready
 
-    def start_car_protocol(self, info, *args, **kwargs):
+    def start_weight_round(self, info, *args, **kwargs):
         """ Начать раунд взвешивания """
         if self.status_ready:
             response = service_functions.execute_api_method(core_method=self.cic_start_car_protocol, *info, **kwargs)
@@ -96,6 +97,13 @@ class WEngine:
         """ Изменить данные о взвешивании, у которого еще нет тары """
         kwargs['sqlshell'] = self.sqlshell
         response = general_functions.update_opened_record(info, *args, **kwargs)
+        return response
+
+
+    def add_comment(self, *args, **kwargs):
+        """ Добавить комментарий к завершенному заезду командой из СМ """
+        kwargs['sqlshell'] = self.sqlshell
+        response = general_functions.add_comment(*args, **kwargs)
         return response
 
     def close_opened_record(self, *args, **kwargs):
@@ -250,7 +258,7 @@ class WEngine:
     def operate_external_command(self, comm):
         """ Обработка каждой команды, поступающей на API """
         command, info = self.comm_parse(comm)
-        if command == 'start_car_protocol':
+        if command == 'start_weight_round':
             self.cic_start_car_protocol(info)
         elif command == 'cm_user_auth':
             self.installUserCfg(self.wlistener.cm_logged_username, self.wlistener.cm_logged_userid)
@@ -263,30 +271,6 @@ class WEngine:
         else:
             self.show_notification('Неизвестная комманда')
         self.unblockAR()
-
-    def change_record(self, info):
-        """ Изменить незавершенный заезд командой из СМ"""
-        command = "UPDATE {} SET carrier={}, trash_type={},trash_cat={}, notes='{}' WHERE id={}".format(s.book,
-                                                                                                        info['carrier'],
-                                                                                                        info['trash_type'],
-                                                                                                        info['trash_cat'],
-                                                                                                        info['notes'],
-                                                                                                        info['record_id'])
-        response = self.sqlshell.try_execute(command)
-        return response
-
-    # После внедрения нового API - удалить
-    def add_comm(self, info):
-        """ Добавить комментарий к завершенному заезду командой из СМ """
-        command = "UPDATE {} set notes = notes || 'Добавочно: {}' where id={}".format(s.book, info['notes'],
-                                                                                      info['record_id'])
-        self.sqlshell.try_execute(command)
-
-    def add_record_comm(self, record_id, comment):
-        """ Добавить комментарий к завершенному заезду командой из СМ """
-        command = "UPDATE {} set notes = notes || 'Добавочно: {}' where id={}".format(s.book, comment,
-                                                                                      record_id)
-        self.sqlshell.try_execute(command)
 
     def operate_gate_manual_control(self, operation, gate_name, *args, **kwargs):
         """ Опрерирует коммандами на закрытие/открытие шлагбаумами от СМ """
@@ -317,12 +301,12 @@ class WEngine:
         # везде в AR. Достаточно будет поменять его здесь.
         new_info = {}
         new_info['timenow'] = self.get_timenow()  # Добавить текущее время
-        new_info['carnum'] = info['carnum']
+        new_info['auto_id'] = info['auto_id']
         new_info['comm'] = info['comm']
         new_info['course'] = info['course']
         new_info['car_choose_mode'] = info['car_choose_mode']  # Данные о способе пропуска
-        new_info['car_protocol'] = self.define_idtype('car_number', info['carnum'])  # Добавить данные о протоколе
-        new_info['have_brutto'] = self.check_car_have_brutto(info['carnum'])  # Данные о взвешивании
+        new_info['car_protocol'] = self.define_idtype('auto_id', info['auto'])  # Добавить данные о протоколе
+        new_info['have_brutto'] = self.check_car_have_brutto(info['auto_id'])  # Данные о взвешивании
         new_info['dlinnomer'] = info['dlinnomer']
         new_info['polomka'] = info['polomka']
         new_info['orup_mode'] = info['orup_mode']
@@ -332,7 +316,7 @@ class WEngine:
             new_info['carrier'] = info['carrier']
             new_info['trash_cat'] = info['trash_cat']
             new_info['trash_type'] = info['trash_type']
-            new_info['old_carnum'] = info['carnum_was']
+            new_info['old_auto_id'] = info['auto_id_was']
             if s.AR_DUO_MOD:
                 self.polygon_name = info['polygon_object']
             #new_info = self.check_db_value(new_info)
@@ -354,27 +338,27 @@ class WEngine:
     def pre_any_protocol_operations(self, info):
         # Операции, которые необходимы быть выполнены перед началом любого протокола
         self.blockAR()
-        self.opl_create_file(info['carnum'])
+        self.opl_create_file(info['auto_id'])
         self.choose_mode = info['car_choose_mode']
         self.define_if_polomka_or_dlinnomer(info)
-        self.lastVisit[info['carnum']] = info['timenow']
+        self.lastVisit[info['auto_id']] = info['timenow']
         anim_info = self.get_anim_info(info['course'], info['car_protocol'], 'start_pos')
         # ФРИЗ ЗДЕСЬ ERROR
-        self.updAddInfo(status='Начало взвешивания', carnum=info['carnum'], face=anim_info['face'],
+        self.updAddInfo(status='Начало взвешивания', auto_id=info['auto_id'], face=anim_info['face'],
                         pos=anim_info['pos'])
         self.alerts = ''
 
     def pre_open_protocol_operations(self, info):
         # Операции, которые необходимы быть выполнены перед началом любого стартового протокола
-        if not sup_funcs.check_car_registered(self.sqlshell, info['carnum']):
-            sup_funcs.register_new_car(self.sqlshell, info['carnum'])
+        if not sup_funcs.check_car_registered(self.sqlshell, info['auto_id']):
+            sup_funcs.register_new_car(self.sqlshell, info['auto_id'])
         if info['car_choose_mode'] == 'auto':
             self.orup_num_upd(info)
-        self.alerts = self.sqlshell.fast_car(info['carnum'], self.alerts)
-        self.sqlshell.updLastEvents(info['carnum'], info['carrier'], info['trash_type'], info['trash_cat'],
+        self.alerts = self.sqlshell.fast_car(info['auto_id'], self.alerts)
+        self.sqlshell.updLastEvents(info['auto_id'], info['carrier'], info['trash_type'], info['trash_cat'],
                                     info['timenow'])
 
-    def pre_close_protocol_operations(self, carnum, carrier, trash_type, trash_cat, timenow):
+    def pre_close_protocol_operations(self, auto_id, carrier, trash_type, trash_cat, timenow):
         # Операции, которые необходимы быть выполнены перед началом любого закрывающего протокола
         pass
 
@@ -383,41 +367,41 @@ class WEngine:
         if info['car_protocol'] == 'rfid':
             if info['course'] == 'IN':
                 # Если инициируется взвешивание брутто для машины протокола rfid, приехавшей с внешней стороны
-                self.entering(carnum=info['carnum'], timenow=info['timenow'], contragent=info['carrier'],
+                self.entering(auto_id=info['auto_id'], timenow=info['timenow'], contragent=info['carrier'],
                               trashcat=info['trash_cat'], trashtype=info['trash_type'], comm=info['comm'],
                               operator=info['operator'])
             elif info['course'] == 'OUT':
                 # Если инициируется взвешивание брутто для машины протокола rfid, приехавшей с внутренней стороны
-                self.escaping(info['carnum'], comm=info['comm'], mode='incorrect')
+                self.escaping(info['auto_id'], comm=info['comm'], mode='incorrect')
         elif info['car_protocol'] == 'NEG':
             # Если протокол NEG на стадии инициации, передать функции направление, с какой стороны открывать шлагбаум
-            self.neg_init_record(info['carnum'], info['timenow'], info['trash_cat'], info['trash_type'],
+            self.neg_init_record(info['auto_id'], info['timenow'], info['trash_cat'], info['trash_type'],
                                  info['carrier'],
                                  info['comm'], info['operator'], info['course'])
         elif info['car_protocol'] == 'tails':
             # Если иницируется взвешивание брутто для машины протокола Tails
-            self.tails_group_init_record(info['carnum'], info['timenow'], info['trash_cat'], info['trash_type'],
+            self.tails_group_init_record(info['auto_id'], info['timenow'], info['trash_cat'], info['trash_type'],
                                          info['carrier'], info['comm'], info['operator'], info['course'])
         elif info['car_protocol'] == 'across':
-            self.across_group(info['carnum'], info['timenow'], info['course'])
+            self.across_group(info['auto_id'], info['timenow'], info['course'])
 
     def operate_orup_exit_commands(self, info):
         # Работает с коммандами, пришедшими из выездного ОРУП
-        carnum = info['carnum']
-        if type(carnum) == tuple:
-            carnum = carnum[0]
+        auto_id = info['auto_id']
+        if type(auto_id) == tuple:
+            auto_id = auto_id[0]
         if info['car_protocol'] == 'rfid':
             if info['course'] == 'IN':
-                self.close_open_records(carnum, info)
+                self.close_open_records(auto_id, info)
             elif info['course'] == 'OUT':
-                self.escaping(carnum, comm=info['comm'], mode='correct')
+                self.escaping(auto_id, comm=info['comm'], mode='correct')
         elif info['car_protocol'] == 'NEG':
             # Если протокол NEG на стадии закрытия, передать функции направление, с какой стороны открывать шлагбаум
-            self.neg_close_record(carnum, info['timenow'], info['comm'], info['course'])
+            self.neg_close_record(auto_id, info['timenow'], info['comm'], info['course'])
         elif info['car_protocol'] == 'tails':
-            self.tails_group_close_record(carnum, info['timenow'], info['comm'], info['course'])
+            self.tails_group_close_record(auto_id, info['timenow'], info['comm'], info['course'])
         elif info['car_protocol'] == 'across':
-            self.across_group(carnum, info['timenow'], info['course'])
+            self.across_group(auto_id, info['timenow'], info['course'])
 
     def orup_num_upd(self, info):
         print('\n[func]orup_num_upd. Locals:', locals())
@@ -426,16 +410,16 @@ class WEngine:
         if self.check_if_num_changed(info):
             print('\tНомер был изменен. Обновляем базу...')
             # Если да, обновляет базу
-            self.sqlshell.upd_old_num(info['old_carnum'], info['carnum'])
+            self.sqlshell.upd_old_num(info['old_auto_id'], info['auto_id'])
             # Ну и возвращает для этого заезда уже новый номер
-            return info['carnum']
+            return info['auto_id']
         else:
             print('\tНомер не был изменен.')
-            return info['old_carnum']
+            return info['old_auto_id']
 
     def check_if_num_changed(self, info):
         # Проверяет, совпадает ли старый номер с новым
-        if info['old_carnum'] != info['carnum'] and info['car_protocol'] != 'rfid' and info[
+        if info['old_auto_id'] != info['auto_id'] and info['car_protocol'] != 'rfid' and info[
             'car_choose_mode'] != 'manual':
             return True
 
@@ -689,9 +673,9 @@ class WEngine:
         # Получает сплитованные по пробелу данные от скуд контроллера и фиксирует положение о фотоэлементах
         self.ph_els[point] = status
 
-    def get_weight(self, carnum, course='deff', mode='usual', recId='none'):
+    def get_weight(self, auto_id, course='deff', recId='none'):
         """ Начать взвешивание и вернуть вес"""
-        id_type = self.define_idtype('car_number', carnum)
+        id_type = self.define_idtype('auto_id', auto_id)
         if self.polomka:
             weight = self.polomka_protocol(course, id_type)
         elif self.dlinnomer:
@@ -699,15 +683,16 @@ class WEngine:
         else:
             weight = self.photo_scaling(course, id_type)
         # Сфотографировать весовую платформу
-        self.makePic(carnum, mode, course, recId)
-        if weight == '2' or weight == '1':
+        self.current_round_id = sup_funcs.get_rec_id(self.sqlshell, auto_id)
+        self.makePic(self.current_round_id)
+        if int(weight) % 10 != 0:
             self.send_error('Нет связи с весовым терминалом.')
             weight = self.operate_scale_error(weight)
         return weight
 
     def operate_scale_error(self, weight):
         # Если весы возвращают 1 или 2 (ошибка)
-        while weight != 1 and weight != 2:
+        while int(weight) % 10 != 0:
             # Впасть в цикл и пытаться переподключиться
             self.make_cps_connection()
             sleep(3)
@@ -729,48 +714,40 @@ class WEngine:
     def cut_list(self, listname, lastcount=-10):
         return listname[lastcount:]
 
-    def get_ident1(self, carnum):
-        ident1 = "car_number='{}'".format(carnum)
-        return ident1
-
-    def get_carnum_by_rfid(self, rfid_num):
+    def get_auto_id_by_rfid(self, rfid_num):
         """ Вернуть гос.номер из таблицы по номеру RFID"""
-        command = "SELECT car_number from {} WHERE rfid='{}' and active=True LIMIT 1".format(s.auto, rfid_num)
-        carnum = self.sqlshell.try_execute_get(command)
-        self.show_notification('\tНомер авто получено:', carnum)
-        return carnum[0][0]
+        command = "SELECT id from {} WHERE rfid='{}' and active=True LIMIT 1".format(s.auto, rfid_num)
+        auto_id = self.sqlshell.try_execute_get(command)
+        self.show_notification('\tID авто получено:', auto_id)
+        return auto_id[0][0]
 
-    def close_open_records(self, carnum, info):
+    def close_open_records(self, auto_id, info):
         # Закрыть все записи с этим номером с отметкой алерта
         self.alerts = s.alerts_description['no_exit']['description']
         command = "UPDATE {} set inside='no', cargo=0, tara=0, time_out='{}' " \
-                  "where car_number='{}' and inside='yes'".format(s.book, info['timenow'], carnum)
+                  "where auto='{}' and inside='yes'".format(s.book, info['timenow'], auto_id)
         rec_id = self.sqlshell.try_execute(command)['info'][0][0]
         self.add_alerts(rec_id)
         self.updAddInfo(status='Протокол завершен', notes='Запись обновлена')
 
-    def escaping(self, carnum, mode, contragent='none', trashcat='none',
+    def escaping(self, auto_id, mode, contragent='none', trashcat='none',
                  trashtype='none', comm='none', operator='none'):
         """Функция инициации протокола выезда для авто"""
-        self.show_notification('\nМашина', carnum, 'выезжает с полигона')
+        self.show_notification('\nМашина', auto_id, 'выезжает с полигона')
         self.open_gate(name='exit')  # Открыть шлагбаум
-        weight = self.get_weight(carnum=carnum, course='OUT', mode=mode)  # Произвести взвешивание
+        weight = self.get_weight(auto_id=auto_id, course='OUT', mode=mode)  # Произвести взвешивание
         if self.if_car_not_passed(weight):  # Проверить, проехала ли машина
             self.close_gate_no_pass(gate_name='exit', course='OUT')  # Если нет, закрыть шлагбаум.
             return  # Прекратить выполнение функции
-        # ident1 = self.get_ident1(carnum)
         timenow = self.get_timenow()
         if mode == 'correct':
-            self.escCorrectProtocol(carnum, weight, timenow, comm)
+            self.escCorrectProtocol(auto_id, weight, timenow, comm)
         elif mode == 'incorrect':
-            self.escIncorrectProtocol(carnum, weight, timenow)
+            self.escIncorrectProtocol(auto_id, weight, timenow)
 
     @try_except_decorator('Фотографирование грузовой платформы')
-    def makePic(self, carnum, mode, course, recId='none'):
-        if recId == 'none':
-            recId = sup_funcs.get_rec_id(self.sqlshell, carnum)
-        self.currentProtocolId = recId  # Доступ для других функций
-        photo = self.cam.make_pic(self.currentProtocolId)
+    def makePic(self, photo_name):
+        photo = self.cam.make_pic(photo_name)
         if photo:
             self.show_notification('\tФото сделано.')
         else:
@@ -778,10 +755,10 @@ class WEngine:
 
 
 
-    def escCorrectProtocol(self, carnum, weight, time, comm, mode='usual'):
+    def escCorrectProtocol(self, auto_id, weight, time, comm, mode='usual'):
         """Обычный (корректный) протокол выезда для авто"""
         # Получить брутто и ID заезда
-        command = "SELECT brutto, id from {} WHERE inside='yes' and car_number='{}' LIMIT 1".format(s.book, carnum)
+        command = "SELECT brutto, id from {} WHERE inside='yes' and auto={} LIMIT 1".format(s.book, auto_id)
         data = self.sqlshell.try_execute_get(command)
         brutto, recid = data[0]
         cargo = self.get_cargo(weight, brutto)  # Вычислить вес нетто
@@ -797,14 +774,14 @@ class WEngine:
         else:
             values = msg.format(int(weight), cargo, time, comm)
 
-        command = "UPDATE {} set {} where inside='yes' and car_number='{}'".format(s.book, values, carnum)
+        command = "UPDATE {} set {} where inside='yes' and auto='{}'".format(s.book, values, auto_id)
         rec_id = self.sqlshell.try_execute(command)
         self.updAddInfo(notes='Запись обновлена')
         if mode != 'NEG' and mode != 'tails':
             self.show_notification('it is not NEG or tails mod! Mode is', mode)
             self.try_sleep_before_exit()
             self.open_gate(name='entry')
-            self.protocol_ending(carnum, time, course='IN', recId=recid)
+            self.protocol_ending(auto_id, time, course='IN', recId=recid)
 
     def send_act(self):
         """ Оотправить акты на SignAll"""
@@ -831,16 +808,16 @@ class WEngine:
         if weight > 0:
             return True
 
-    def escIncorrectProtocol(self, carnum, weight, time):
+    def escIncorrectProtocol(self, auto_id, weight, time):
         """ Некорректный протокол выезда (нет взвешивания брутто) """
-        values = "('{}', '{}', '{}', 'no', {}, {}, {}, {}, {}, {})".format(carnum, time, time, int(weight), 0, 0, 1, 1, 12)
-        command = "INSERT INTO {} (car_number, time_in, time_out, inside, tara, brutto, cargo, operator, trash_cat, " \
+        values = "('{}', '{}', '{}', 'no', {}, {}, {}, {}, {}, {})".format(auto_id, time, time, int(weight), 0, 0, 1, 1, 12)
+        command = "INSERT INTO {} (auto, time_in, time_out, inside, tara, brutto, cargo, operator, trash_cat, " \
                   "trash_type) " \
                   "values {}".format(s.book, values)
         rec_id = self.sqlshell.try_execute(command)
         self.updAddInfo(notes='Запись обновлена')
         self.open_gate(name='entry')
-        self.protocol_ending(carnum, time, course='IN', recId=rec_id)
+        self.protocol_ending(auto_id, time, course='IN', recId=rec_id)
 
     def get_cargo(self, weight, brutto):
         '''Получает cargo (cargo), как разницу между brutto и текущим весом'''
@@ -875,29 +852,29 @@ class WEngine:
         weight = self.photo_scaling(course, id_type)
         return weight
 
-    def entering(self, carnum, timenow, trashtype='none', trashcat='none',
+    def entering(self, auto_id, timenow, trashtype='none', trashcat='none',
                  contragent='none', comm='none', operator='none'):
         """ Сценарий заезда по протоколу Usual (rfid) """
         self.show_notification('\nИнициирован протокол заезда')
         self.open_gate(name='entry')
         self.show_notification('\tПолучаю вес..')
-        weight = self.get_weight(carnum=carnum, course='IN')
+        weight = self.get_weight(auto_id=auto_id, course='IN')
         if self.if_car_not_passed(weight):
             self.close_gate_no_pass(gate_name='entry', course='IN')
             return
         self.show_notification('\t\tВес получен', weight)
         # Если машины нет в таблице auto - зарегистрировать ее
-        template = '(car_number, brutto, time_in, inside, carrier, trash_type, trash_cat, notes, operator)'
+        template = '(auto_id, brutto, time_in, inside, carrier, trash_type, trash_cat, notes, operator)'
         if len(comm) > 0:
             comm = 'Въезд: {} '.format(comm)
         rec_id = self.sqlshell.create_str('records', template,
-                                          "('{}',{},'{}','yes',{},{},{},'{}',{})".format(carnum, weight, timenow,
+                                          "('{}',{},'{}','yes',{},{},{},'{}',{})".format(auto_id, weight, timenow,
                                                                                             contragent,
                                                                                             trashtype, trashcat, comm,
                                                                                             operator))
         self.updAddInfo(notes='Запись обновлена')
         self.open_gate(name='exit')
-        self.protocol_ending(carnum, timenow, course='OUT', recId=rec_id)
+        self.protocol_ending(auto_id, timenow, course='OUT', recId=rec_id)
 
     def if_car_not_passed(self, weight, min_weight=s.min_weight_car_on_scale):
         """ Возвращает True, если машина на проехала на весы (фотоэлменты не пересеклись + весы показывают малый вес)"""
@@ -933,33 +910,32 @@ class WEngine:
         anim_info['pos'] = current_info[status]
         return anim_info
 
-    def send_anim_info(self, course, id_type, status, carnum=None):
+    def send_anim_info(self, course, id_type, status, auto_id=None):
         # Отправляет информацию о положении авто для отрисовки анимации
         anim_info = self.get_anim_info(course, id_type, status)
-        if carnum:
-            anim_info['carnum'] = carnum
+        if auto_id:
+            anim_info['auto_id'] = auto_id
         command = self.formCommand('anim_info', anim_info)
         self.send_subscribers_data(command)
 
-    def neg_close_record(self, carnum, timenow, comm, course):
+    def neg_close_record(self, auto_id, timenow, comm, course):
         # Закрыть заезд по протоколу NEG (no exit group)
         gate_name = s.spec_orup_protocols[course]['first_gate']
         self.open_gate(name=gate_name)
-        weight = self.get_weight(carnum=carnum, course=course, mode='NEG_OUT')
+        weight = self.get_weight(auto_id=auto_id, course=course, mode='NEG_OUT')
         if self.if_car_not_passed(weight):
             self.close_gate_no_pass(gate_name=gate_name, course=course)
             return
         self.show_notification('\n\tCar was on territory.')
-        ident1 = self.get_ident1(carnum)
-        self.escCorrectProtocol(carnum, weight, timenow, comm, mode='NEG')
+        self.escCorrectProtocol(auto_id, weight, timenow, comm, mode='NEG')
         sleep(2)
         self.open_gate(name=gate_name)
-        self.protocol_ending(carnum, timenow, course=course, mode='tails')
+        self.protocol_ending(auto_id, timenow, course=course, mode='tails')
 
-    def neg_init_record(self, carnum, timenow, trashcat, trashtype, contragent, comm, operator, course):
+    def neg_init_record(self, auto_id, timenow, trashcat, trashtype, contragent, comm, operator, course):
         # Начать заезд по протоколу NEG (no exit group)
         self.open_gate(name=s.spec_orup_protocols[course]['first_gate'])
-        weight = self.get_weight(carnum=carnum, course=course, mode='NEG_IN')
+        weight = self.get_weight(auto_id=auto_id, course=course, mode='NEG_IN')
         if self.if_car_not_passed(weight):
             self.close_gate_no_pass(gate_name=s.spec_orup_protocols[course]['first_gate'], course=course)
             return
@@ -967,42 +943,41 @@ class WEngine:
         if len(comm) > 0:
             comm = 'Въезд: {} '.format(comm)
         rec_id = self.sqlshell.create_str(s.book,
-                                          '(car_number, time_in, inside, trash_cat, trash_type, carrier, notes, '
+                                          '(auto, time_in, inside, trash_cat, trash_type, carrier, notes, '
                                           'operator, brutto)',
                                           "('{}','{}', 'yes', ({}),({}),({}),'{}', ({}), '{}')".format(
-                                              carnum, timenow, trashcat, trashtype, contragent, comm, operator, weight))
+                                              auto_id, timenow, trashcat, trashtype, contragent, comm, operator, weight))
         self.updAddInfo(notes='Запись обновлена')
         sleep(2)
         self.open_gate(name=s.spec_orup_protocols[course]['first_gate'])
-        self.protocol_ending(carnum, timenow, course=course, recId=rec_id, mode='tails')
+        self.protocol_ending(auto_id, timenow, course=course, recId=rec_id, mode='tails')
 
-    def across_group(self, carnum, timenow, course, *args, **kwargs):
+    def across_group(self, auto_id, timenow, course, *args, **kwargs):
         # Начать заезд с открытием обоих шлагбаумов и без взвешивания
         self.open_gate(name=s.spec_orup_protocols[course]['first_gate'])
         self.check_ph_release(course, only_breach=False)
         self.open_gate(name=s.spec_orup_protocols[course]['second_gate'])
-        self.protocol_ending(carnum, timenow, course)
+        self.protocol_ending(auto_id, timenow, course)
 
-    def tails_group_close_record(self, carnum, timenow, comm, course):
+    def tails_group_close_record(self, auto_id, timenow, comm, course):
         # Закрыть открытый заезд
         self.show_notification('\n\t CAR WAS IN THE AREA')
         self.open_gate(name=s.spec_orup_protocols[course]['first_gate'])
         self.show_notification('\tПолучаю вес..')
-        weight = self.get_weight(carnum=carnum, mode='tails', course=course)
+        weight = self.get_weight(auto_id=auto_id, mode='tails', course=course)
         if self.if_car_not_passed(weight):
             self.close_gate_no_pass(gate_name=s.spec_orup_protocols[course]['first_gate'], course=course)
             return
         self.show_notification('\tВес получен', weight)
-        ident1 = self.get_ident1(carnum)
-        self.escCorrectProtocol(carnum, weight, timenow, comm, mode='tails')
+        self.escCorrectProtocol(auto_id, weight, timenow, comm, mode='tails')
         self.open_gate(name=s.spec_orup_protocols[course]['second_gate'])
-        self.protocol_ending(carnum, timenow, course=s.spec_orup_protocols[course]['reverse'])
+        self.protocol_ending(auto_id, timenow, course=s.spec_orup_protocols[course]['reverse'])
 
-    def tails_group_init_record(self, carnum, timenow, trashcat, trashtype, contragent, comm, operator, course):
+    def tails_group_init_record(self, auto_id, timenow, trashcat, trashtype, contragent, comm, operator, course):
         # Инициировать новый заезд
         self.show_notification('\n\t CREATING STR FOR NEW CAR')
         self.open_gate(name=s.spec_orup_protocols[course]['first_gate'])
-        weight = self.get_weight(carnum=carnum, mode='tails', course=course)
+        weight = self.get_weight(auto_id=auto_id, mode='tails', course=course)
         if self.if_car_not_passed(weight):
             self.close_gate_no_pass(gate_name=s.spec_orup_protocols[course]['first_gate'], course=course)
             return
@@ -1010,27 +985,27 @@ class WEngine:
             comm = 'Въезд: {} '.format(comm)
         self.show_notification('\tВес получен', weight)
         rec_id = self.sqlshell.create_str(s.book,
-                                          '(car_number, time_in, inside, trash_cat, trash_type, Carrier, notes, '
+                                          '(auto, time_in, inside, trash_cat, trash_type, Carrier, notes, '
                                           'operator, brutto)',
                                           "('{}','{}', 'yes', {},{},{},'{}', ({}), '{}')".format(
-                                              carnum, timenow, trashcat, trashtype, contragent, comm, operator, weight))
+                                              auto_id, timenow, trashcat, trashtype, contragent, comm, operator, weight))
         self.updAddInfo(notes='Запись обновлена')
         self.open_gate(name=s.spec_orup_protocols[course]['second_gate'])
-        self.protocol_ending(carnum, timenow, course=s.spec_orup_protocols[course]['reverse'], recId=rec_id)
+        self.protocol_ending(auto_id, timenow, course=s.spec_orup_protocols[course]['reverse'], recId=rec_id)
 
-    def protocol_ending(self, carnum, timenow, course, recId='none', mode='random'):
+    def protocol_ending(self, auto_id, timenow, course, recId='none', mode='random'):
         """ Общие операции, завершающие протокол выезда и въезда"""
         self.show_notification('\n\tЗавершающие операции')
         self.phNotBreach = False
         self.dlinnomer = 0
         self.polomka = 0
         self.note_esc(course, mode='esc')
-        id_type = self.define_idtype('car_number', carnum)
-        if recId == 'none' and type(self.currentProtocolId) == str:
-            recId = self.currentProtocolId.strip('IN')
+        id_type = self.define_idtype('auto_id', auto_id)
+        if recId == 'none' and type(self.current_round_id) == str:
+            recId = self.current_round_id.strip('IN')
             recId = recId.strip('OUT')
         if not s.GENERAL_DEBUG:
-            self.alerts = self.sqlshell.check_car_choose_mode(self.alerts, self.choose_mode, carnum,
+            self.alerts = self.sqlshell.check_car_choose_mode(self.alerts, self.choose_mode, auto_id,
                                                               s.spec_orup_protocols[course]['reverse'])
         if s.AR_DUO_MOD:
             duo_functions.records_owning_save(self.sqlshell, s.records_owning_table, s.pol_owners_table,
@@ -1045,10 +1020,7 @@ class WEngine:
         sleep(1)
         anim_info = self.get_anim_info(s.spec_orup_protocols[course]['reverse'], id_type, 'end_pos')
         self.updAddInfo(status='Протокол завершен', face=anim_info['face'], pos=anim_info['pos'])
-        self.show_notification('\n##############################################')
-        self.show_notification('*** Протокол завершен ***')
-        self.show_notification('\tStatus -', self.wlistener.status)
-        self.show_notification('#############################################\n')
+
 
     def define_gate_point_hname(self, name):
         gate_num = s.gates_info_dict[name]['point']
@@ -1131,10 +1103,10 @@ class WEngine:
         # if self.wlistener.status == 'Готов':
         #    self.wlistener.status = 'waitingCM'
         canPass = True
-        carnum = self.get_carnum_by_rfid(rfid)
+        auto_id = self.get_auto_id_by_rfid(rfid)
         self.show_notification('\tПытаемся достать время последнего заезда авто')
         try:
-            lastVisitDate = self.lastVisit[carnum]
+            lastVisitDate = self.lastVisit[auto_id]
             self.show_notification('\t\tУспешно.Последний заезд:', lastVisitDate)
             now = datetime.now()
             passed = now - lastVisitDate
@@ -1151,8 +1123,8 @@ class WEngine:
             self.show_notification('\tНе удалось достать время последнего заезда авто')
             # print(format_exc())
         if canPass:
-            have_brutto = self.check_car_have_brutto(carnum)
-            ident = "auto.car_number='{}'".format(carnum)
+            have_brutto = self.check_car_have_brutto(auto_id)
+            ident = "auto.id='{}'".format(auto_id)
             command = "select carrier, trash_type, trash_cat "
             command += "from last_events inner join auto on "
             command += "(last_events.car_id=auto.id) "
@@ -1167,16 +1139,16 @@ class WEngine:
                 lastContragent = 0
                 lastTrashType = 0
                 lastTrashCat = 0
-            msg = {'carDetected': {'carnum': carnum, 'course': course,
+            msg = {'carDetected': {'auto_id': auto_id, 'course': course,
                                    'lastContragent': lastContragent, 'weight': 'null',
                                    'lastTrashType': lastTrashType, 'lastTrashCat': lastTrashCat, 'id_type': idtype,
                                    'have_brutto': have_brutto}}
             self.show_notification('Сообщение для СМ сформировано:', msg)
             self.send_subscribers_data(msg)
 
-    def check_car_have_brutto(self, carnum):
+    def check_car_have_brutto(self, auto_id):
         # Возвращает True, если машина уже взвесила брутто
-        if self.sqlshell.check_car_inside(carnum, s.book):
+        if self.sqlshell.check_car_inside(auto_id, s.book):
             return True
 
     def update_status(self, status):
@@ -1277,16 +1249,16 @@ class WEngine:
         self.send_subscribers_data(command)
 
 
-    def opl_create_file(self, carnum):
+    def opl_create_file(self, auto_id):
         datetime = self.get_timenow()
         if type(datetime) != str:
             date = datetime.strftime(' %Y.%m.%d %H:%M:%S')
         else:
             date = datetime
-        file_name = carnum + ' ' + date
+        file_name = auto_id + ' ' + date
         self.opl_file = os.path.join(s.opl_dirname, file_name)
         with open(self.opl_file, 'w') as fobj:
-            fobj.write('### CREATED NEW LOG FOR {} IN {} ###\n'.format(carnum, datetime))
+            fobj.write('### CREATED NEW LOG FOR {} IN {} ###\n'.format(auto_id, datetime))
 
     def opl_make_record(self, record):
         log_file = self.get_opl_filename()

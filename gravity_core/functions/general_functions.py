@@ -22,6 +22,11 @@ def close_opened_record(sqlshell, record_id, time_out, alert, records_table):
     response = sqlshell.try_execute(command)
     return response
 
+def add_comment(sqlshell, record_id, comment):
+    """ Добавить комментарий к завершенному заезду командой из СМ """
+    command = "UPDATE {} set notes = notes || 'Добавочно: {}' where id={}".format(s.book, comment,
+                                                                                  record_id)
+    sqlshell.try_execute(command)
 
 def is_photo_valid(photo_object):
     """ Возвращает True, если фотография валидна, т. е. мы получили ожидаемый результат """
