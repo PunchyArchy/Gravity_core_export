@@ -19,7 +19,7 @@ class WChecker(Wsqluse):
 
     def get_rfid_by_carnum(self, carnum):
         """ Вернуть RFID-номер машины по его гос.номеру """
-        command = "SELECT rfid FROM auto WHERE car_number='{}'".format(carnum)
+        command = "SELECT rfid FROM auto WHERE car_number='{}' LIMIT 1".format(carnum)
         response = self.try_execute_get(command)
         return response
 
@@ -48,7 +48,6 @@ class WChecker(Wsqluse):
 
     def check_car_inside(self, carnum, tablename):
         '''Проверяет находится ли машина на территории предприятия'''
-        # self.check_presence(carnum, tablename, column)
         response = self.try_execute_get("select * from {} where car_number='{}' and inside='yes'".format(tablename, carnum))
         if len(response) > 0:
             return True
@@ -96,7 +95,7 @@ class WChecker(Wsqluse):
 
     def check_access(self, rfid):
         '''Проверяет, разрешается ли машине въезд'''
-        command = "SELECT rfid FROM {} WHERE rfid='{}'".format(s.auto, rfid)
+        command = "SELECT rfid FROM {} WHERE rfid='{}' LIMIT 1".format(s.auto, rfid)
         response = self.try_execute_get(command)
         if len(response) > 0:
             return True

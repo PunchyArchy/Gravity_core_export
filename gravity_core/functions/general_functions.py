@@ -22,3 +22,7 @@ def close_opened_record(sqlshell, record_id, time_out, alert, records_table, *ar
     response = sqlshell.try_execute(command)
     return response
 
+
+def is_photo_valid(photo_object):
+    """ Возвращает True, если фотография валидна, т. е. мы получили ожидаемый результат """
+    pass
