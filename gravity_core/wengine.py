@@ -62,6 +62,7 @@ class WEngine:
         self.ph_els = {'3': '30', '4': '30'}
         self.all_wclients = []
         self.events_catcher = self.create_events_catcher()
+        self.current_user_id = 1
 
     def create_events_catcher(self):
         events_catcher = EventsCatcher(self.sqlshell, s.cm_events_table, s.cm_events_log_table)
@@ -75,7 +76,9 @@ class WEngine:
                    'close_opened_record': {'method': self.close_opened_record},
                    'get_unfinished_records': {'method': self.get_unfinished_records},
                    'get_health_monitor': {'method': self.get_health_monitor},
-                   'try_auth_user': {'method': self.try_auth_user}
+                   'try_auth_user': {'method': self.try_auth_user},
+                   'capture_cm_launched': {'method': self.capture_cm_launched},
+                   'capture_cm_terminated': {'method': self.capture_cm_terminated}
                    }
         return methods
 
@@ -123,7 +126,18 @@ class WEngine:
         response = sql_functions.try_auth_user(*args, **kwargs)
         print('\n\nRESPONSE:', response)
         if response['status'] == 'success':
-            self.events_catcher.try_capture_new_event('LOGIN', response['info'][0]['id'])
+            self.current_user_id = response['info']['id']
+            self.events_catcher.try_capture_new_event('LOGIN', self.current_user_id)
+        return response
+
+    def capture_cm_launched(self, *args, **kwargs):
+        """ Зафиксировать факт запуска СМ """
+        response = self.events_catcher.try_capture_new_event('START', self.current_user_id)
+        return response
+
+    def capture_cm_terminated(self, *args, **kwargs):
+        """ Зафиксирововать факт выключения СМ """
+        response = self.events_catcher.try_capture_new_event('EXIT', self.current_user_id)
         return response
 
     def try_ftp_connect(self):
