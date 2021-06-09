@@ -1,0 +1,30 @@
+2021-05-31 11:50:27,190 - gravity_core.wlogger - ERROR - Traceback (most recent call last):
+  File "/home/qodex/Gravity_core_export/gravity_core/wlistener.py", line 102, in broadcastMsgSend
+    conn.send(msg)
+BrokenPipeError: [Errno 32] Broken pipe
+
+2021-05-31 11:50:27,207 - gravity_core.wlogger - ERROR - Traceback (most recent call last):
+  File "/home/qodex/Gravity_core_export/gravity_core/wlistener.py", line 102, in broadcastMsgSend
+    conn.send(msg)
+BrokenPipeError: [Errno 32] Broken pipe
+
+2021-05-31 11:50:27,208 - gravity_core.wlogger - ERROR - Traceback (most recent call last):
+  File "/home/qodex/Gravity_core_export/gravity_core/wlistener.py", line 102, in broadcastMsgSend
+    conn.send(msg)
+BrokenPipeError: [Errno 32] Broken pipe
+
+2021-06-01 09:20:13,859 - gravity_core.wlogger - ERROR - Traceback (most recent call last):
+  File "/home/qodex/Gravity_core_export/gravity_core/wlistener.py", line 102, in broadcastMsgSend
+    conn.send(msg)
+BrokenPipeError: [Errno 32] Broken pipe
+
+2021-06-01 09:20:19,359 - gravity_core.wlogger - ERROR - Traceback (most recent call last):
+  File "/home/qodex/Gravity_core_export/gravity_core/wlistener.py", line 102, in broadcastMsgSend
+    conn.send(msg)
+BrokenPipeError: [Errno 32] Broken pipe
+
+2021-06-01 09:20:23,349 - gravity_core.wlogger - ERROR - Traceback (most recent call last):
+  File "/home/qodex/Gravity_core_export/gravity_core/wlistener.py", line 102, in broadcastMsgSend
+    conn.send(msg)
+BrokenPipeError: [Errno 32] Broken pipe
+

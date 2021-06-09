@@ -1,0 +1,797 @@
+2021-05-11 09:30:41,066 - gravity_core.wlogger - ERROR - Traceback (most recent call last):
+  File "/home/qodex/Gravity_core_export/gravity_core/wlistener.py", line 102, in broadcastMsgSend
+    conn.send(msg)
+BrokenPipeError: [Errno 32] Broken pipe
+
+2021-05-11 09:30:41,083 - gravity_core.wlogger - ERROR - Traceback (most recent call last):
+  File "/home/qodex/Gravity_core_export/gravity_core/wlistener.py", line 102, in broadcastMsgSend
+    conn.send(msg)
+BrokenPipeError: [Errno 32] Broken pipe
+
+2021-05-11 09:30:41,085 - gravity_core.wlogger - ERROR - Traceback (most recent call last):
+  File "/home/qodex/Gravity_core_export/gravity_core/wlistener.py", line 102, in broadcastMsgSend
+    conn.send(msg)
+BrokenPipeError: [Errno 32] Broken pipe
+
+2021-05-11 15:13:03,438 - gravity_core.wlogger - ERROR - Traceback (most recent call last):
+  File "/home/qodex/Gravity_core_export/gravity_core/wengine.py", line 78, in make_cps_connection
+    self.cps.start()
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 37, in start
+    self.create_server(self.server_ip, self.server_port)
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 61, in create_server
+    self.serv.bind((ip, port))
+OSError: [Errno 98] Address already in use
+
+2021-05-11 15:13:08,447 - gravity_core.wlogger - ERROR - Traceback (most recent call last):
+  File "/home/qodex/Gravity_core_export/gravity_core/wengine.py", line 78, in make_cps_connection
+    self.cps.start()
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 37, in start
+    self.create_server(self.server_ip, self.server_port)
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 61, in create_server
+    self.serv.bind((ip, port))
+OSError: [Errno 98] Address already in use
+
+2021-05-11 15:13:13,457 - gravity_core.wlogger - ERROR - Traceback (most recent call last):
+  File "/home/qodex/Gravity_core_export/gravity_core/wengine.py", line 78, in make_cps_connection
+    self.cps.start()
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 37, in start
+    self.create_server(self.server_ip, self.server_port)
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 61, in create_server
+    self.serv.bind((ip, port))
+OSError: [Errno 98] Address already in use
+
+2021-05-11 15:13:18,462 - gravity_core.wlogger - ERROR - Traceback (most recent call last):
+  File "/home/qodex/Gravity_core_export/gravity_core/wengine.py", line 78, in make_cps_connection
+    self.cps.start()
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 37, in start
+    self.create_server(self.server_ip, self.server_port)
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 61, in create_server
+    self.serv.bind((ip, port))
+OSError: [Errno 98] Address already in use
+
+2021-05-11 15:13:23,470 - gravity_core.wlogger - ERROR - Traceback (most recent call last):
+  File "/home/qodex/Gravity_core_export/gravity_core/wengine.py", line 78, in make_cps_connection
+    self.cps.start()
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 37, in start
+    self.create_server(self.server_ip, self.server_port)
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 61, in create_server
+    self.serv.bind((ip, port))
+OSError: [Errno 98] Address already in use
+
+2021-05-11 15:13:28,476 - gravity_core.wlogger - ERROR - Traceback (most recent call last):
+  File "/home/qodex/Gravity_core_export/gravity_core/wengine.py", line 78, in make_cps_connection
+    self.cps.start()
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 37, in start
+    self.create_server(self.server_ip, self.server_port)
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 61, in create_server
+    self.serv.bind((ip, port))
+OSError: [Errno 98] Address already in use
+
+2021-05-11 15:13:33,484 - gravity_core.wlogger - ERROR - Traceback (most recent call last):
+  File "/home/qodex/Gravity_core_export/gravity_core/wengine.py", line 78, in make_cps_connection
+    self.cps.start()
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 37, in start
+    self.create_server(self.server_ip, self.server_port)
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 61, in create_server
+    self.serv.bind((ip, port))
+OSError: [Errno 98] Address already in use
+
+2021-05-11 15:13:38,493 - gravity_core.wlogger - ERROR - Traceback (most recent call last):
+  File "/home/qodex/Gravity_core_export/gravity_core/wengine.py", line 78, in make_cps_connection
+    self.cps.start()
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 37, in start
+    self.create_server(self.server_ip, self.server_port)
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 61, in create_server
+    self.serv.bind((ip, port))
+OSError: [Errno 98] Address already in use
+
+2021-05-11 15:13:43,498 - gravity_core.wlogger - ERROR - Traceback (most recent call last):
+  File "/home/qodex/Gravity_core_export/gravity_core/wengine.py", line 78, in make_cps_connection
+    self.cps.start()
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 37, in start
+    self.create_server(self.server_ip, self.server_port)
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 61, in create_server
+    self.serv.bind((ip, port))
+OSError: [Errno 98] Address already in use
+
+2021-05-11 15:13:48,506 - gravity_core.wlogger - ERROR - Traceback (most recent call last):
+  File "/home/qodex/Gravity_core_export/gravity_core/wengine.py", line 78, in make_cps_connection
+    self.cps.start()
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 37, in start
+    self.create_server(self.server_ip, self.server_port)
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 61, in create_server
+    self.serv.bind((ip, port))
+OSError: [Errno 98] Address already in use
+
+2021-05-11 15:13:53,514 - gravity_core.wlogger - ERROR - Traceback (most recent call last):
+  File "/home/qodex/Gravity_core_export/gravity_core/wengine.py", line 78, in make_cps_connection
+    self.cps.start()
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 37, in start
+    self.create_server(self.server_ip, self.server_port)
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 61, in create_server
+    self.serv.bind((ip, port))
+OSError: [Errno 98] Address already in use
+
+2021-05-11 15:13:58,523 - gravity_core.wlogger - ERROR - Traceback (most recent call last):
+  File "/home/qodex/Gravity_core_export/gravity_core/wengine.py", line 78, in make_cps_connection
+    self.cps.start()
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 37, in start
+    self.create_server(self.server_ip, self.server_port)
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 61, in create_server
+    self.serv.bind((ip, port))
+OSError: [Errno 98] Address already in use
+
+2021-05-11 15:14:03,532 - gravity_core.wlogger - ERROR - Traceback (most recent call last):
+  File "/home/qodex/Gravity_core_export/gravity_core/wengine.py", line 78, in make_cps_connection
+    self.cps.start()
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 37, in start
+    self.create_server(self.server_ip, self.server_port)
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 61, in create_server
+    self.serv.bind((ip, port))
+OSError: [Errno 98] Address already in use
+
+2021-05-11 15:14:08,538 - gravity_core.wlogger - ERROR - Traceback (most recent call last):
+  File "/home/qodex/Gravity_core_export/gravity_core/wengine.py", line 78, in make_cps_connection
+    self.cps.start()
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 37, in start
+    self.create_server(self.server_ip, self.server_port)
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 61, in create_server
+    self.serv.bind((ip, port))
+OSError: [Errno 98] Address already in use
+
+2021-05-11 15:14:13,546 - gravity_core.wlogger - ERROR - Traceback (most recent call last):
+  File "/home/qodex/Gravity_core_export/gravity_core/wengine.py", line 78, in make_cps_connection
+    self.cps.start()
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 37, in start
+    self.create_server(self.server_ip, self.server_port)
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 61, in create_server
+    self.serv.bind((ip, port))
+OSError: [Errno 98] Address already in use
+
+2021-05-11 15:14:18,555 - gravity_core.wlogger - ERROR - Traceback (most recent call last):
+  File "/home/qodex/Gravity_core_export/gravity_core/wengine.py", line 78, in make_cps_connection
+    self.cps.start()
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 37, in start
+    self.create_server(self.server_ip, self.server_port)
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 61, in create_server
+    self.serv.bind((ip, port))
+OSError: [Errno 98] Address already in use
+
+2021-05-11 15:14:23,562 - gravity_core.wlogger - ERROR - Traceback (most recent call last):
+  File "/home/qodex/Gravity_core_export/gravity_core/wengine.py", line 78, in make_cps_connection
+    self.cps.start()
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 37, in start
+    self.create_server(self.server_ip, self.server_port)
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 61, in create_server
+    self.serv.bind((ip, port))
+OSError: [Errno 98] Address already in use
+
+2021-05-11 15:14:28,570 - gravity_core.wlogger - ERROR - Traceback (most recent call last):
+  File "/home/qodex/Gravity_core_export/gravity_core/wengine.py", line 78, in make_cps_connection
+    self.cps.start()
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 37, in start
+    self.create_server(self.server_ip, self.server_port)
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 61, in create_server
+    self.serv.bind((ip, port))
+OSError: [Errno 98] Address already in use
+
+2021-05-11 15:14:33,578 - gravity_core.wlogger - ERROR - Traceback (most recent call last):
+  File "/home/qodex/Gravity_core_export/gravity_core/wengine.py", line 78, in make_cps_connection
+    self.cps.start()
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 37, in start
+    self.create_server(self.server_ip, self.server_port)
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 61, in create_server
+    self.serv.bind((ip, port))
+OSError: [Errno 98] Address already in use
+
+2021-05-11 15:14:38,588 - gravity_core.wlogger - ERROR - Traceback (most recent call last):
+  File "/home/qodex/Gravity_core_export/gravity_core/wengine.py", line 78, in make_cps_connection
+    self.cps.start()
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 37, in start
+    self.create_server(self.server_ip, self.server_port)
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 61, in create_server
+    self.serv.bind((ip, port))
+OSError: [Errno 98] Address already in use
+
+2021-05-11 15:14:43,593 - gravity_core.wlogger - ERROR - Traceback (most recent call last):
+  File "/home/qodex/Gravity_core_export/gravity_core/wengine.py", line 78, in make_cps_connection
+    self.cps.start()
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 37, in start
+    self.create_server(self.server_ip, self.server_port)
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 61, in create_server
+    self.serv.bind((ip, port))
+OSError: [Errno 98] Address already in use
+
+2021-05-11 15:14:48,602 - gravity_core.wlogger - ERROR - Traceback (most recent call last):
+  File "/home/qodex/Gravity_core_export/gravity_core/wengine.py", line 78, in make_cps_connection
+    self.cps.start()
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 37, in start
+    self.create_server(self.server_ip, self.server_port)
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 61, in create_server
+    self.serv.bind((ip, port))
+OSError: [Errno 98] Address already in use
+
+2021-05-11 15:14:53,610 - gravity_core.wlogger - ERROR - Traceback (most recent call last):
+  File "/home/qodex/Gravity_core_export/gravity_core/wengine.py", line 78, in make_cps_connection
+    self.cps.start()
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 37, in start
+    self.create_server(self.server_ip, self.server_port)
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 61, in create_server
+    self.serv.bind((ip, port))
+OSError: [Errno 98] Address already in use
+
+2021-05-11 15:14:58,619 - gravity_core.wlogger - ERROR - Traceback (most recent call last):
+  File "/home/qodex/Gravity_core_export/gravity_core/wengine.py", line 78, in make_cps_connection
+    self.cps.start()
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 37, in start
+    self.create_server(self.server_ip, self.server_port)
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 61, in create_server
+    self.serv.bind((ip, port))
+OSError: [Errno 98] Address already in use
+
+2021-05-11 15:15:03,627 - gravity_core.wlogger - ERROR - Traceback (most recent call last):
+  File "/home/qodex/Gravity_core_export/gravity_core/wengine.py", line 78, in make_cps_connection
+    self.cps.start()
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 37, in start
+    self.create_server(self.server_ip, self.server_port)
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 61, in create_server
+    self.serv.bind((ip, port))
+OSError: [Errno 98] Address already in use
+
+2021-05-11 15:15:08,634 - gravity_core.wlogger - ERROR - Traceback (most recent call last):
+  File "/home/qodex/Gravity_core_export/gravity_core/wengine.py", line 78, in make_cps_connection
+    self.cps.start()
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 37, in start
+    self.create_server(self.server_ip, self.server_port)
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 61, in create_server
+    self.serv.bind((ip, port))
+OSError: [Errno 98] Address already in use
+
+2021-05-11 15:15:13,642 - gravity_core.wlogger - ERROR - Traceback (most recent call last):
+  File "/home/qodex/Gravity_core_export/gravity_core/wengine.py", line 78, in make_cps_connection
+    self.cps.start()
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 37, in start
+    self.create_server(self.server_ip, self.server_port)
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 61, in create_server
+    self.serv.bind((ip, port))
+OSError: [Errno 98] Address already in use
+
+2021-05-11 15:15:18,650 - gravity_core.wlogger - ERROR - Traceback (most recent call last):
+  File "/home/qodex/Gravity_core_export/gravity_core/wengine.py", line 78, in make_cps_connection
+    self.cps.start()
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 37, in start
+    self.create_server(self.server_ip, self.server_port)
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 61, in create_server
+    self.serv.bind((ip, port))
+OSError: [Errno 98] Address already in use
+
+2021-05-11 15:15:23,658 - gravity_core.wlogger - ERROR - Traceback (most recent call last):
+  File "/home/qodex/Gravity_core_export/gravity_core/wengine.py", line 78, in make_cps_connection
+    self.cps.start()
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 37, in start
+    self.create_server(self.server_ip, self.server_port)
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 61, in create_server
+    self.serv.bind((ip, port))
+OSError: [Errno 98] Address already in use
+
+2021-05-11 15:15:28,666 - gravity_core.wlogger - ERROR - Traceback (most recent call last):
+  File "/home/qodex/Gravity_core_export/gravity_core/wengine.py", line 78, in make_cps_connection
+    self.cps.start()
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 37, in start
+    self.create_server(self.server_ip, self.server_port)
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 61, in create_server
+    self.serv.bind((ip, port))
+OSError: [Errno 98] Address already in use
+
+2021-05-11 15:15:33,675 - gravity_core.wlogger - ERROR - Traceback (most recent call last):
+  File "/home/qodex/Gravity_core_export/gravity_core/wengine.py", line 78, in make_cps_connection
+    self.cps.start()
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 37, in start
+    self.create_server(self.server_ip, self.server_port)
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 61, in create_server
+    self.serv.bind((ip, port))
+OSError: [Errno 98] Address already in use
+
+2021-05-11 15:15:38,684 - gravity_core.wlogger - ERROR - Traceback (most recent call last):
+  File "/home/qodex/Gravity_core_export/gravity_core/wengine.py", line 78, in make_cps_connection
+    self.cps.start()
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 37, in start
+    self.create_server(self.server_ip, self.server_port)
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 61, in create_server
+    self.serv.bind((ip, port))
+OSError: [Errno 98] Address already in use
+
+2021-05-11 15:15:43,690 - gravity_core.wlogger - ERROR - Traceback (most recent call last):
+  File "/home/qodex/Gravity_core_export/gravity_core/wengine.py", line 78, in make_cps_connection
+    self.cps.start()
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 37, in start
+    self.create_server(self.server_ip, self.server_port)
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 61, in create_server
+    self.serv.bind((ip, port))
+OSError: [Errno 98] Address already in use
+
+2021-05-11 15:15:48,698 - gravity_core.wlogger - ERROR - Traceback (most recent call last):
+  File "/home/qodex/Gravity_core_export/gravity_core/wengine.py", line 78, in make_cps_connection
+    self.cps.start()
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 37, in start
+    self.create_server(self.server_ip, self.server_port)
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 61, in create_server
+    self.serv.bind((ip, port))
+OSError: [Errno 98] Address already in use
+
+2021-05-11 15:15:53,706 - gravity_core.wlogger - ERROR - Traceback (most recent call last):
+  File "/home/qodex/Gravity_core_export/gravity_core/wengine.py", line 78, in make_cps_connection
+    self.cps.start()
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 37, in start
+    self.create_server(self.server_ip, self.server_port)
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 61, in create_server
+    self.serv.bind((ip, port))
+OSError: [Errno 98] Address already in use
+
+2021-05-11 15:15:58,714 - gravity_core.wlogger - ERROR - Traceback (most recent call last):
+  File "/home/qodex/Gravity_core_export/gravity_core/wengine.py", line 78, in make_cps_connection
+    self.cps.start()
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 37, in start
+    self.create_server(self.server_ip, self.server_port)
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 61, in create_server
+    self.serv.bind((ip, port))
+OSError: [Errno 98] Address already in use
+
+2021-05-11 15:16:03,721 - gravity_core.wlogger - ERROR - Traceback (most recent call last):
+  File "/home/qodex/Gravity_core_export/gravity_core/wengine.py", line 78, in make_cps_connection
+    self.cps.start()
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 37, in start
+    self.create_server(self.server_ip, self.server_port)
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 61, in create_server
+    self.serv.bind((ip, port))
+OSError: [Errno 98] Address already in use
+
+2021-05-11 15:16:08,730 - gravity_core.wlogger - ERROR - Traceback (most recent call last):
+  File "/home/qodex/Gravity_core_export/gravity_core/wengine.py", line 78, in make_cps_connection
+    self.cps.start()
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 37, in start
+    self.create_server(self.server_ip, self.server_port)
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 61, in create_server
+    self.serv.bind((ip, port))
+OSError: [Errno 98] Address already in use
+
+2021-05-11 15:16:13,738 - gravity_core.wlogger - ERROR - Traceback (most recent call last):
+  File "/home/qodex/Gravity_core_export/gravity_core/wengine.py", line 78, in make_cps_connection
+    self.cps.start()
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 37, in start
+    self.create_server(self.server_ip, self.server_port)
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 61, in create_server
+    self.serv.bind((ip, port))
+OSError: [Errno 98] Address already in use
+
+2021-05-11 15:16:18,746 - gravity_core.wlogger - ERROR - Traceback (most recent call last):
+  File "/home/qodex/Gravity_core_export/gravity_core/wengine.py", line 78, in make_cps_connection
+    self.cps.start()
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 37, in start
+    self.create_server(self.server_ip, self.server_port)
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 61, in create_server
+    self.serv.bind((ip, port))
+OSError: [Errno 98] Address already in use
+
+2021-05-11 15:16:23,754 - gravity_core.wlogger - ERROR - Traceback (most recent call last):
+  File "/home/qodex/Gravity_core_export/gravity_core/wengine.py", line 78, in make_cps_connection
+    self.cps.start()
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 37, in start
+    self.create_server(self.server_ip, self.server_port)
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 61, in create_server
+    self.serv.bind((ip, port))
+OSError: [Errno 98] Address already in use
+
+2021-05-11 15:16:28,762 - gravity_core.wlogger - ERROR - Traceback (most recent call last):
+  File "/home/qodex/Gravity_core_export/gravity_core/wengine.py", line 78, in make_cps_connection
+    self.cps.start()
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 37, in start
+    self.create_server(self.server_ip, self.server_port)
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 61, in create_server
+    self.serv.bind((ip, port))
+OSError: [Errno 98] Address already in use
+
+2021-05-11 15:16:33,770 - gravity_core.wlogger - ERROR - Traceback (most recent call last):
+  File "/home/qodex/Gravity_core_export/gravity_core/wengine.py", line 78, in make_cps_connection
+    self.cps.start()
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 37, in start
+    self.create_server(self.server_ip, self.server_port)
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 61, in create_server
+    self.serv.bind((ip, port))
+OSError: [Errno 98] Address already in use
+
+2021-05-11 15:16:38,779 - gravity_core.wlogger - ERROR - Traceback (most recent call last):
+  File "/home/qodex/Gravity_core_export/gravity_core/wengine.py", line 78, in make_cps_connection
+    self.cps.start()
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 37, in start
+    self.create_server(self.server_ip, self.server_port)
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 61, in create_server
+    self.serv.bind((ip, port))
+OSError: [Errno 98] Address already in use
+
+2021-05-11 15:16:43,786 - gravity_core.wlogger - ERROR - Traceback (most recent call last):
+  File "/home/qodex/Gravity_core_export/gravity_core/wengine.py", line 78, in make_cps_connection
+    self.cps.start()
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 37, in start
+    self.create_server(self.server_ip, self.server_port)
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 61, in create_server
+    self.serv.bind((ip, port))
+OSError: [Errno 98] Address already in use
+
+2021-05-11 15:16:48,794 - gravity_core.wlogger - ERROR - Traceback (most recent call last):
+  File "/home/qodex/Gravity_core_export/gravity_core/wengine.py", line 78, in make_cps_connection
+    self.cps.start()
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 37, in start
+    self.create_server(self.server_ip, self.server_port)
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 61, in create_server
+    self.serv.bind((ip, port))
+OSError: [Errno 98] Address already in use
+
+2021-05-11 15:16:53,803 - gravity_core.wlogger - ERROR - Traceback (most recent call last):
+  File "/home/qodex/Gravity_core_export/gravity_core/wengine.py", line 78, in make_cps_connection
+    self.cps.start()
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 37, in start
+    self.create_server(self.server_ip, self.server_port)
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 61, in create_server
+    self.serv.bind((ip, port))
+OSError: [Errno 98] Address already in use
+
+2021-05-11 15:16:58,812 - gravity_core.wlogger - ERROR - Traceback (most recent call last):
+  File "/home/qodex/Gravity_core_export/gravity_core/wengine.py", line 78, in make_cps_connection
+    self.cps.start()
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 37, in start
+    self.create_server(self.server_ip, self.server_port)
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 61, in create_server
+    self.serv.bind((ip, port))
+OSError: [Errno 98] Address already in use
+
+2021-05-11 15:17:03,821 - gravity_core.wlogger - ERROR - Traceback (most recent call last):
+  File "/home/qodex/Gravity_core_export/gravity_core/wengine.py", line 78, in make_cps_connection
+    self.cps.start()
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 37, in start
+    self.create_server(self.server_ip, self.server_port)
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 61, in create_server
+    self.serv.bind((ip, port))
+OSError: [Errno 98] Address already in use
+
+2021-05-11 15:17:08,830 - gravity_core.wlogger - ERROR - Traceback (most recent call last):
+  File "/home/qodex/Gravity_core_export/gravity_core/wengine.py", line 78, in make_cps_connection
+    self.cps.start()
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 37, in start
+    self.create_server(self.server_ip, self.server_port)
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 61, in create_server
+    self.serv.bind((ip, port))
+OSError: [Errno 98] Address already in use
+
+2021-05-11 15:17:13,838 - gravity_core.wlogger - ERROR - Traceback (most recent call last):
+  File "/home/qodex/Gravity_core_export/gravity_core/wengine.py", line 78, in make_cps_connection
+    self.cps.start()
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 37, in start
+    self.create_server(self.server_ip, self.server_port)
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 61, in create_server
+    self.serv.bind((ip, port))
+OSError: [Errno 98] Address already in use
+
+2021-05-11 15:17:18,846 - gravity_core.wlogger - ERROR - Traceback (most recent call last):
+  File "/home/qodex/Gravity_core_export/gravity_core/wengine.py", line 78, in make_cps_connection
+    self.cps.start()
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 37, in start
+    self.create_server(self.server_ip, self.server_port)
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 61, in create_server
+    self.serv.bind((ip, port))
+OSError: [Errno 98] Address already in use
+
+2021-05-11 15:17:23,855 - gravity_core.wlogger - ERROR - Traceback (most recent call last):
+  File "/home/qodex/Gravity_core_export/gravity_core/wengine.py", line 78, in make_cps_connection
+    self.cps.start()
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 37, in start
+    self.create_server(self.server_ip, self.server_port)
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 61, in create_server
+    self.serv.bind((ip, port))
+OSError: [Errno 98] Address already in use
+
+2021-05-11 15:17:28,862 - gravity_core.wlogger - ERROR - Traceback (most recent call last):
+  File "/home/qodex/Gravity_core_export/gravity_core/wengine.py", line 78, in make_cps_connection
+    self.cps.start()
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 37, in start
+    self.create_server(self.server_ip, self.server_port)
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 61, in create_server
+    self.serv.bind((ip, port))
+OSError: [Errno 98] Address already in use
+
+2021-05-11 15:17:33,871 - gravity_core.wlogger - ERROR - Traceback (most recent call last):
+  File "/home/qodex/Gravity_core_export/gravity_core/wengine.py", line 78, in make_cps_connection
+    self.cps.start()
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 37, in start
+    self.create_server(self.server_ip, self.server_port)
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 61, in create_server
+    self.serv.bind((ip, port))
+OSError: [Errno 98] Address already in use
+
+2021-05-11 15:17:38,881 - gravity_core.wlogger - ERROR - Traceback (most recent call last):
+  File "/home/qodex/Gravity_core_export/gravity_core/wengine.py", line 78, in make_cps_connection
+    self.cps.start()
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 37, in start
+    self.create_server(self.server_ip, self.server_port)
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 61, in create_server
+    self.serv.bind((ip, port))
+OSError: [Errno 98] Address already in use
+
+2021-05-11 15:17:43,890 - gravity_core.wlogger - ERROR - Traceback (most recent call last):
+  File "/home/qodex/Gravity_core_export/gravity_core/wengine.py", line 78, in make_cps_connection
+    self.cps.start()
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 37, in start
+    self.create_server(self.server_ip, self.server_port)
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 61, in create_server
+    self.serv.bind((ip, port))
+OSError: [Errno 98] Address already in use
+
+2021-05-11 15:17:48,898 - gravity_core.wlogger - ERROR - Traceback (most recent call last):
+  File "/home/qodex/Gravity_core_export/gravity_core/wengine.py", line 78, in make_cps_connection
+    self.cps.start()
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 37, in start
+    self.create_server(self.server_ip, self.server_port)
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 61, in create_server
+    self.serv.bind((ip, port))
+OSError: [Errno 98] Address already in use
+
+2021-05-11 15:17:53,907 - gravity_core.wlogger - ERROR - Traceback (most recent call last):
+  File "/home/qodex/Gravity_core_export/gravity_core/wengine.py", line 78, in make_cps_connection
+    self.cps.start()
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 37, in start
+    self.create_server(self.server_ip, self.server_port)
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 61, in create_server
+    self.serv.bind((ip, port))
+OSError: [Errno 98] Address already in use
+
+2021-05-11 15:17:58,917 - gravity_core.wlogger - ERROR - Traceback (most recent call last):
+  File "/home/qodex/Gravity_core_export/gravity_core/wengine.py", line 78, in make_cps_connection
+    self.cps.start()
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 37, in start
+    self.create_server(self.server_ip, self.server_port)
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 61, in create_server
+    self.serv.bind((ip, port))
+OSError: [Errno 98] Address already in use
+
+2021-05-11 15:18:03,925 - gravity_core.wlogger - ERROR - Traceback (most recent call last):
+  File "/home/qodex/Gravity_core_export/gravity_core/wengine.py", line 78, in make_cps_connection
+    self.cps.start()
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 37, in start
+    self.create_server(self.server_ip, self.server_port)
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 61, in create_server
+    self.serv.bind((ip, port))
+OSError: [Errno 98] Address already in use
+
+2021-05-11 15:18:08,934 - gravity_core.wlogger - ERROR - Traceback (most recent call last):
+  File "/home/qodex/Gravity_core_export/gravity_core/wengine.py", line 78, in make_cps_connection
+    self.cps.start()
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 37, in start
+    self.create_server(self.server_ip, self.server_port)
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 61, in create_server
+    self.serv.bind((ip, port))
+OSError: [Errno 98] Address already in use
+
+2021-05-11 15:18:13,943 - gravity_core.wlogger - ERROR - Traceback (most recent call last):
+  File "/home/qodex/Gravity_core_export/gravity_core/wengine.py", line 78, in make_cps_connection
+    self.cps.start()
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 37, in start
+    self.create_server(self.server_ip, self.server_port)
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 61, in create_server
+    self.serv.bind((ip, port))
+OSError: [Errno 98] Address already in use
+
+2021-05-11 15:18:18,950 - gravity_core.wlogger - ERROR - Traceback (most recent call last):
+  File "/home/qodex/Gravity_core_export/gravity_core/wengine.py", line 78, in make_cps_connection
+    self.cps.start()
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 37, in start
+    self.create_server(self.server_ip, self.server_port)
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 61, in create_server
+    self.serv.bind((ip, port))
+OSError: [Errno 98] Address already in use
+
+2021-05-11 15:18:23,958 - gravity_core.wlogger - ERROR - Traceback (most recent call last):
+  File "/home/qodex/Gravity_core_export/gravity_core/wengine.py", line 78, in make_cps_connection
+    self.cps.start()
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 37, in start
+    self.create_server(self.server_ip, self.server_port)
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 61, in create_server
+    self.serv.bind((ip, port))
+OSError: [Errno 98] Address already in use
+
+2021-05-11 15:18:28,967 - gravity_core.wlogger - ERROR - Traceback (most recent call last):
+  File "/home/qodex/Gravity_core_export/gravity_core/wengine.py", line 78, in make_cps_connection
+    self.cps.start()
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 37, in start
+    self.create_server(self.server_ip, self.server_port)
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 61, in create_server
+    self.serv.bind((ip, port))
+OSError: [Errno 98] Address already in use
+
+2021-05-11 15:18:33,974 - gravity_core.wlogger - ERROR - Traceback (most recent call last):
+  File "/home/qodex/Gravity_core_export/gravity_core/wengine.py", line 78, in make_cps_connection
+    self.cps.start()
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 37, in start
+    self.create_server(self.server_ip, self.server_port)
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 61, in create_server
+    self.serv.bind((ip, port))
+OSError: [Errno 98] Address already in use
+
+2021-05-11 15:18:38,982 - gravity_core.wlogger - ERROR - Traceback (most recent call last):
+  File "/home/qodex/Gravity_core_export/gravity_core/wengine.py", line 78, in make_cps_connection
+    self.cps.start()
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 37, in start
+    self.create_server(self.server_ip, self.server_port)
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 61, in create_server
+    self.serv.bind((ip, port))
+OSError: [Errno 98] Address already in use
+
+2021-05-11 15:18:43,990 - gravity_core.wlogger - ERROR - Traceback (most recent call last):
+  File "/home/qodex/Gravity_core_export/gravity_core/wengine.py", line 78, in make_cps_connection
+    self.cps.start()
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 37, in start
+    self.create_server(self.server_ip, self.server_port)
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 61, in create_server
+    self.serv.bind((ip, port))
+OSError: [Errno 98] Address already in use
+
+2021-05-11 15:18:48,998 - gravity_core.wlogger - ERROR - Traceback (most recent call last):
+  File "/home/qodex/Gravity_core_export/gravity_core/wengine.py", line 78, in make_cps_connection
+    self.cps.start()
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 37, in start
+    self.create_server(self.server_ip, self.server_port)
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 61, in create_server
+    self.serv.bind((ip, port))
+OSError: [Errno 98] Address already in use
+
+2021-05-11 15:18:54,007 - gravity_core.wlogger - ERROR - Traceback (most recent call last):
+  File "/home/qodex/Gravity_core_export/gravity_core/wengine.py", line 78, in make_cps_connection
+    self.cps.start()
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 37, in start
+    self.create_server(self.server_ip, self.server_port)
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 61, in create_server
+    self.serv.bind((ip, port))
+OSError: [Errno 98] Address already in use
+
+2021-05-11 15:18:59,017 - gravity_core.wlogger - ERROR - Traceback (most recent call last):
+  File "/home/qodex/Gravity_core_export/gravity_core/wengine.py", line 78, in make_cps_connection
+    self.cps.start()
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 37, in start
+    self.create_server(self.server_ip, self.server_port)
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 61, in create_server
+    self.serv.bind((ip, port))
+OSError: [Errno 98] Address already in use
+
+2021-05-11 15:19:04,026 - gravity_core.wlogger - ERROR - Traceback (most recent call last):
+  File "/home/qodex/Gravity_core_export/gravity_core/wengine.py", line 78, in make_cps_connection
+    self.cps.start()
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 37, in start
+    self.create_server(self.server_ip, self.server_port)
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 61, in create_server
+    self.serv.bind((ip, port))
+OSError: [Errno 98] Address already in use
+
+2021-05-11 15:19:09,035 - gravity_core.wlogger - ERROR - Traceback (most recent call last):
+  File "/home/qodex/Gravity_core_export/gravity_core/wengine.py", line 78, in make_cps_connection
+    self.cps.start()
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 37, in start
+    self.create_server(self.server_ip, self.server_port)
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 61, in create_server
+    self.serv.bind((ip, port))
+OSError: [Errno 98] Address already in use
+
+2021-05-11 15:19:14,040 - gravity_core.wlogger - ERROR - Traceback (most recent call last):
+  File "/home/qodex/Gravity_core_export/gravity_core/wengine.py", line 78, in make_cps_connection
+    self.cps.start()
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 37, in start
+    self.create_server(self.server_ip, self.server_port)
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 61, in create_server
+    self.serv.bind((ip, port))
+OSError: [Errno 98] Address already in use
+
+2021-05-11 15:19:19,049 - gravity_core.wlogger - ERROR - Traceback (most recent call last):
+  File "/home/qodex/Gravity_core_export/gravity_core/wengine.py", line 78, in make_cps_connection
+    self.cps.start()
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 37, in start
+    self.create_server(self.server_ip, self.server_port)
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 61, in create_server
+    self.serv.bind((ip, port))
+OSError: [Errno 98] Address already in use
+
+2021-05-11 15:19:24,055 - gravity_core.wlogger - ERROR - Traceback (most recent call last):
+  File "/home/qodex/Gravity_core_export/gravity_core/wengine.py", line 78, in make_cps_connection
+    self.cps.start()
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 37, in start
+    self.create_server(self.server_ip, self.server_port)
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 61, in create_server
+    self.serv.bind((ip, port))
+OSError: [Errno 98] Address already in use
+
+2021-05-11 15:19:29,064 - gravity_core.wlogger - ERROR - Traceback (most recent call last):
+  File "/home/qodex/Gravity_core_export/gravity_core/wengine.py", line 78, in make_cps_connection
+    self.cps.start()
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 37, in start
+    self.create_server(self.server_ip, self.server_port)
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 61, in create_server
+    self.serv.bind((ip, port))
+OSError: [Errno 98] Address already in use
+
+2021-05-11 15:19:34,070 - gravity_core.wlogger - ERROR - Traceback (most recent call last):
+  File "/home/qodex/Gravity_core_export/gravity_core/wengine.py", line 78, in make_cps_connection
+    self.cps.start()
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 37, in start
+    self.create_server(self.server_ip, self.server_port)
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 61, in create_server
+    self.serv.bind((ip, port))
+OSError: [Errno 98] Address already in use
+
+2021-05-11 15:19:39,079 - gravity_core.wlogger - ERROR - Traceback (most recent call last):
+  File "/home/qodex/Gravity_core_export/gravity_core/wengine.py", line 78, in make_cps_connection
+    self.cps.start()
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 37, in start
+    self.create_server(self.server_ip, self.server_port)
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 61, in create_server
+    self.serv.bind((ip, port))
+OSError: [Errno 98] Address already in use
+
+2021-05-11 15:19:44,088 - gravity_core.wlogger - ERROR - Traceback (most recent call last):
+  File "/home/qodex/Gravity_core_export/gravity_core/wengine.py", line 78, in make_cps_connection
+    self.cps.start()
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 37, in start
+    self.create_server(self.server_ip, self.server_port)
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 61, in create_server
+    self.serv.bind((ip, port))
+OSError: [Errno 98] Address already in use
+
+2021-05-11 15:19:49,096 - gravity_core.wlogger - ERROR - Traceback (most recent call last):
+  File "/home/qodex/Gravity_core_export/gravity_core/wengine.py", line 78, in make_cps_connection
+    self.cps.start()
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 37, in start
+    self.create_server(self.server_ip, self.server_port)
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 61, in create_server
+    self.serv.bind((ip, port))
+OSError: [Errno 98] Address already in use
+
+2021-05-11 15:19:54,102 - gravity_core.wlogger - ERROR - Traceback (most recent call last):
+  File "/home/qodex/Gravity_core_export/gravity_core/wengine.py", line 78, in make_cps_connection
+    self.cps.start()
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 37, in start
+    self.create_server(self.server_ip, self.server_port)
+  File "/home/qodex/.local/lib/python3.8/site-packages/portdatasplitter/main.py", line 61, in create_server
+    self.serv.bind((ip, port))
+OSError: [Errno 98] Address already in use
+
+2021-05-11 15:53:54,493 - gravity_core.wlogger - ERROR - Traceback (most recent call last):
+  File "/home/qodex/Gravity_core_export/gravity_core/wlistener.py", line 102, in broadcastMsgSend
+    conn.send(msg)
+BrokenPipeError: [Errno 32] Broken pipe
+
+2021-05-11 15:55:04,198 - gravity_core.wlogger - ERROR - Traceback (most recent call last):
+  File "/home/qodex/Gravity_core_export/gravity_core/wlistener.py", line 102, in broadcastMsgSend
+    conn.send(msg)
+BrokenPipeError: [Errno 32] Broken pipe
+
+2021-05-11 15:55:04,250 - gravity_core.wlogger - ERROR - Traceback (most recent call last):
+  File "/home/qodex/Gravity_core_export/gravity_core/wlistener.py", line 102, in broadcastMsgSend
+    conn.send(msg)
+BrokenPipeError: [Errno 32] Broken pipe
+
+2021-05-12 14:56:26,187 - gravity_core.wlogger - ERROR - Traceback (most recent call last):
+  File "/home/qodex/Gravity_core_export/gravity_core/wlistener.py", line 102, in broadcastMsgSend
+    conn.send(msg)
+BrokenPipeError: [Errno 32] Broken pipe
+
+2021-05-12 14:56:26,237 - gravity_core.wlogger - ERROR - Traceback (most recent call last):
+  File "/home/qodex/Gravity_core_export/gravity_core/wlistener.py", line 102, in broadcastMsgSend
+    conn.send(msg)
+BrokenPipeError: [Errno 32] Broken pipe
+
+2021-05-12 14:56:26,255 - gravity_core.wlogger - ERROR - Traceback (most recent call last):
+  File "/home/qodex/Gravity_core_export/gravity_core/wlistener.py", line 102, in broadcastMsgSend
+    conn.send(msg)
+BrokenPipeError: [Errno 32] Broken pipe
+
+2021-05-12 14:56:26,256 - gravity_core.wlogger - ERROR - Traceback (most recent call last):
+  File "/home/qodex/Gravity_core_export/gravity_core/wlistener.py", line 102, in broadcastMsgSend
+    conn.send(msg)
+BrokenPipeError: [Errno 32] Broken pipe
+

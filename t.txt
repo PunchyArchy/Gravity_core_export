@@ -1,0 +1,509 @@
+● runcore.service - GravityCore
+     Loaded: loaded (/etc/systemd/system/runcore.service; enabled; vendor preset: enabled)
+     Active: active (running) since Wed 2021-05-12 18:55:36 +05; 1 day 14h ago
+   Main PID: 54082 (python3)
+      Tasks: 26 (limit: 4468)
+     Memory: 39.7M
+     CGroup: /system.slice/runcore.service
+             └─54082 /usr/bin/python3 /home/qodex/Gravity_core_export/wlauncher.py
+
+мая 14 09:21:14 qodex-Tolbazy python3[54082]: c3
+мая 14 09:21:14 qodex-Tolbazy python3[54082]: Ширковещательная отправка {'updateStatus': {'status': 'Ожидание пересечения фотоэлементов.', 'notes': 'Таймер - 46 сек', 'protocol': 'none', 'course': 'none', 'carnum': 'У067НХ102', 'face': 'exit', 'pos': 'r'}}
+мая 14 09:21:14 qodex-Tolbazy python3[54082]: По клиентам: [{<socket.socket fd=27, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('172.16.1.49', 2291), raddr=('172.16.1.40', 43166)>: 0}]
+мая 14 09:21:14 qodex-Tolbazy python3[54082]: Отправка клиенту CM
+мая 14 09:21:14 qodex-Tolbazy python3[54082]:         Попытка отправки сообщения клиенту CM
+мая 14 09:21:14 qodex-Tolbazy python3[54082]:                 Успешно!
+мая 14 09:21:14 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:13.423206 Catched weight is:  0
+мая 14 09:21:14 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:13.423568 course is IN
+мая 14 09:21:14 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:13.423786
+мая 14 09:21:14 qodex-Tolbazy python3[54082]:         Поток слежения за точками доступа - [['EVENT_CE', '"2021-05-14', '09:21:12"', '31', '3', '0', '0', 'UNKNOWN']]
+мая 14 09:21:14 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:13.423998 course is IN
+мая 14 09:21:14 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:13.424197
+мая 14 09:21:14 qodex-Tolbazy python3[54082]:         Поток слежения за точками доступа - [['EVENT_CE', '"2021-05-14', '09:21:12"', '31', '3', '0', '0', 'UNKNOWN']]
+мая 14 09:21:14 qodex-Tolbazy python3[54082]: c3
+мая 14 09:21:14 qodex-Tolbazy python3[54082]: Ширковещательная отправка {'updateStatus': {'status': 'Ожидание пересечения фотоэлементов.', 'notes': 'Таймер - 45 сек', 'protocol': 'none', 'course': 'none', 'carnum': 'У067НХ102', 'face': 'exit', 'pos': 'r'}}
+мая 14 09:21:14 qodex-Tolbazy python3[54082]: По клиентам: [{<socket.socket fd=27, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('172.16.1.49', 2291), raddr=('172.16.1.40', 43166)>: 0}]
+мая 14 09:21:14 qodex-Tolbazy python3[54082]: Отправка клиенту CM
+мая 14 09:21:14 qodex-Tolbazy python3[54082]:         Попытка отправки сообщения клиенту CM
+мая 14 09:21:14 qodex-Tolbazy python3[54082]:                 Успешно!
+мая 14 09:21:14 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:14.427325 Catched weight is:  0
+мая 14 09:21:14 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:14.427602 course is IN
+мая 14 09:21:14 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:14.427825
+мая 14 09:21:14 qodex-Tolbazy python3[54082]:         Поток слежения за точками доступа - [['EVENT_CE', '"2021-05-14', '09:21:12"', '31', '3', '0', '0', 'UNKNOWN']]
+мая 14 09:21:22 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:14.428019 course is IN
+мая 14 09:21:22 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:14.428338
+мая 14 09:21:22 qodex-Tolbazy python3[54082]:         Поток слежения за точками доступа - [['EVENT_CE', '"2021-05-14', '09:21:12"', '31', '3', '0', '0', 'UNKNOWN']]
+мая 14 09:21:22 qodex-Tolbazy python3[54082]: c3
+мая 14 09:21:22 qodex-Tolbazy python3[54082]: Ширковещательная отправка {'updateStatus': {'status': 'Ожидание пересечения фотоэлементов.', 'notes': 'Таймер - 44 сек', 'protocol': 'none', 'course': 'none', 'carnum': 'У067НХ102', 'face': 'exit', 'pos': 'r'}}
+мая 14 09:21:22 qodex-Tolbazy python3[54082]: По клиентам: [{<socket.socket fd=27, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('172.16.1.49', 2291), raddr=('172.16.1.40', 43166)>: 0}]
+мая 14 09:21:22 qodex-Tolbazy python3[54082]: Отправка клиенту CM
+мая 14 09:21:22 qodex-Tolbazy python3[54082]:         Попытка отправки сообщения клиенту CM
+мая 14 09:21:22 qodex-Tolbazy python3[54082]:                 Успешно!
+мая 14 09:21:22 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:15.431281 Catched weight is:  0
+мая 14 09:21:22 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:15.431563 course is IN
+мая 14 09:21:22 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:15.431779
+мая 14 09:21:22 qodex-Tolbazy python3[54082]:         Поток слежения за точками доступа - [['EVENT_CE', '"2021-05-14', '09:21:12"', '31', '3', '0', '0', 'UNKNOWN']]
+мая 14 09:21:22 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:15.431991 course is IN
+мая 14 09:21:22 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:15.432188
+мая 14 09:21:22 qodex-Tolbazy python3[54082]:         Поток слежения за точками доступа - [['EVENT_CE', '"2021-05-14', '09:21:12"', '31', '3', '0', '0', 'UNKNOWN']]
+мая 14 09:21:22 qodex-Tolbazy python3[54082]: c3
+мая 14 09:21:22 qodex-Tolbazy python3[54082]: Ширковещательная отправка {'updateStatus': {'status': 'Ожидание пересечения фотоэлементов.', 'notes': 'Таймер - 43 сек', 'protocol': 'none', 'course': 'none', 'carnum': 'У067НХ102', 'face': 'exit', 'pos': 'r'}}
+мая 14 09:21:22 qodex-Tolbazy python3[54082]: По клиентам: [{<socket.socket fd=27, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('172.16.1.49', 2291), raddr=('172.16.1.40', 43166)>: 0}]
+мая 14 09:21:22 qodex-Tolbazy python3[54082]: Отправка клиенту CM
+мая 14 09:21:22 qodex-Tolbazy python3[54082]:         Попытка отправки сообщения клиенту CM
+мая 14 09:21:22 qodex-Tolbazy python3[54082]:                 Успешно!
+мая 14 09:21:22 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:16.434913 Catched weight is:  0
+мая 14 09:21:22 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:16.435122 course is IN
+мая 14 09:21:22 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:16.435389
+мая 14 09:21:22 qodex-Tolbazy python3[54082]:         Поток слежения за точками доступа - [['EVENT_CE', '"2021-05-14', '09:21:12"', '31', '3', '0', '0', 'UNKNOWN']]
+мая 14 09:21:22 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:16.435586 course is IN
+мая 14 09:21:22 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:16.435764
+мая 14 09:21:22 qodex-Tolbazy python3[54082]:         Поток слежения за точками доступа - [['EVENT_CE', '"2021-05-14', '09:21:12"', '31', '3', '0', '0', 'UNKNOWN']]
+мая 14 09:21:22 qodex-Tolbazy python3[54082]: c3
+мая 14 09:21:22 qodex-Tolbazy python3[54082]: Ширковещательная отправка {'updateStatus': {'status': 'Ожидание пересечения фотоэлементов.', 'notes': 'Таймер - 42 сек', 'protocol': 'none', 'course': 'none', 'carnum': 'У067НХ102', 'face': 'exit', 'pos': 'r'}}
+мая 14 09:21:22 qodex-Tolbazy python3[54082]: По клиентам: [{<socket.socket fd=27, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('172.16.1.49', 2291), raddr=('172.16.1.40', 43166)>: 0}]
+мая 14 09:21:22 qodex-Tolbazy python3[54082]: Отправка клиенту CM
+мая 14 09:21:22 qodex-Tolbazy python3[54082]:         Попытка отправки сообщения клиенту CM
+мая 14 09:21:22 qodex-Tolbazy python3[54082]:                 Успешно!
+мая 14 09:21:22 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:17.438824 Catched weight is:  0
+мая 14 09:21:22 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:17.439107 course is IN
+мая 14 09:21:22 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:17.439396
+мая 14 09:21:22 qodex-Tolbazy python3[54082]:         Поток слежения за точками доступа - [['EVENT_CE', '"2021-05-14', '09:21:12"', '31', '3', '0', '0', 'UNKNOWN']]
+мая 14 09:21:22 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:17.439618 course is IN
+мая 14 09:21:22 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:17.439814
+мая 14 09:21:22 qodex-Tolbazy python3[54082]:         Поток слежения за точками доступа - [['EVENT_CE', '"2021-05-14', '09:21:12"', '31', '3', '0', '0', 'UNKNOWN']]
+мая 14 09:21:22 qodex-Tolbazy python3[54082]: c3
+мая 14 09:21:22 qodex-Tolbazy python3[54082]: Ширковещательная отправка {'updateStatus': {'status': 'Ожидание пересечения фотоэлементов.', 'notes': 'Таймер - 41 сек', 'protocol': 'none', 'course': 'none', 'carnum': 'У067НХ102', 'face': 'exit', 'pos': 'r'}}
+мая 14 09:21:22 qodex-Tolbazy python3[54082]: По клиентам: [{<socket.socket fd=27, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('172.16.1.49', 2291), raddr=('172.16.1.40', 43166)>: 0}]
+мая 14 09:21:22 qodex-Tolbazy python3[54082]: Отправка клиенту CM
+мая 14 09:21:22 qodex-Tolbazy python3[54082]:         Попытка отправки сообщения клиенту CM
+мая 14 09:21:22 qodex-Tolbazy python3[54082]:                 Успешно!
+мая 14 09:21:22 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:18.442691 Catched weight is:  0
+мая 14 09:21:22 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:18.442898 course is IN
+мая 14 09:21:22 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:18.443086
+мая 14 09:21:22 qodex-Tolbazy python3[54082]:         Поток слежения за точками доступа - [['EVENT_CE', '"2021-05-14', '09:21:12"', '31', '3', '0', '0', 'UNKNOWN']]
+мая 14 09:21:22 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:18.443348 course is IN
+мая 14 09:21:22 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:18.443543
+мая 14 09:21:22 qodex-Tolbazy python3[54082]:         Поток слежения за точками доступа - [['EVENT_CE', '"2021-05-14', '09:21:12"', '31', '3', '0', '0', 'UNKNOWN']]
+мая 14 09:21:22 qodex-Tolbazy python3[54082]: c3
+мая 14 09:21:22 qodex-Tolbazy python3[54082]: Ширковещательная отправка {'updateStatus': {'status': 'Ожидание пересечения фотоэлементов.', 'notes': 'Таймер - 40 сек', 'protocol': 'none', 'course': 'none', 'carnum': 'У067НХ102', 'face': 'exit', 'pos': 'r'}}
+мая 14 09:21:22 qodex-Tolbazy python3[54082]: По клиентам: [{<socket.socket fd=27, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('172.16.1.49', 2291), raddr=('172.16.1.40', 43166)>: 0}]
+мая 14 09:21:22 qodex-Tolbazy python3[54082]: Отправка клиенту CM
+мая 14 09:21:22 qodex-Tolbazy python3[54082]:         Попытка отправки сообщения клиенту CM
+мая 14 09:21:22 qodex-Tolbazy python3[54082]:                 Успешно!
+мая 14 09:21:22 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:19.446433 Catched weight is:  1380
+мая 14 09:21:22 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:19.446693 course is IN
+мая 14 09:21:22 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:19.446889
+мая 14 09:21:22 qodex-Tolbazy python3[54082]:         Поток слежения за точками доступа - [['EVENT_CE', '"2021-05-14', '09:21:12"', '31', '3', '0', '0', 'UNKNOWN']]
+мая 14 09:21:22 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:19.447080 course is IN
+мая 14 09:21:22 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:19.447344
+мая 14 09:21:22 qodex-Tolbazy python3[54082]:         Поток слежения за точками доступа - [['EVENT_CE', '"2021-05-14', '09:21:12"', '31', '3', '0', '0', 'UNKNOWN']]
+мая 14 09:21:22 qodex-Tolbazy python3[54082]: c3
+мая 14 09:21:22 qodex-Tolbazy python3[54082]: Ширковещательная отправка {'updateStatus': {'status': 'Ожидание пересечения фотоэлементов.', 'notes': 'Таймер - 39 сек', 'protocol': 'none', 'course': 'none', 'carnum': 'У067НХ102', 'face': 'exit', 'pos': 'r'}}
+мая 14 09:21:22 qodex-Tolbazy python3[54082]: По клиентам: [{<socket.socket fd=27, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('172.16.1.49', 2291), raddr=('172.16.1.40', 43166)>: 0}]
+мая 14 09:21:22 qodex-Tolbazy python3[54082]: Отправка клиенту CM
+мая 14 09:21:22 qodex-Tolbazy python3[54082]:         Попытка отправки сообщения клиенту CM
+мая 14 09:21:22 qodex-Tolbazy python3[54082]:                 Успешно!
+мая 14 09:21:22 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:20.450144 Catched weight is:  3460
+мая 14 09:21:22 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:20.450368 course is IN
+мая 14 09:21:22 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:20.450531
+мая 14 09:21:22 qodex-Tolbazy python3[54082]:         Поток слежения за точками доступа - [['EVENT_CE', '"2021-05-14', '09:21:12"', '31', '3', '0', '0', 'UNKNOWN']]
+мая 14 09:21:22 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:20.450690 course is IN
+мая 14 09:21:22 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:20.450837
+мая 14 09:21:22 qodex-Tolbazy python3[54082]:         Поток слежения за точками доступа - [['EVENT_CE', '"2021-05-14', '09:21:12"', '31', '3', '0', '0', 'UNKNOWN']]
+мая 14 09:21:22 qodex-Tolbazy python3[54082]: c3
+мая 14 09:21:22 qodex-Tolbazy python3[54082]: Ширковещательная отправка {'updateStatus': {'status': 'Ожидание пересечения фотоэлементов.', 'notes': 'Таймер - 38 сек', 'protocol': 'none', 'course': 'none', 'carnum': 'У067НХ102', 'face': 'exit', 'pos': 'r'}}
+мая 14 09:21:22 qodex-Tolbazy python3[54082]: По клиентам: [{<socket.socket fd=27, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('172.16.1.49', 2291), raddr=('172.16.1.40', 43166)>: 0}]
+мая 14 09:21:22 qodex-Tolbazy python3[54082]: Отправка клиенту CM
+мая 14 09:21:22 qodex-Tolbazy python3[54082]:         Попытка отправки сообщения клиенту CM
+мая 14 09:21:22 qodex-Tolbazy python3[54082]:                 Успешно!
+мая 14 09:21:22 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:21.453858 Catched weight is:  3780
+мая 14 09:21:22 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:21.454079 course is IN
+мая 14 09:21:22 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:21.454253
+мая 14 09:21:22 qodex-Tolbazy python3[54082]:         Поток слежения за точками доступа - [['EVENT_CE', '"2021-05-14', '09:21:12"', '31', '3', '0', '0', 'UNKNOWN']]
+мая 14 09:21:22 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:21.454424 course is IN
+мая 14 09:21:22 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:21.454586
+мая 14 09:21:22 qodex-Tolbazy python3[54082]:         Поток слежения за точками доступа - [['EVENT_CE', '"2021-05-14', '09:21:12"', '31', '3', '0', '0', 'UNKNOWN']]
+мая 14 09:21:22 qodex-Tolbazy python3[54082]: c3
+мая 14 09:21:22 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:22.378014                 Получены данные от SIGUR: EVENT_CE "2021-05-14 09:21:22" 30 3 0 0 UNKNOWN
+мая 14 09:21:22 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:22.378238
+мая 14 09:21:22 qodex-Tolbazy python3[54082]: Получено состояние точек доступа:  ['EVENT_CE', '"2021-05-14', '09:21:22"', '30', '3', '0', '0', 'UNKNOWN']
+мая 14 09:21:22 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:22.378451 Обновление contr_stream: [['EVENT_CE', '"2021-05-14', '09:21:12"', '31', '3', '0', '0', 'UNKNOWN'], ['EVENT_CE', '"2021-05-14', '09:21:22"', '30', '3', '0', '0', 'UNKNOWN']]
+мая 14 09:21:22 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:22.378622                 UNDEFINED DATA:
+мая 14 09:21:22 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:22.378789         Получаем данные от Sigur. Status Занят
+мая 14 09:21:37 qodex-Tolbazy python3[54082]: Ширковещательная отправка {'updateStatus': {'status': 'Ожидание пересечения фотоэлементов.', 'notes': 'Таймер - 37 сек', 'protocol': 'none', 'course': 'none', 'carnum': 'У067НХ102', 'face': 'exit', 'pos': 'r'}}
+мая 14 09:21:37 qodex-Tolbazy python3[54082]: По клиентам: [{<socket.socket fd=27, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('172.16.1.49', 2291), raddr=('172.16.1.40', 43166)>: 0}]
+мая 14 09:21:37 qodex-Tolbazy python3[54082]: Отправка клиенту CM
+мая 14 09:21:37 qodex-Tolbazy python3[54082]:         Попытка отправки сообщения клиенту CM
+мая 14 09:21:37 qodex-Tolbazy python3[54082]:                 Успешно!
+мая 14 09:21:37 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:22.456886 Catched weight is:  3580
+мая 14 09:21:37 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:22.457158 course is IN
+мая 14 09:21:37 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:22.457353
+мая 14 09:21:37 qodex-Tolbazy python3[54082]:         Поток слежения за точками доступа - [['EVENT_CE', '"2021-05-14', '09:21:12"', '31', '3', '0', '0', 'UNKNOWN'], ['EVENT_CE', '"2021-05-14', '09:21:22"', '30', '3', '0', '0', 'UNKNOWN']]
+мая 14 09:21:37 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:22.457531 course is IN
+мая 14 09:21:37 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:22.457701
+мая 14 09:21:37 qodex-Tolbazy python3[54082]:         Поток слежения за точками доступа - [['EVENT_CE', '"2021-05-14', '09:21:12"', '31', '3', '0', '0', 'UNKNOWN'], ['EVENT_CE', '"2021-05-14', '09:21:22"', '30', '3', '0', '0', 'UNKNOWN']]
+мая 14 09:21:37 qodex-Tolbazy python3[54082]: c2
+мая 14 09:21:37 qodex-Tolbazy python3[54082]: Ширковещательная отправка {'updateStatus': {'status': 'Ожидание пересечения фотоэлементов.', 'notes': 'Таймер - 60 сек', 'protocol': 'none', 'course': 'none', 'carnum': 'У067НХ102', 'face': 'exit', 'pos': 'r'}}
+мая 14 09:21:37 qodex-Tolbazy python3[54082]: По клиентам: [{<socket.socket fd=27, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('172.16.1.49', 2291), raddr=('172.16.1.40', 43166)>: 0}]
+мая 14 09:21:37 qodex-Tolbazy python3[54082]: Отправка клиенту CM
+мая 14 09:21:37 qodex-Tolbazy python3[54082]:         Попытка отправки сообщения клиенту CM
+мая 14 09:21:37 qodex-Tolbazy python3[54082]:                 Успешно!
+мая 14 09:21:37 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:23.460546 Catched weight is:  4220
+мая 14 09:21:37 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:23.460794 course is IN
+мая 14 09:21:37 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:23.461002
+мая 14 09:21:37 qodex-Tolbazy python3[54082]:         Поток слежения за точками доступа - [['EVENT_CE', '"2021-05-14', '09:21:12"', '31', '3', '0', '0', 'UNKNOWN'], ['EVENT_CE', '"2021-05-14', '09:21:22"', '30', '3', '0', '0', 'UNKNOWN']]
+мая 14 09:21:37 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:23.461194 course is IN
+мая 14 09:21:37 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:23.461378
+мая 14 09:21:37 qodex-Tolbazy python3[54082]:         Поток слежения за точками доступа - [['EVENT_CE', '"2021-05-14', '09:21:12"', '31', '3', '0', '0', 'UNKNOWN'], ['EVENT_CE', '"2021-05-14', '09:21:22"', '30', '3', '0', '0', 'UNKNOWN']]
+мая 14 09:21:37 qodex-Tolbazy python3[54082]: c2
+мая 14 09:21:37 qodex-Tolbazy python3[54082]: Ширковещательная отправка {'updateStatus': {'status': 'Ожидание пересечения фотоэлементов.', 'notes': 'Таймер - 60 сек', 'protocol': 'none', 'course': 'none', 'carnum': 'У067НХ102', 'face': 'exit', 'pos': 'r'}}
+мая 14 09:21:37 qodex-Tolbazy python3[54082]: По клиентам: [{<socket.socket fd=27, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('172.16.1.49', 2291), raddr=('172.16.1.40', 43166)>: 0}]
+мая 14 09:21:37 qodex-Tolbazy python3[54082]: Отправка клиенту CM
+мая 14 09:21:37 qodex-Tolbazy python3[54082]:         Попытка отправки сообщения клиенту CM
+мая 14 09:21:37 qodex-Tolbazy python3[54082]:                 Успешно!
+мая 14 09:21:37 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:24.464386 Catched weight is:  3700
+мая 14 09:21:37 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:24.464671 course is IN
+мая 14 09:21:37 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:24.464934
+мая 14 09:21:37 qodex-Tolbazy python3[54082]:         Поток слежения за точками доступа - [['EVENT_CE', '"2021-05-14', '09:21:12"', '31', '3', '0', '0', 'UNKNOWN'], ['EVENT_CE', '"2021-05-14', '09:21:22"', '30', '3', '0', '0', 'UNKNOWN']]
+мая 14 09:21:37 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:24.465150 course is IN
+мая 14 09:21:37 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:24.465355
+мая 14 09:21:37 qodex-Tolbazy python3[54082]:         Поток слежения за точками доступа - [['EVENT_CE', '"2021-05-14', '09:21:12"', '31', '3', '0', '0', 'UNKNOWN'], ['EVENT_CE', '"2021-05-14', '09:21:22"', '30', '3', '0', '0', 'UNKNOWN']]
+мая 14 09:21:37 qodex-Tolbazy python3[54082]: c2
+мая 14 09:21:37 qodex-Tolbazy python3[54082]: Ширковещательная отправка {'updateStatus': {'status': 'Ожидание пересечения фотоэлементов.', 'notes': 'Таймер - 60 сек', 'protocol': 'none', 'course': 'none', 'carnum': 'У067НХ102', 'face': 'exit', 'pos': 'r'}}
+мая 14 09:21:37 qodex-Tolbazy python3[54082]: По клиентам: [{<socket.socket fd=27, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('172.16.1.49', 2291), raddr=('172.16.1.40', 43166)>: 0}]
+мая 14 09:21:37 qodex-Tolbazy python3[54082]: Отправка клиенту CM
+мая 14 09:21:37 qodex-Tolbazy python3[54082]:         Попытка отправки сообщения клиенту CM
+мая 14 09:21:37 qodex-Tolbazy python3[54082]:                 Успешно!
+мая 14 09:21:37 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:25.468331 Catched weight is:  7000
+мая 14 09:21:37 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:25.468613 course is IN
+мая 14 09:21:37 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:25.468844
+мая 14 09:21:37 qodex-Tolbazy python3[54082]:         Поток слежения за точками доступа - [['EVENT_CE', '"2021-05-14', '09:21:12"', '31', '3', '0', '0', 'UNKNOWN'], ['EVENT_CE', '"2021-05-14', '09:21:22"', '30', '3', '0', '0', 'UNKNOWN']]
+мая 14 09:21:37 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:25.469055 course is IN
+мая 14 09:21:37 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:25.469260
+мая 14 09:21:37 qodex-Tolbazy python3[54082]:         Поток слежения за точками доступа - [['EVENT_CE', '"2021-05-14', '09:21:12"', '31', '3', '0', '0', 'UNKNOWN'], ['EVENT_CE', '"2021-05-14', '09:21:22"', '30', '3', '0', '0', 'UNKNOWN']]
+мая 14 09:21:37 qodex-Tolbazy python3[54082]: c2
+мая 14 09:21:37 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:26.470865 Закрываем шлагбаум  entry
+мая 14 09:21:37 qodex-Tolbazy python3[54082]: Ширковещательная отправка {'sysInfo': {'data': 'Внешний шлагбаум закрывается.'}}
+мая 14 09:21:37 qodex-Tolbazy python3[54082]: По клиентам: [{<socket.socket fd=27, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('172.16.1.49', 2291), raddr=('172.16.1.40', 43166)>: 0}]
+мая 14 09:21:37 qodex-Tolbazy python3[54082]: Отправка клиенту CM
+мая 14 09:21:37 qodex-Tolbazy python3[54082]:         Попытка отправки сообщения клиенту CM
+мая 14 09:21:37 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:26.473771
+мая 14 09:21:37 qodex-Tolbazy python3[54082]: CLOSE MECH STARTED for entry
+мая 14 09:21:37 qodex-Tolbazy python3[54082]:                 Успешно!
+мая 14 09:21:37 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:26.474098 Шлагбаум закрыт.
+мая 14 09:21:37 qodex-Tolbazy python3[54082]: c7
+мая 14 09:21:37 qodex-Tolbazy python3[54082]: {'self': <gravity_core.wengine.WEngine object at 0x7f57bc4f2340>, 'course': 'IN', 'id_type': 'tails', 'status': 'middle_pos'}
+мая 14 09:21:37 qodex-Tolbazy python3[54082]: Ширковещательная отправка {'updateStatus': {'status': 'Успешно. Взвешивание...', 'notes': 'Таймер - 60 сек', 'protocol': 'none', 'course': 'none', 'carnum': 'У067НХ102', 'face': 'exit', 'pos': 'c'}}
+мая 14 09:21:37 qodex-Tolbazy python3[54082]: По клиентам: [{<socket.socket fd=27, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('172.16.1.49', 2291), raddr=('172.16.1.40', 43166)>: 0}]
+мая 14 09:21:37 qodex-Tolbazy python3[54082]: Отправка клиенту CM
+мая 14 09:21:37 qodex-Tolbazy python3[54082]:         Попытка отправки сообщения клиенту CM
+мая 14 09:21:37 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:26.475596 c3 0 5 entry
+мая 14 09:21:37 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:26.476005                 Получены данные от SIGUR: OK
+мая 14 09:21:37 qodex-Tolbazy python3[54082]:                 Успешно!
+мая 14 09:21:37 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:26.476502                 UNDEFINED DATA: OK
+мая 14 09:21:37 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:26.476681                 UNDEFINED DATA:
+мая 14 09:21:37 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:26.476802         Получаем данные от Sigur. Status Занят
+мая 14 09:21:37 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:26.550532                 Получены данные от SIGUR: EVENT_CE "2021-05-14 09:21:26" 31 2 0 0 UNKNOWN
+мая 14 09:21:37 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:26.550774
+мая 14 09:21:37 qodex-Tolbazy python3[54082]: Получено состояние точек доступа:  ['EVENT_CE', '"2021-05-14', '09:21:26"', '31', '2', '0', '0', 'UNKNOWN']
+мая 14 09:21:37 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:26.550964 Ошибка!  Данные не подходят по структуре!
+мая 14 09:21:37 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:26.551150                 UNDEFINED DATA:
+мая 14 09:21:37 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:26.551406         Получаем данные от Sigur. Status Занят
+мая 14 09:21:37 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:27.477262
+мая 14 09:21:37 qodex-Tolbazy python3[54082]: CLOSE MECH STARTED for entry
+мая 14 09:21:37 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:27.477518 c3 0 4 entry
+мая 14 09:21:37 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:27.477866 Catching weight: [0, 0, 1380, 3460, 3780, 3580, 4220, 3700]
+мая 14 09:21:37 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:28.479612
+мая 14 09:21:37 qodex-Tolbazy python3[54082]: CLOSE MECH STARTED for entry
+мая 14 09:21:37 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:28.480121 c3 0 3 entry
+мая 14 09:21:37 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:28.480270 Catching weight: [0, 1380, 3460, 3780, 3580, 4220, 3700, 7000]
+мая 14 09:21:37 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:29.482006
+мая 14 09:21:37 qodex-Tolbazy python3[54082]: CLOSE MECH STARTED for entry
+мая 14 09:21:37 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:29.482621 c3 0 2 entry
+мая 14 09:21:37 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:29.482743 Catching weight: [1380, 3460, 3780, 3580, 4220, 3700, 7000, 6840]
+мая 14 09:21:37 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:30.484716
+мая 14 09:21:37 qodex-Tolbazy python3[54082]: CLOSE MECH STARTED for entry
+мая 14 09:21:37 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:30.484954 c3 0 1 entry
+мая 14 09:21:37 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:30.485196 Catching weight: [3780, 3580, 4220, 3700, 7000, 6840, 9560, 10260]
+мая 14 09:21:37 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:31.486732 Catching weight: [3580, 4220, 3700, 7000, 6840, 9560, 10260, 10340]
+мая 14 09:21:37 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:31.486915
+мая 14 09:21:37 qodex-Tolbazy python3[54082]: CLOSE MECH STARTED for entry
+мая 14 09:21:37 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:31.487159 c3 0 0 entry
+мая 14 09:21:37 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:32.488379 Catching weight: [4220, 3700, 7000, 6840, 9560, 10260, 10340, 10300]
+мая 14 09:21:37 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:33.489894 Catching weight: [3700, 7000, 6840, 9560, 10260, 10340, 10300, 10220]
+мая 14 09:21:37 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:34.491429 Catching weight: [7000, 6840, 9560, 10260, 10340, 10300, 10220, 10300]
+мая 14 09:21:37 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:35.492939 Catching weight: [6840, 9560, 10260, 10340, 10300, 10220, 10300, 10300]
+мая 14 09:21:37 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:36.494402 Catching weight: [6840, 9560, 10260, 10340, 10300, 10220, 10300, 10300]
+мая 14 09:21:47 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:37.495870 Catching weight: [9560, 10260, 10340, 10300, 10220, 10300, 10300, 10280]
+мая 14 09:21:47 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:38.497560 Catching weight: [10260, 10340, 10300, 10220, 10300, 10300, 10280, 10320]
+мая 14 09:21:47 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:39.499189 Catching weight: [10300, 10220, 10300, 10300, 10280, 10320, 10320, 10300]
+мая 14 09:21:47 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:40.501530 Catching weight: [10220, 10300, 10300, 10280, 10320, 10320, 10300, 10300]
+мая 14 09:21:47 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:41.503139 Catching weight: [10300, 10300, 10280, 10320, 10320, 10300, 10300, 10300]
+мая 14 09:21:47 qodex-Tolbazy python3[54082]: Ширковещательная отправка {'updateStatus': {'status': 'Вес взят.', 'notes': 10300, 'protocol': 'none', 'course': 'none', 'carnum': 'У067НХ102', 'face': 'exit', 'pos': 'c'}}
+мая 14 09:21:47 qodex-Tolbazy python3[54082]: По клиентам: [{<socket.socket fd=27, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('172.16.1.49', 2291), raddr=('172.16.1.40', 43166)>: 0}]
+мая 14 09:21:47 qodex-Tolbazy python3[54082]: Отправка клиенту CM
+мая 14 09:21:47 qodex-Tolbazy python3[54082]:         Попытка отправки сообщения клиенту CM
+мая 14 09:21:47 qodex-Tolbazy python3[54082]:                 Успешно!
+мая 14 09:21:47 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:41.504936 Положение фотоэлементов - {'3': '30', '4': '30'}
+мая 14 09:21:47 qodex-Tolbazy python3[54082]: Photo scaling backing: 10300
+мая 14 09:21:47 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:41.915744         Фото сделано.
+мая 14 09:21:47 qodex-Tolbazy python3[54082]:         Success: Фотографирование грузовой платформы
+мая 14 09:21:47 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:41.915901         Вес получен 10300
+мая 14 09:21:47 qodex-Tolbazy python3[54082]: Ширковещательная отправка {'updateStatus': {'status': 'Вес взят.', 'notes': 'Запись обновлена', 'protocol': 'none', 'course': 'none', 'carnum': 'У067НХ102', 'face': 'exit', 'pos': 'c'}}
+мая 14 09:21:47 qodex-Tolbazy python3[54082]: По клиентам: [{<socket.socket fd=27, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('172.16.1.49', 2291), raddr=('172.16.1.40', 43166)>: 0}]
+мая 14 09:21:47 qodex-Tolbazy python3[54082]: Отправка клиенту CM
+мая 14 09:21:47 qodex-Tolbazy python3[54082]:         Попытка отправки сообщения клиенту CM
+мая 14 09:21:47 qodex-Tolbazy python3[54082]:                 Успешно!
+мая 14 09:21:47 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:41.940845 Открываем шлагбаум  exit
+мая 14 09:21:47 qodex-Tolbazy python3[54082]: Ширковещательная отправка {'sysInfo': {'data': 'Внутренний шлагбаум открывается.'}}
+мая 14 09:21:47 qodex-Tolbazy python3[54082]: По клиентам: [{<socket.socket fd=27, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('172.16.1.49', 2291), raddr=('172.16.1.40', 43166)>: 0}]
+мая 14 09:21:47 qodex-Tolbazy python3[54082]: Отправка клиенту CM
+мая 14 09:21:47 qodex-Tolbazy python3[54082]:         Попытка отправки сообщения клиенту CM
+мая 14 09:21:47 qodex-Tolbazy python3[54082]:                 Успешно!
+мая 14 09:21:47 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:41.942279 Шлагбаум открыт
+мая 14 09:21:47 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:41.942590
+мая 14 09:21:47 qodex-Tolbazy python3[54082]:         Завершающие операции
+мая 14 09:21:47 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:41.942675 note_esc. course OUT mode esc
+мая 14 09:21:47 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:41.942756
+мая 14 09:21:47 qodex-Tolbazy python3[54082]: Фаза-1. Ожидание пересечения фотоэлементов.
+мая 14 09:21:47 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:41.943412                 Получены данные от SIGUR: OK
+мая 14 09:21:47 qodex-Tolbazy python3[54082]: Ширковещательная отправка {'updateStatus': {'status': 'Ожидание пересечения фотоэлементов.', 'notes': 'Запись обновлена', 'protocol': 'none', 'course': 'none', 'carnum': 'У067НХ102', 'face': 'exit', 'pos': 'c'}}
+мая 14 09:21:47 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:41.943921                 UNDEFINED DATA: OK
+мая 14 09:21:47 qodex-Tolbazy python3[54082]: По клиентам: [{<socket.socket fd=27, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('172.16.1.49', 2291), raddr=('172.16.1.40', 43166)>: 0}]
+мая 14 09:21:47 qodex-Tolbazy python3[54082]: Отправка клиенту CM
+мая 14 09:21:47 qodex-Tolbazy python3[54082]:         Попытка отправки сообщения клиенту CM
+мая 14 09:21:47 qodex-Tolbazy python3[54082]: Ширковещательная отправка {'updateStatus': {'status': 'Ожидание пересечения фотоэлементов.', 'notes': 'Таймер - 60 сек', 'protocol': 'none', 'course': 'none', 'carnum': 'У067НХ102', 'face': 'exit', 'pos': 'c'}}
+мая 14 09:21:47 qodex-Tolbazy python3[54082]: По клиентам: [{<socket.socket fd=27, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('172.16.1.49', 2291), raddr=('172.16.1.40', 43166)>: 0}]
+мая 14 09:21:47 qodex-Tolbazy python3[54082]: Отправка клиенту CM
+мая 14 09:21:47 qodex-Tolbazy python3[54082]:         Попытка отправки сообщения клиенту CM
+мая 14 09:21:47 qodex-Tolbazy python3[54082]: c5
+мая 14 09:21:47 qodex-Tolbazy python3[54082]:                 Успешно!
+мая 14 09:21:47 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:41.945037                 UNDEFINED DATA:
+мая 14 09:21:47 qodex-Tolbazy python3[54082]:                 Успешно!
+мая 14 09:21:47 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:41.945331         Получаем данные от Sigur. Status Занят
+мая 14 09:21:47 qodex-Tolbazy python3[54082]: Got comm from CM: b"select records.id, records.car_number, records.brutto, records.tara,records.cargo, trash_cats.cat_name, records.time_in,records.notes from trash_cats, records where (inside='True' or time_out > '2021-05-14 09:16:41.943159')and trash_cats.id = records.trash_cat"
+мая 14 09:21:47 qodex-Tolbazy python3[54082]:         Comm sent
+мая 14 09:21:47 qodex-Tolbazy python3[54082]: Блокирование сокета
+мая 14 09:21:47 qodex-Tolbazy python3[54082]: Ждем данные от CM
+мая 14 09:21:47 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:42.028771                 Получены данные от SIGUR: EVENT_CE "2021-05-14 09:21:42" 32 1 0 0 UNKNOWN
+мая 14 09:21:47 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:42.029020
+мая 14 09:21:47 qodex-Tolbazy python3[54082]: Получено состояние точек доступа:  ['EVENT_CE', '"2021-05-14', '09:21:42"', '32', '1', '0', '0', 'UNKNOWN']
+мая 14 09:21:47 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:42.029215 Ошибка!  Данные не подходят по структуре!
+мая 14 09:21:47 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:42.029401                 UNDEFINED DATA:
+мая 14 09:21:47 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:42.029589         Получаем данные от Sigur. Status Занят
+мая 14 09:21:47 qodex-Tolbazy python3[54082]: Ширковещательная отправка {'updateStatus': {'status': 'Ожидание пересечения фотоэлементов.', 'notes': 'Таймер - 59 сек', 'protocol': 'none', 'course': 'none', 'carnum': 'У067НХ102', 'face': 'exit', 'pos': 'c'}}
+мая 14 09:21:47 qodex-Tolbazy python3[54082]: По клиентам: [{<socket.socket fd=27, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('172.16.1.49', 2291), raddr=('172.16.1.40', 43166)>: 0}]
+мая 14 09:21:47 qodex-Tolbazy python3[54082]: Отправка клиенту CM
+мая 14 09:21:47 qodex-Tolbazy python3[54082]:         Попытка отправки сообщения клиенту CM
+мая 14 09:21:47 qodex-Tolbazy python3[54082]:                 Успешно!
+мая 14 09:21:47 qodex-Tolbazy python3[54082]: c5
+мая 14 09:21:47 qodex-Tolbazy python3[54082]: Ширковещательная отправка {'updateStatus': {'status': 'Ожидание пересечения фотоэлементов.', 'notes': 'Таймер - 58 сек', 'protocol': 'none', 'course': 'none', 'carnum': 'У067НХ102', 'face': 'exit', 'pos': 'c'}}
+мая 14 09:21:47 qodex-Tolbazy python3[54082]: По клиентам: [{<socket.socket fd=27, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('172.16.1.49', 2291), raddr=('172.16.1.40', 43166)>: 0}]
+мая 14 09:21:47 qodex-Tolbazy python3[54082]: Отправка клиенту CM
+мая 14 09:21:47 qodex-Tolbazy python3[54082]:         Попытка отправки сообщения клиенту CM
+мая 14 09:21:47 qodex-Tolbazy python3[54082]: c5
+мая 14 09:21:47 qodex-Tolbazy python3[54082]:                 Успешно!
+мая 14 09:21:47 qodex-Tolbazy python3[54082]: Ширковещательная отправка {'updateStatus': {'status': 'Ожидание пересечения фотоэлементов.', 'notes': 'Таймер - 57 сек', 'protocol': 'none', 'course': 'none', 'carnum': 'У067НХ102', 'face': 'exit', 'pos': 'c'}}
+мая 14 09:21:47 qodex-Tolbazy python3[54082]: По клиентам: [{<socket.socket fd=27, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('172.16.1.49', 2291), raddr=('172.16.1.40', 43166)>: 0}]
+мая 14 09:21:47 qodex-Tolbazy python3[54082]: Отправка клиенту CM
+мая 14 09:21:47 qodex-Tolbazy python3[54082]:         Попытка отправки сообщения клиенту CM
+мая 14 09:21:47 qodex-Tolbazy python3[54082]: c5
+мая 14 09:21:47 qodex-Tolbazy python3[54082]:                 Успешно!
+мая 14 09:21:47 qodex-Tolbazy python3[54082]: Ширковещательная отправка {'updateStatus': {'status': 'Ожидание пересечения фотоэлементов.', 'notes': 'Таймер - 56 сек', 'protocol': 'none', 'course': 'none', 'carnum': 'У067НХ102', 'face': 'exit', 'pos': 'c'}}
+мая 14 09:21:47 qodex-Tolbazy python3[54082]: По клиентам: [{<socket.socket fd=27, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('172.16.1.49', 2291), raddr=('172.16.1.40', 43166)>: 0}]
+мая 14 09:21:47 qodex-Tolbazy python3[54082]: Отправка клиенту CM
+мая 14 09:21:47 qodex-Tolbazy python3[54082]:         Попытка отправки сообщения клиенту CM
+мая 14 09:21:47 qodex-Tolbazy python3[54082]:                 Успешно!
+мая 14 09:21:47 qodex-Tolbazy python3[54082]: c5
+мая 14 09:21:47 qodex-Tolbazy python3[54082]: Ширковещательная отправка {'updateStatus': {'status': 'Ожидание пересечения фотоэлементов.', 'notes': 'Таймер - 55 сек', 'protocol': 'none', 'course': 'none', 'carnum': 'У067НХ102', 'face': 'exit', 'pos': 'c'}}
+мая 14 09:21:47 qodex-Tolbazy python3[54082]: По клиентам: [{<socket.socket fd=27, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('172.16.1.49', 2291), raddr=('172.16.1.40', 43166)>: 0}]
+мая 14 09:21:47 qodex-Tolbazy python3[54082]: Отправка клиенту CM
+мая 14 09:21:47 qodex-Tolbazy python3[54082]:         Попытка отправки сообщения клиенту CM
+мая 14 09:21:47 qodex-Tolbazy python3[54082]: c5
+мая 14 09:21:47 qodex-Tolbazy python3[54082]:                 Успешно!
+мая 14 09:21:47 qodex-Tolbazy python3[54082]: Ширковещательная отправка {'updateStatus': {'status': 'Ожидание пересечения фотоэлементов.', 'notes': 'Таймер - 54 сек', 'protocol': 'none', 'course': 'none', 'carnum': 'У067НХ102', 'face': 'exit', 'pos': 'c'}}
+мая 14 09:21:56 qodex-Tolbazy python3[54082]: По клиентам: [{<socket.socket fd=27, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('172.16.1.49', 2291), raddr=('172.16.1.40', 43166)>: 0}]c5
+мая 14 09:21:56 qodex-Tolbazy python3[54082]: Отправка клиенту CM
+мая 14 09:21:56 qodex-Tolbazy python3[54082]:         Попытка отправки сообщения клиенту CM
+мая 14 09:21:56 qodex-Tolbazy python3[54082]:                 Успешно!
+мая 14 09:21:56 qodex-Tolbazy python3[54082]: Ширковещательная отправка {'updateStatus': {'status': 'Ожидание пересечения фотоэлементов.', 'notes': 'Таймер - 53 сек', 'protocol': 'none', 'course': 'none', 'carnum': 'У067НХ102', 'face': 'exit', 'pos': 'c'}}
+мая 14 09:21:56 qodex-Tolbazy python3[54082]: По клиентам: [{<socket.socket fd=27, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('172.16.1.49', 2291), raddr=('172.16.1.40', 43166)>: 0}]
+мая 14 09:21:56 qodex-Tolbazy python3[54082]: Отправка клиенту CM
+мая 14 09:21:56 qodex-Tolbazy python3[54082]:         Попытка отправки сообщения клиенту CM
+мая 14 09:21:56 qodex-Tolbazy python3[54082]: c5
+мая 14 09:21:56 qodex-Tolbazy python3[54082]:                 Успешно!
+мая 14 09:21:56 qodex-Tolbazy python3[54082]: Ширковещательная отправка {'updateStatus': {'status': 'Ожидание пересечения фотоэлементов.', 'notes': 'Таймер - 52 сек', 'protocol': 'none', 'course': 'none', 'carnum': 'У067НХ102', 'face': 'exit', 'pos': 'c'}}
+мая 14 09:21:56 qodex-Tolbazy python3[54082]: По клиентам: [{<socket.socket fd=27, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('172.16.1.49', 2291), raddr=('172.16.1.40', 43166)>: 0}]
+мая 14 09:21:56 qodex-Tolbazy python3[54082]: Отправка клиенту CM
+мая 14 09:21:56 qodex-Tolbazy python3[54082]:         Попытка отправки сообщения клиенту CM
+мая 14 09:21:56 qodex-Tolbazy python3[54082]: c5
+мая 14 09:21:56 qodex-Tolbazy python3[54082]:                 Успешно!
+мая 14 09:21:56 qodex-Tolbazy python3[54082]: Ширковещательная отправка {'updateStatus': {'status': 'Ожидание пересечения фотоэлементов.', 'notes': 'Таймер - 51 сек', 'protocol': 'none', 'course': 'none', 'carnum': 'У067НХ102', 'face': 'exit', 'pos': 'c'}}
+мая 14 09:21:56 qodex-Tolbazy python3[54082]: По клиентам: [{<socket.socket fd=27, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('172.16.1.49', 2291), raddr=('172.16.1.40', 43166)>: 0}]
+мая 14 09:21:56 qodex-Tolbazy python3[54082]: Отправка клиенту CM
+мая 14 09:21:56 qodex-Tolbazy python3[54082]:         Попытка отправки сообщения клиенту CM
+мая 14 09:21:56 qodex-Tolbazy python3[54082]: c5
+мая 14 09:21:56 qodex-Tolbazy python3[54082]:                 Успешно!
+мая 14 09:21:56 qodex-Tolbazy python3[54082]: Ширковещательная отправка {'updateStatus': {'status': 'Ожидание пересечения фотоэлементов.', 'notes': 'Таймер - 50 сек', 'protocol': 'none', 'course': 'none', 'carnum': 'У067НХ102', 'face': 'exit', 'pos': 'c'}}
+мая 14 09:21:56 qodex-Tolbazy python3[54082]: По клиентам: [{<socket.socket fd=27, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('172.16.1.49', 2291), raddr=('172.16.1.40', 43166)>: 0}]
+мая 14 09:21:56 qodex-Tolbazy python3[54082]: Отправка клиенту CM
+мая 14 09:21:56 qodex-Tolbazy python3[54082]:         Попытка отправки сообщения клиенту CM
+мая 14 09:21:56 qodex-Tolbazy python3[54082]: c5
+мая 14 09:21:56 qodex-Tolbazy python3[54082]:                 Успешно!
+мая 14 09:21:56 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:52.959767                 Получены данные от SIGUR: EVENT_CE "2021-05-14 09:21:52" 31 4 0 0 UNKNOWN
+мая 14 09:21:56 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:52.960016
+мая 14 09:21:56 qodex-Tolbazy python3[54082]: Получено состояние точек доступа:  ['EVENT_CE', '"2021-05-14', '09:21:52"', '31', '4', '0', '0', 'UNKNOWN']
+мая 14 09:21:56 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:52.960239 Обновление contr_stream: [['EVENT_CE', '"2021-05-14', '09:21:52"', '31', '4', '0', '0', 'UNKNOWN']]
+мая 14 09:21:56 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:52.960426                 UNDEFINED DATA:
+мая 14 09:21:56 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:52.960642         Получаем данные от Sigur. Status Занят
+мая 14 09:21:56 qodex-Tolbazy python3[54082]: Ширковещательная отправка {'updateStatus': {'status': 'Ожидание пересечения фотоэлементов.', 'notes': 'Таймер - 49 сек', 'protocol': 'none', 'course': 'none', 'carnum': 'У067НХ102', 'face': 'exit', 'pos': 'c'}}
+мая 14 09:21:56 qodex-Tolbazy python3[54082]: По клиентам: [{<socket.socket fd=27, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('172.16.1.49', 2291), raddr=('172.16.1.40', 43166)>: 0}]
+мая 14 09:21:56 qodex-Tolbazy python3[54082]: Отправка клиенту CM
+мая 14 09:21:56 qodex-Tolbazy python3[54082]:         Попытка отправки сообщения клиенту CM
+мая 14 09:21:56 qodex-Tolbazy python3[54082]:                 Успешно!
+мая 14 09:21:56 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:52.970895 Catched weight is:  6260
+мая 14 09:21:56 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:52.971264 course is OUT
+мая 14 09:21:56 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:52.971472
+мая 14 09:21:56 qodex-Tolbazy python3[54082]:         Поток слежения за точками доступа - [['EVENT_CE', '"2021-05-14', '09:21:52"', '31', '4', '0', '0', 'UNKNOWN']]
+мая 14 09:21:56 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:52.971633 course is OUT
+мая 14 09:21:56 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:52.971780
+мая 14 09:21:56 qodex-Tolbazy python3[54082]:         Поток слежения за точками доступа - [['EVENT_CE', '"2021-05-14', '09:21:52"', '31', '4', '0', '0', 'UNKNOWN']]
+мая 14 09:21:56 qodex-Tolbazy python3[54082]: c3
+мая 14 09:21:56 qodex-Tolbazy python3[54082]: Ширковещательная отправка {'updateStatus': {'status': 'Ожидание пересечения фотоэлементов.', 'notes': 'Таймер - 48 сек', 'protocol': 'none', 'course': 'none', 'carnum': 'У067НХ102', 'face': 'exit', 'pos': 'c'}}
+мая 14 09:21:56 qodex-Tolbazy python3[54082]: По клиентам: [{<socket.socket fd=27, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('172.16.1.49', 2291), raddr=('172.16.1.40', 43166)>: 0}]
+мая 14 09:21:56 qodex-Tolbazy python3[54082]: Отправка клиенту CM
+мая 14 09:21:56 qodex-Tolbazy python3[54082]:         Попытка отправки сообщения клиенту CM
+мая 14 09:21:56 qodex-Tolbazy python3[54082]:                 Успешно!
+мая 14 09:21:56 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:53.974647 Catched weight is:  6300
+мая 14 09:21:56 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:53.974890 course is OUT
+мая 14 09:21:56 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:53.975065
+мая 14 09:21:56 qodex-Tolbazy python3[54082]:         Поток слежения за точками доступа - [['EVENT_CE', '"2021-05-14', '09:21:52"', '31', '4', '0', '0', 'UNKNOWN']]
+мая 14 09:21:56 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:53.975294 course is OUT
+мая 14 09:21:56 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:53.975459
+мая 14 09:21:56 qodex-Tolbazy python3[54082]:         Поток слежения за точками доступа - [['EVENT_CE', '"2021-05-14', '09:21:52"', '31', '4', '0', '0', 'UNKNOWN']]
+мая 14 09:21:56 qodex-Tolbazy python3[54082]: c3
+мая 14 09:21:56 qodex-Tolbazy python3[54082]: Ширковещательная отправка {'updateStatus': {'status': 'Ожидание пересечения фотоэлементов.', 'notes': 'Таймер - 47 сек', 'protocol': 'none', 'course': 'none', 'carnum': 'У067НХ102', 'face': 'exit', 'pos': 'c'}}
+мая 14 09:21:56 qodex-Tolbazy python3[54082]: По клиентам: [{<socket.socket fd=27, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('172.16.1.49', 2291), raddr=('172.16.1.40', 43166)>: 0}]
+мая 14 09:21:56 qodex-Tolbazy python3[54082]: Отправка клиенту CM
+мая 14 09:21:56 qodex-Tolbazy python3[54082]:         Попытка отправки сообщения клиенту CM
+мая 14 09:21:56 qodex-Tolbazy python3[54082]:                 Успешно!
+мая 14 09:21:56 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:54.978583 Catched weight is:  2740
+мая 14 09:21:56 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:54.978849 course is OUT
+мая 14 09:21:56 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:54.979040
+мая 14 09:21:56 qodex-Tolbazy python3[54082]:         Поток слежения за точками доступа - [['EVENT_CE', '"2021-05-14', '09:21:52"', '31', '4', '0', '0', 'UNKNOWN']]
+мая 14 09:21:56 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:54.979285 course is OUT
+мая 14 09:21:56 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:54.979472
+мая 14 09:21:56 qodex-Tolbazy python3[54082]:         Поток слежения за точками доступа - [['EVENT_CE', '"2021-05-14', '09:21:52"', '31', '4', '0', '0', 'UNKNOWN']]
+мая 14 09:21:56 qodex-Tolbazy python3[54082]: c3
+мая 14 09:21:56 qodex-Tolbazy python3[54082]: Ширковещательная отправка {'updateStatus': {'status': 'Ожидание пересечения фотоэлементов.', 'notes': 'Таймер - 46 сек', 'protocol': 'none', 'course': 'none', 'carnum': 'У067НХ102', 'face': 'exit', 'pos': 'c'}}
+мая 14 09:21:56 qodex-Tolbazy python3[54082]: По клиентам: [{<socket.socket fd=27, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('172.16.1.49', 2291), raddr=('172.16.1.40', 43166)>: 0}]
+мая 14 09:21:56 qodex-Tolbazy python3[54082]: Отправка клиенту CM
+мая 14 09:21:56 qodex-Tolbazy python3[54082]:         Попытка отправки сообщения клиенту CM
+мая 14 09:21:56 qodex-Tolbazy python3[54082]:                 Успешно!
+мая 14 09:21:56 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:55.982489 Catched weight is:  20
+мая 14 09:21:56 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:55.982677 course is OUT
+мая 14 09:21:56 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:55.982849
+мая 14 09:21:56 qodex-Tolbazy python3[54082]:         Поток слежения за точками доступа - [['EVENT_CE', '"2021-05-14', '09:21:52"', '31', '4', '0', '0', 'UNKNOWN']]
+мая 14 09:21:56 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:55.983018 course is OUT
+мая 14 09:21:56 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:55.983181
+мая 14 09:21:56 qodex-Tolbazy python3[54082]:         Поток слежения за точками доступа - [['EVENT_CE', '"2021-05-14', '09:21:52"', '31', '4', '0', '0', 'UNKNOWN']]
+мая 14 09:21:56 qodex-Tolbazy python3[54082]: c3
+мая 14 09:21:56 qodex-Tolbazy python3[54082]: Ширковещательная отправка {'updateStatus': {'status': 'Ожидание пересечения фотоэлементов.', 'notes': 'Таймер - 45 сек', 'protocol': 'none', 'course': 'none', 'carnum': 'У067НХ102', 'face': 'exit', 'pos': 'c'}}
+мая 14 09:21:56 qodex-Tolbazy python3[54082]: По клиентам: [{<socket.socket fd=27, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('172.16.1.49', 2291), raddr=('172.16.1.40', 43166)>: 0}]
+мая 14 09:21:56 qodex-Tolbazy python3[54082]: Отправка клиенту CM
+мая 14 09:21:56 qodex-Tolbazy python3[54082]:         Попытка отправки сообщения клиенту CM
+мая 14 09:21:56 qodex-Tolbazy python3[54082]:                 Успешно!
+мая 14 09:21:56 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:56.986311 Catched weight is:  20
+мая 14 09:21:56 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:56.986612 course is OUT
+мая 14 09:21:56 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:56.986845
+мая 14 09:21:56 qodex-Tolbazy python3[54082]:         Поток слежения за точками доступа - [['EVENT_CE', '"2021-05-14', '09:21:52"', '31', '4', '0', '0', 'UNKNOWN']]
+мая 14 09:21:56 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:56.987054 course is OUT
+мая 14 09:21:56 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:56.987304
+мая 14 09:22:03 qodex-Tolbazy python3[54082]:         Поток слежения за точками доступа - [['EVENT_CE', '"2021-05-14', '09:21:52"', '31', '4', '0', '0', 'UNKNOWN']]
+мая 14 09:22:03 qodex-Tolbazy python3[54082]: c3
+мая 14 09:22:03 qodex-Tolbazy python3[54082]: Ширковещательная отправка {'updateStatus': {'status': 'Ожидание пересечения фотоэлементов.', 'notes': 'Таймер - 44 сек', 'protocol': 'none', 'course': 'none', 'carnum': 'У067НХ102', 'face': 'exit', 'pos': 'c'}}
+мая 14 09:22:03 qodex-Tolbazy python3[54082]: По клиентам: [{<socket.socket fd=27, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('172.16.1.49', 2291), raddr=('172.16.1.40', 43166)>: 0}]
+мая 14 09:22:03 qodex-Tolbazy python3[54082]: Отправка клиенту CM
+мая 14 09:22:03 qodex-Tolbazy python3[54082]:         Попытка отправки сообщения клиенту CM
+мая 14 09:22:03 qodex-Tolbazy python3[54082]:                 Успешно!
+мая 14 09:22:03 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:57.990395 Catched weight is:  20
+мая 14 09:22:03 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:57.990686 course is OUT
+мая 14 09:22:03 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:57.990902
+мая 14 09:22:03 qodex-Tolbazy python3[54082]:         Поток слежения за точками доступа - [['EVENT_CE', '"2021-05-14', '09:21:52"', '31', '4', '0', '0', 'UNKNOWN']]
+мая 14 09:22:03 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:57.991110 course is OUT
+мая 14 09:22:03 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:57.991436
+мая 14 09:22:03 qodex-Tolbazy python3[54082]:         Поток слежения за точками доступа - [['EVENT_CE', '"2021-05-14', '09:21:52"', '31', '4', '0', '0', 'UNKNOWN']]
+мая 14 09:22:03 qodex-Tolbazy python3[54082]: c3
+мая 14 09:22:03 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:58.059776                 Получены данные от SIGUR: EVENT_CE "2021-05-14 09:21:58" 30 4 0 0 UNKNOWN
+мая 14 09:22:03 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:58.060022
+мая 14 09:22:03 qodex-Tolbazy python3[54082]: Получено состояние точек доступа:  ['EVENT_CE', '"2021-05-14', '09:21:58"', '30', '4', '0', '0', 'UNKNOWN']
+мая 14 09:22:03 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:58.060254 Обновление contr_stream: [['EVENT_CE', '"2021-05-14', '09:21:52"', '31', '4', '0', '0', 'UNKNOWN'], ['EVENT_CE', '"2021-05-14', '09:21:58"', '30', '4', '0', '0', 'UNKNOWN']]
+мая 14 09:22:03 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:58.060443                 UNDEFINED DATA:
+мая 14 09:22:03 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:58.060630         Получаем данные от Sigur. Status Занят
+мая 14 09:22:03 qodex-Tolbazy python3[54082]: Ширковещательная отправка {'updateStatus': {'status': 'Ожидание пересечения фотоэлементов.', 'notes': 'Таймер - 43 сек', 'protocol': 'none', 'course': 'none', 'carnum': 'У067НХ102', 'face': 'exit', 'pos': 'c'}}
+мая 14 09:22:03 qodex-Tolbazy python3[54082]: По клиентам: [{<socket.socket fd=27, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('172.16.1.49', 2291), raddr=('172.16.1.40', 43166)>: 0}]
+мая 14 09:22:03 qodex-Tolbazy python3[54082]: Отправка клиенту CM
+мая 14 09:22:03 qodex-Tolbazy python3[54082]:         Попытка отправки сообщения клиенту CM
+мая 14 09:22:03 qodex-Tolbazy python3[54082]:                 Успешно!
+мая 14 09:22:03 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:58.994179 Catched weight is:  20
+мая 14 09:22:03 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:58.994419 course is OUT
+мая 14 09:22:03 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:58.994644
+мая 14 09:22:03 qodex-Tolbazy python3[54082]:         Поток слежения за точками доступа - [['EVENT_CE', '"2021-05-14', '09:21:52"', '31', '4', '0', '0', 'UNKNOWN'], ['EVENT_CE', '"2021-05-14', '09:21:58"', '30', '4', '0', '0', 'UNKNOWN']]
+мая 14 09:22:03 qodex-Tolbazy python3[54082]: c1
+мая 14 09:22:03 qodex-Tolbazy python3[54082]: Ширковещательная отправка {'updateStatus': {'status': 'Ожидание пересечения фотоэлементов.', 'notes': 'Таймер - 60 сек', 'protocol': 'none', 'course': 'none', 'carnum': 'У067НХ102', 'face': 'exit', 'pos': 'c'}}
+мая 14 09:22:03 qodex-Tolbazy python3[54082]: По клиентам: [{<socket.socket fd=27, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('172.16.1.49', 2291), raddr=('172.16.1.40', 43166)>: 0}]
+мая 14 09:22:03 qodex-Tolbazy python3[54082]: Отправка клиенту CM
+мая 14 09:22:03 qodex-Tolbazy python3[54082]:         Попытка отправки сообщения клиенту CM
+мая 14 09:22:03 qodex-Tolbazy python3[54082]:                 Успешно!
+мая 14 09:22:03 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:59.997189 Catched weight is:  0
+мая 14 09:22:03 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:59.997477 course is OUT
+мая 14 09:22:03 qodex-Tolbazy python3[54082]: 2021-05-14 09:21:59.997705
+мая 14 09:22:03 qodex-Tolbazy python3[54082]:         Поток слежения за точками доступа - [['EVENT_CE', '"2021-05-14', '09:21:52"', '31', '4', '0', '0', 'UNKNOWN'], ['EVENT_CE', '"2021-05-14', '09:21:58"', '30', '4', '0', '0', 'UNKNOWN']]
+мая 14 09:22:03 qodex-Tolbazy python3[54082]: c1
+мая 14 09:22:03 qodex-Tolbazy python3[54082]: Ширковещательная отправка {'updateStatus': {'status': 'Ожидание пересечения фотоэлементов.', 'notes': 'Таймер - 60 сек', 'protocol': 'none', 'course': 'none', 'carnum': 'У067НХ102', 'face': 'exit', 'pos': 'c'}}
+мая 14 09:22:03 qodex-Tolbazy python3[54082]: По клиентам: [{<socket.socket fd=27, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('172.16.1.49', 2291), raddr=('172.16.1.40', 43166)>: 0}]
+мая 14 09:22:03 qodex-Tolbazy python3[54082]: Отправка клиенту CM
+мая 14 09:22:03 qodex-Tolbazy python3[54082]:         Попытка отправки сообщения клиенту CM
+мая 14 09:22:03 qodex-Tolbazy python3[54082]:                 Успешно!
+мая 14 09:22:03 qodex-Tolbazy python3[54082]: 2021-05-14 09:22:01.000676 Catched weight is:  20
+мая 14 09:22:03 qodex-Tolbazy python3[54082]: 2021-05-14 09:22:01.000937 course is OUT
+мая 14 09:22:03 qodex-Tolbazy python3[54082]: 2021-05-14 09:22:01.001144
+мая 14 09:22:03 qodex-Tolbazy python3[54082]:         Поток слежения за точками доступа - [['EVENT_CE', '"2021-05-14', '09:21:52"', '31', '4', '0', '0', 'UNKNOWN'], ['EVENT_CE', '"2021-05-14', '09:21:58"', '30', '4', '0', '0', 'UNKNOWN']]
+мая 14 09:22:03 qodex-Tolbazy python3[54082]: c1
+мая 14 09:22:03 qodex-Tolbazy python3[54082]: Ширковещательная отправка {'updateStatus': {'status': 'Ожидание пересечения фотоэлементов.', 'notes': 'Таймер - 60 сек', 'protocol': 'none', 'course': 'none', 'carnum': 'У067НХ102', 'face': 'exit', 'pos': 'c'}}
+мая 14 09:22:03 qodex-Tolbazy python3[54082]: По клиентам: [{<socket.socket fd=27, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('172.16.1.49', 2291), raddr=('172.16.1.40', 43166)>: 0}]
+мая 14 09:22:03 qodex-Tolbazy python3[54082]: Отправка клиенту CM
+мая 14 09:22:03 qodex-Tolbazy python3[54082]:         Попытка отправки сообщения клиенту CM
+мая 14 09:22:03 qodex-Tolbazy python3[54082]: 2021-05-14 09:22:02.004053 Catched weight is:  20
+мая 14 09:22:03 qodex-Tolbazy python3[54082]:                 Успешно!
+мая 14 09:22:03 qodex-Tolbazy python3[54082]: 2021-05-14 09:22:02.004630 course is OUT
+мая 14 09:22:03 qodex-Tolbazy python3[54082]: 2021-05-14 09:22:02.004901
+мая 14 09:22:03 qodex-Tolbazy python3[54082]:         Поток слежения за точками доступа - [['EVENT_CE', '"2021-05-14', '09:21:52"', '31', '4', '0', '0', 'UNKNOWN'], ['EVENT_CE', '"2021-05-14', '09:21:58"', '30', '4', '0', '0', 'UNKNOWN']]
+мая 14 09:22:03 qodex-Tolbazy python3[54082]: c1
+мая 14 09:22:03 qodex-Tolbazy python3[54082]: 2021-05-14 09:22:03.006520 Catched weight is:  20
+мая 14 09:22:03 qodex-Tolbazy python3[54082]: 2021-05-14 09:22:03.006766 Закрываем шлагбаум  exit
+мая 14 09:22:03 qodex-Tolbazy python3[54082]: Ширковещательная отправка {'sysInfo': {'data': 'Внутренний шлагбаум закрывается.'}}
+мая 14 09:22:03 qodex-Tolbazy python3[54082]: По клиентам: [{<socket.socket fd=27, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('172.16.1.49', 2291), raddr=('172.16.1.40', 43166)>: 0}]
+мая 14 09:22:03 qodex-Tolbazy python3[54082]: Отправка клиенту CM
+мая 14 09:22:03 qodex-Tolbazy python3[54082]:         Попытка отправки сообщения клиенту CM
+мая 14 09:22:03 qodex-Tolbazy python3[54082]:                 Успешно!
+мая 14 09:22:03 qodex-Tolbazy python3[54082]: 2021-05-14 09:22:03.009667
+мая 14 09:22:03 qodex-Tolbazy python3[54082]: CLOSE MECH STARTED for exit
+мая 14 09:22:03 qodex-Tolbazy python3[54082]: 2021-05-14 09:22:03.010166 c3 0 5 exit
+мая 14 09:22:03 qodex-Tolbazy python3[54082]: 2021-05-14 09:22:03.010253 Шлагбаум закрыт.
+мая 14 09:22:03 qodex-Tolbazy python3[54082]: c7
+мая 14 09:22:03 qodex-Tolbazy python3[54082]: 2021-05-14 09:22:03.011369                 Получены данные от SIGUR: OK
+мая 14 09:22:03 qodex-Tolbazy python3[54082]: 2021-05-14 09:22:03.011551                 UNDEFINED DATA: OK
+мая 14 09:22:03 qodex-Tolbazy python3[54082]: 2021-05-14 09:22:03.011691                 UNDEFINED DATA:
+мая 14 09:22:03 qodex-Tolbazy python3[54082]: 2021-05-14 09:22:03.011832         Получаем данные от Sigur. Status Занят
+мая 14 09:22:03 qodex-Tolbazy python3[54082]: LOCALS: {'connection_dict': {'Гринсити': {'wclient': <witapi.main.WITClient object at 0x7f57bc501730>}, 'Экоиндустрия': {'wclient': <witapi.main.WITClient object at 0x7f57bc501760>}}, 'sqlshell': <gravity_core.wsqluse_sub.WChecker object at 0x7f57bdd97790>, 'connection_status_table': 'duo_connection_status', 'pol_owners_table': 'duo_pol_owners'}
+мая 14 09:22:03 qodex-Tolbazy python3[54082]: Отправка актов на WServer
+мая 14 09:22:03 qodex-Tolbazy python3[54082]: SEND JSON REPORTS LOCALS: {'sqlshell': <gravity_core.wsqluse_sub.WChecker object at 0x7f57bdd97790>, 'wclient': <witapi.main.WITClient object at 0x7f57bc501730>, 'poligon_id': 6, 'table_to_file_dict': dict_items([('clients', '/home/qodex/Gravity_core_export/gravity_core/reports/json_reports/json_clients'), ('auto', '/home/qodex/Gravity_core_export/gravity_core/reports/json_reports/json_cars'), ('users', '/home/qodex/Gravity_core_export/gravity_core/reports/json_reports/json_operators'), ('records', '/home/qodex/Gravity_core_export/gravity_core/reports/json_reports/json_reports'), ('cm_events_log', '/home/qodex/Gravity_core_export/gravity_core/reports/json_reports/cm_events_log')]), 'duo': True, 'pol_owner': 'Гринсити'}
+мая 14 09:22:03 qodex-Tolbazy python3[54082]: GOT RESPONSE ([(26, 'ываыав', 'выаыав', 'выаыав', None, 1, None, None, 'выаавы', 0, datetime.datetime(2021, 5, 13, 16, 17, 50, 450409, tzinfo=psycopg2.tz.FixedOffsetTimezone(offset=120, name=None)), None, 499572, False, 'ыавыва'), (25, '', 'hgfhgf', 'hgfhgf', None, 1, None, None, 'ghfhgf', 0, datetime.datetime(2021, 5, 13, 16, 17, 50, 450409, tzinfo=psycopg2.tz.FixedOffsetTimezone(offset=120, name=None)), None, 499577, False, 'hgfhgf')], ['id', 'id_1c', 'short_name', 'full_name', 'status', 'access', 'other', 'date', 'inn', 'official', 'wserver_sent', 'wserver_get', 'wserver_id', 'active', 'kpp'])
+мая 14 09:22:03 qodex-Tolbazy python3[54082]: 2021-05-14 09:22:03.098103                 Получены данные от SIGUR: EVENT_CE "2021-05-14 09:22:03" 31 1 0 0 UNKNOWN
+мая 14 09:22:03 qodex-Tolbazy python3[54082]: ERROR:root:Traceback (most recent call last):
+мая 14 09:22:03 qodex-Tolbazy python3[54082]:   File "/home/qodex/.local/lib/python3.8/site-packages/wsqluse/wsqluse.py", line 22, in try_execute
+мая 14 09:22:03 qodex-Tolbazy python3[54082]:     cursor.execute(command)
+мая 14 09:22:03 qodex-Tolbazy python3[54082]: psycopg2.errors.UniqueViolation: duplicate key value violates unique constraint "auto_wserver_id_uindex"
+мая 14 09:22:03 qodex-Tolbazy python3[54082]: DETAIL:  Key (wserver_id)=(639729) already exists.

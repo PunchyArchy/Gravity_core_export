@@ -942,14 +942,7 @@ class WEngine:
             self.alerts = self.sqlshell.check_car_choose_mode(self.alerts, self.choose_mode, carnum,
                                                               s.spec_orup_protocols[course]['reverse'])
         if s.AR_DUO_MOD:
-            duo_functions.records_owning_save(self.sqlshell, s.records_owning_table, s.pol_owners_table,
-                                              self.polygon_name, recId)
-            #print('All wclients', self.all_wclients)
-            try:
-                #for connection_dict, poligons_info in self.all_wclients.items():
-                duo_functions.send_act_by_polygon(self.all_wclients, self.sqlshell, s.connection_status_table,
-                                                 s.pol_owners_table)
-            except: print(format_exc())
+            self.send_acts_duo_mode(recId)
         self.add_alerts(recId)
         #threading.Thread(target=self.send_act, args=()).start()
         self.choose_mode = 'auto'
@@ -962,37 +955,13 @@ class WEngine:
         self.show_notification('\tStatus -', self.wlistener.status)
         self.show_notification('#############################################\n')
 
-    '''
-    def getRecId(self, carnum, mode, course='none'):
-        self.show_notification('\n[getrecid] - course =', course)
-        self.show_notification('[getrecid] - mode =', mode)
-        ident1 = self.get_ident1(carnum)
-        if course == 'IN' and mode != 'tails':
-            recId = self.sqlshell.get_last_id(s.book)[0][0] + 1
-            recId = str(recId) + course
-            self.show_notification('\t[getrecid] - recid =', recId)
-        elif course == 'IN' and mode == 'tails':
-            recId = self.sqlshell.get_last_visit(s.book, ident1, 'id')[0][0]
-            recId = str(recId) + course
-        elif course == 'OUT' and mode == 'tails':
-            recId = self.sqlshell.get_last_id(s.book)[0][0] + 1
-            recId = str(recId) + course
-        elif course == 'OUT' and mode != 'tails':
-            recId = self.sqlshell.get_last_visit(s.book, ident1, 'id')[0][0]
-            recId = str(recId) + course
-            # self.show_notification()('\t[getrecid] - recid =', recId)
-        elif course == 'OUT' and mode == 'NEG_IN':
-            recId = self.sqlshell.get_last_visit(s.book, ident1, 'id')[0][0]
-            recId = str(recId) + 'IN'
-        elif course == 'OUT' and mode == 'NEG_OUT':
-            recId = self.sqlshell.get_last_visit(s.book, ident1, 'id')[0][0]
-            recId = str(recId) + 'OUT'
-        elif course == 'inning' and mode != 'tails' or course == 'any' and mode != 'tails':
-            recId = self.sqlshell.get_last_visit(s.book, ident1, 'id')[0][0]
-            self.show_notification('\t[getrecid] - recid =', recId)
-        return recId
-    '''
-
+    def send_acts_duo_mode(self, record_id):
+        duo_functions.records_owning_save(self.sqlshell, s.records_owning_table, s.pol_owners_table,
+                                          self.polygon_name, record_id)
+        try:
+            duo_functions.send_act_by_polygon(self.all_wclients, self.sqlshell, s.connection_status_table,
+                                             s.pol_owners_table)
+        except: print(format_exc())
 
     def define_gate_point_hname(self, name):
         gate_num = s.gates_info_dict[name]['point']
