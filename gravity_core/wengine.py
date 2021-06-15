@@ -145,8 +145,8 @@ class WEngine:
         duo_functions.launch_wconnection_serv_daemon(self.sqlshell, self.all_wclients, s.connection_status_table,
                                                            s.pol_owners_table)
         # Отправить акты
-        #duo_functions.send_act_by_polygon(self.all_wclients, self.sqlshell, s.connection_status_table,
-        #                                  s.pol_owners_table)
+        duo_functions.send_act_by_polygon(self.all_wclients, self.sqlshell, s.connection_status_table,
+                                          s.pol_owners_table)
 
     def set_wlistener_core(self):
         self.wlistener.set_wcore(self)

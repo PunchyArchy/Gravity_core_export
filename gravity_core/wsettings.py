@@ -4,7 +4,7 @@ import os
 # Debug mods
 GENERAL_DEBUG = True            # Общий дебаг (вывод сообщений в общий поток вывода)
 SQLSHELL_DEBUG = False           # Режим дебага Sqlshell
-WS_DEBUG = False                # Режим дебага WeightSplitter
+WS_DEBUG = True		# Режим дебага WeightSplitter
 WAPI_DEBUG = False              # Режим дебага WAPI
 PROTOCOLS_DEBUG = False         # Режим дебага протоколов (взвешивание без машины)
 
@@ -87,7 +87,7 @@ scale_splitter_ip = '0.0.0.0'
 my_ip = '0.0.0.0'
 scale_splitter_port = 2297
 ws_name = 'CAS_CL-200A'
-ws_port = '/dev/ttyS4'
+ws_port = '/dev/ttyS7'
 
 
 
@@ -112,7 +112,7 @@ auto = 'auto'
 book = 'records'
 asu_routes_table = 'asu_routes'
 pol_owners_table = 'duo_pol_owners'
-connection_status_table = 'duo_connection_status'
+connection_status_table = 'wserver_connection_status'
 records_owning_table = 'duo_records_owning'
 trash_cats_table = 'trash_cats'
 
