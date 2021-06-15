@@ -821,7 +821,7 @@ class WEngine:
         self.sqlshell.add_alerts(self.alerts, rec_id)
 
     def getKeyCommand(self, tablename, target, ident):
-        command = '(select {} from {} where {})'.format(target, tablename, ident)
+        command = '(select {} from {} where {} LIMIT 1)'.format(target, tablename, ident)
         return command
 
     def close_gate_no_pass(self, gate_name, course):
@@ -959,8 +959,8 @@ class WEngine:
         duo_functions.records_owning_save(self.sqlshell, s.records_owning_table, s.pol_owners_table,
                                           self.polygon_name, record_id)
         try:
-            duo_functions.send_act_by_polygon(self.all_wclients, self.sqlshell, s.connection_status_table,
-                                             s.pol_owners_table)
+            threading.Thread(target=duo_functions.send_act_by_polygon, args=(self.all_wclients, self.sqlshell, s.connection_status_table,
+                                             s.pol_owners_table)).start()
         except: print(format_exc())
 
     def define_gate_point_hname(self, name):
