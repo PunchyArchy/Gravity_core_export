@@ -81,9 +81,13 @@ def set_wserver_disconnect_status(sqlshell, connection_status_table, pol_owners_
 def wserver_reconnecter(sqlshell, poligon_name, wserver_client, connection_status_table, pol_owners_table):
     connect_wserver(wserver_client)
     try:
+        print('\nLOG0')
         wserver_polygon_id = auth_me(wserver_client)
+        print('\nLOG1')
         send_act(wserver_client, wserver_polygon_id, sqlshell, connection_status_table, pol_owners_table,
                 poligon_name)
+        print('\nLOG2')
+
     except:
         print(format_exc())
         set_wserver_disconnect_status(sqlshell, connection_status_table, pol_owners_table, poligon_name)
@@ -146,6 +150,7 @@ def send_act(wserver_client, wserver_polygon_id, sqlshell, connection_status_tab
 
 def auth_me(wclient):
     # Попытаться авторизоваться
+    print('\nLOG--')
     response = auth_poligon(wclient)
     print('Результат авторизации', response)
     # Обработать ответ от WServer
@@ -172,13 +177,16 @@ def operate_auth_info(response):
 def connect_wserver(wclient):
     # Попытаться подкючиться к WServer. Если успешно вернуть True, нет - внести изменения в health_monitor
     try:
+        #print('c1')
         wclient.make_connection()
+        #print('c2')
         return True
     except:
         health_monitor.change_status('Связь с WServer', False, format_exc())
 
 
 def launch_wconnection_serv_daemon(sqlshell, all_poligons, connection_status_table, pol_owners_table):
+    #print("LOCALS HERE:", locals())
     for poligon_name, poligon_info in all_poligons.items():
         threading.Thread(target=wserver_reconnecter, args=(sqlshell, poligon_name, poligon_info['wclient'],
                                                            connection_status_table, pol_owners_table)).start()

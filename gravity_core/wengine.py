@@ -28,6 +28,7 @@ class WEngine:
         # Создание экземпляров
         self.logger = logger
         self.wserver_connected = False
+        self.all_wclients = []
         self.debug = s.GENERAL_DEBUG
         self.found_errors = []
         self.sqlshell = sqlshell
@@ -50,7 +51,6 @@ class WEngine:
         self.currentProtocolId = ''
         self.contr_mes = b'empty contr mes'
         self.addInfo = {'status': 'none', 'notes': 'none', 'protocol': 'none', 'course': 'none'}
-        self.all_wclients = []
         self.serving_start()
         self.phNotBreach = False
         self.contr_stream = []
@@ -145,8 +145,8 @@ class WEngine:
         duo_functions.launch_wconnection_serv_daemon(self.sqlshell, self.all_wclients, s.connection_status_table,
                                                            s.pol_owners_table)
         # Отправить акты
-        duo_functions.send_act_by_polygon(self.all_wclients, self.sqlshell, s.connection_status_table,
-                                          s.pol_owners_table)
+        #duo_functions.send_act_by_polygon(self.all_wclients, self.sqlshell, s.connection_status_table,
+        #                                  s.pol_owners_table)
 
     def set_wlistener_core(self):
         self.wlistener.set_wcore(self)
@@ -612,7 +612,7 @@ class WEngine:
         else:
             weight = self.photo_scaling(course, id_type)
         # Сфотографировать весовую платформу
-        self.makePic(carnum, mode, course, recId)
+        threading.Thread(target=self.makePic, args=(carnum, mode, course, recId)).start()
         if weight == '2' or weight == '1':
             self.send_error('Нет связи с весовым терминалом.')
             weight = self.operate_scale_error(weight)
@@ -942,7 +942,7 @@ class WEngine:
             self.alerts = self.sqlshell.check_car_choose_mode(self.alerts, self.choose_mode, carnum,
                                                               s.spec_orup_protocols[course]['reverse'])
         if s.AR_DUO_MOD:
-            self.send_acts_duo_mode(recId)
+            threading.Thread(target=self.send_acts_duo_mode, args=(recId,)).start()
         self.add_alerts(recId)
         #threading.Thread(target=self.send_act, args=()).start()
         self.choose_mode = 'auto'
