@@ -612,7 +612,7 @@ class WEngine:
         else:
             weight = self.photo_scaling(course, id_type)
         # Сфотографировать весовую платформу
-        threading.Thread(target=self.makePic, args=(carnum, mode, course, recId)).start()
+        self.makePic(carnum, mode, course, recId)
         if weight == '2' or weight == '1':
             self.send_error('Нет связи с весовым терминалом.')
             weight = self.operate_scale_error(weight)
@@ -681,8 +681,8 @@ class WEngine:
 
     @try_except_decorator('Фотографирование грузовой платформы')
     def makePic(self, carnum, mode, course, recId='none'):
-        if recId == 'none':
-            recId = sup_funcs.get_rec_id(self.sqlshell, carnum)
+        #if recId == 'none':
+        recId = sup_funcs.get_rec_id(self.sqlshell, carnum)
         self.currentProtocolId = recId  # Доступ для других функций
         self.cam.make_pic(self.currentProtocolId)
         self.show_notification('\tФото сделано.')
